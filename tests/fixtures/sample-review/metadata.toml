@@ -1,0 +1,6 @@
+schema_version = 1
+name = "sample-review"
+version = "0.0.0"
+capabilities = ["plan-review"]
+compatible_agents = []
+license_status = "UNDECIDED"
