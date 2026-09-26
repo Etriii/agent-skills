@@ -1,0 +1,7 @@
+# Publication gate
+
+This local library has no configured remote, release tag, published URL or license grant. Do not infer distribution approval from local implementation.
+
+Before publication, obtain the owner's license decision, add the exact license and update metadata/validator support, review all content and compatibility claims, run the standalone suite from a committed archive, and produce an actual immutable tag and independently verifiable archive checksum. Configure the owner-approved repository and publish only under explicit release authorization.
+
+Local payload hashes in `SHA256SUMS` detect changes but do not authenticate a publisher. Never fabricate a repository URL, remote pin, signature or release checksum. No external code was downloaded for this implementation.

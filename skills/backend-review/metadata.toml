@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "backend-review"
+name = "backend-review"
+version = "0.1.0"
+capabilities = ["backend"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

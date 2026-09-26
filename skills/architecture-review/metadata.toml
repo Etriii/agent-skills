@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "architecture-review"
+name = "architecture-review"
+version = "0.1.0"
+capabilities = ["architecture"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

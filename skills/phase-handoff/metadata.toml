@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "phase-handoff"
+name = "phase-handoff"
+version = "0.1.0"
+capabilities = ["handoff"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

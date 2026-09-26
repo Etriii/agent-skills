@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "blocker-check"
+name = "blocker-check"
+version = "0.1.0"
+capabilities = ["planning"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"
