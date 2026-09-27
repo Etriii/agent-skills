@@ -28,7 +28,7 @@ def safe_path(path: Path) -> Path:
             continue
         if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & 0x400:
             raise ValueError(f"Linked path is not allowed: {part}")
-    return path
+    return path.resolve(strict=False)
 
 
 def files_in(root: Path) -> dict[str, str]:

@@ -137,6 +137,11 @@ class InstallerTests(unittest.TestCase):
         self.assertFalse((self.base / "missing").exists())
         self.assertEqual(before, self.snapshot())
 
+    def test_relative_sibling_scope_is_normalized_before_overlap_check(self):
+        relative = os.path.relpath(self.project, Path.cwd())
+        self.assertEqual(self.run_install("--yes", root=Path(relative)), 0)
+        self.assertTrue(self.target().is_dir())
+
     def test_source_tampering_and_manifest_pin_mismatch_preserve_destination(self):
         source = self.copy_source()
         self.assertEqual(self.run_install("--yes"), 0)
