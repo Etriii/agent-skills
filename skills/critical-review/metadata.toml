@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "critical-review"
+name = "critical-review"
+version = "0.1.0"
+capabilities = ["critical-review"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

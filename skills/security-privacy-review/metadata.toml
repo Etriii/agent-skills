@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "security-privacy-review"
+name = "security-privacy-review"
+version = "0.1.0"
+capabilities = ["security"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

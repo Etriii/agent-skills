@@ -43,3 +43,22 @@ Actual agent discovery and exact installer flags remain Phase 02 evidence gates.
 Phase 02 owns standalone tests PUB-01–PUB-10: metadata, one-skill/both-agent install, dry-run/cancel, collisions, traversal/symlink rejection, offline copies, checksum mismatch, and no private runtime dependency.
 Phase 01 tests only the metadata fixture and this repository's independence.
 Publication, license, release checksums and remote configuration require later decisions and are not implied by creating a local repository.
+
+## Phase 02 implementation amendment - 2026-10-24
+
+The planned behavior above now has a local implementation: all fifteen named skill bodies,
+schema-1 metadata sidecars, SHA256SUMS, and tools/install_skills.py. Phase 01 fixtures remain
+synthetic and are never an install source. Current executable flags and procedures are in
+INSTALL.md; validation, tree fingerprints and payload line endings are in docs/SKILL_STANDARD.md.
+
+Stable skill_id equals the existing generic name. Version is 0.1.0, provenance is local-authored,
+license_status remains UNDECIDED. Both compatible_agents are now backed by native project
+discovery on the exact versions in docs/COMPATIBILITY.md; compatibility means discovery,
+not model compliance or user-scope native acceptance. The original fixture's empty list remains
+an intentional representation of unverified compatibility.
+
+The installer owns only explicit standalone copies and its scoped transaction/backups. It has
+no private runtime imports, automatic hooks, remote/archive support, uninstall or project lock
+integration. An install never claims PhasePilot management ownership. Replacement approval
+is explicit and preserves old content; recovery verifies journal paths and content before rollback.
+Actual CLI schemas, project lifecycle integration and runner behavior remain with their later phases.

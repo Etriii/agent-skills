@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "frontend-review"
+name = "frontend-review"
+version = "0.1.0"
+capabilities = ["frontend"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"
