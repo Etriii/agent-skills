@@ -72,3 +72,9 @@ To restore an older backup after a successful replacement, review its journal an
 - Skill absent from the agent UI: refresh/restart, confirm the path and consult `docs/COMPATIBILITY.md`.
 
 No third-party Python imports, environment variables, database migrations or feature flags are required.
+
+## Committed source archives and release status
+
+A locally exported reviewed `git archive` can be extracted into a fresh source folder and used with the same commands above. Run the standalone test suite from that extracted public folder before using it. The installer itself accepts local source directories; it does not download or unpack arbitrary archives. Record the real commit and locally computed archive SHA256 separately from any future published release provenance.
+
+Both-runtime/archive checks and current license/tag/remote gates are in [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md). No private PhasePilot checkout is needed for standalone use. Publication remains blocked until the owner approves a license, destination and release actions.
