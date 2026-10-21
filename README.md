@@ -22,3 +22,5 @@ py -3.11 -m unittest discover -s tests -v
 The suite covers offline isolated projects, both agent destinations, one-skill/Essential/all selection, dry-run/cancel, idempotency, collisions, backups, junction rejection, checksums and interrupted-write recovery. Skill instructions have been inspected for standalone operation; discovery does not prove model behavior.
 
 This checkout has no remote or published release. License selection is pending owner approval; `license_status = "UNDECIDED"` grants no redistribution rights. See [docs/PUBLISHING.md](docs/PUBLISHING.md).
+
+Use [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md) for both-runtime standalone checks, fresh committed-archive validation and the unresolved publication gates. Local source validation does not create a release or authenticate an external publisher.
