@@ -1,3 +1,5 @@
+> Historical Developer Skills evidence/contract. The collection uses the shared [installation guide](../../../INSTALL.md), [removal guide](../../../UNINSTALL.md) and [migration notes](../../../docs/MIGRATION.md). Paths and acceptance claims below describe the original standalone checkout.
+
 # Public skill and installer interface baseline
 
 Schema version: 1. Phase 01 defines contracts and fixtures only.

@@ -1,3 +1,5 @@
+> Historical Developer Skills evidence/contract. The collection uses the shared [installation guide](../../../INSTALL.md), [removal guide](../../../UNINSTALL.md) and [migration notes](../../../docs/MIGRATION.md). Paths and acceptance claims below describe the original standalone checkout.
+
 # Verified compatibility and limits
 
 Observed 2026-10-24 on Windows, Python 3.11.9 and 3.14.7. The public standard-library suite verifies project Codex `.agents/skills`, project Claude `.claude/skills`, both-agent copies, and user-scope standard-home mappings in isolated directories.

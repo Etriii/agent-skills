@@ -1,3 +1,5 @@
+> Historical Developer Skills evidence/contract. The collection uses the shared [installation guide](../../../INSTALL.md), [removal guide](../../../UNINSTALL.md) and [migration notes](../../../docs/MIGRATION.md). Paths and acceptance claims below describe the original standalone checkout.
+
 # Standalone source and release checklist
 
 This library remains independently usable from a reviewed local checkout or locally exported committed source archive. It requires Python 3.11+, an existing target project and explicit copy approval. It does not require private PhasePilot code, Docker, a model API or network access.

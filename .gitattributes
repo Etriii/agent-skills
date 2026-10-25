@@ -1,3 +1,5 @@
 * text=auto
-/skills/** text eol=lf
-/SHA256SUMS text eol=lf
+/packs/** text eol=lf
+/tools/** text eol=lf
+/tests/** text eol=lf
+*.md text eol=lf

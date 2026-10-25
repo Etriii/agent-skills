@@ -1,80 +1,64 @@
-# Offline installation
+# Installation
 
-Use a reviewed local checkout and Python >=3.11. Run commands from this repository. The target root must already exist; the installer never creates an application or initializes Git.
+Use Python 3.11+ from the extracted collection root. No third-party package, API key, environment variable, database migration or network connection is required for installation. Existing optional QA document generation still requires `python-docx`; it is unrelated to installation.
 
-## Preview, approve, use
-
-```powershell
-py -3.11 .\tools\install_skills.py --agent both --scope project --project "D:\My App" --bundle essential --dry-run
-py -3.11 .\tools\install_skills.py --agent both --scope project --project "D:\My App" --bundle essential
-```
-
-Review the exact source, destination and content digests, then type `y`. Any other response cancels (exit 2); EOF fails without writing (exit 1). For previously reviewed automation, `--yes` supplies local-copy approval. `--dry-run` writes nothing even with `--yes`. Successful and unchanged runs exit 0; validation/I/O errors exit 1.
-
-Project destinations are `.agents/skills/<name>` for Codex and `.claude/skills/<name>` for Claude. No project ignore file or runtime state is edited. Restart or refresh the agent's skill list after installation; invoke the chosen generic name through its supported skill UI. See the compatibility evidence before assuming a runtime supports it.
+## Choose a pack, agent and scope
 
 ```powershell
-# Install exactly one skill into Codex only
-py -3.11 .\tools\install_skills.py --agent codex --project "D:\My App" --skills blocker-check
-
-# Explicit full catalog selection
-py -3.11 .\tools\install_skills.py --agent both --project "D:\My App" --bundle all --dry-run
+python tools/install_skills.py --pack developer-skills --list
+python tools/install_skills.py --pack ultimate-qa --list
+python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills blocker-check phase-handoff --dry-run
+python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills blocker-check phase-handoff
 ```
 
-Essential is plan-review, blocker-check, phase-handoff and completion-check. Other skills are never implicitly added. Selection is mandatory. `--source "D:\Reviewed Skills"` chooses a different local bundle with `skills/` and `SHA256SUMS`. URLs and archives are unsupported; no remote fallback, extracted archive handling or hooks run.
+Selection is explicit: `--skills <names...>`, `--bundle essential` (four developer skills), or `--bundle all` (the selected pack only). Essential contains plan-review, blocker-check, phase-handoff and completion-check. `--pack` defaults to developer-skills for the previous developer CLI; new commands should name the pack.
 
-## User scope
+| Scope | Required arguments | Codex | Claude | Records |
+|---|---|---|---|---|
+| Project (default) | `--project <existing-root>` | `<root>/.agents/skills/<name>` | `<root>/.claude/skills/<name>` | `<root>/.agent-skills/history/` |
+| User | `--scope user --user-home <existing-home>` | `<home>/.agents/skills/<name>` | `<home>/.claude/skills/<name>` | `<home>/.agent-skills/history/` |
 
-Project scope is the default. User scope requires both `--scope user` and an explicit existing `--user-home`; verify that the installed runtime uses the standard home layout before approval:
+`--agent` accepts codex, claude or both. The installer does not discover custom configuration homes or search legacy `.codex/skills` paths. Confirm your runtime's configured discovery location. The target root must already exist. It must be disjoint from the pack source; the tool never creates an application or Git repository. QA execution separately requires the application's Git root.
+
+For a user install:
 
 ```powershell
-py -3.11 .\tools\install_skills.py --agent both --scope user --user-home "C:\Users\me" --skills blocker-check --dry-run
+python tools/install_skills.py --pack ultimate-qa --agent both --scope user --user-home "$env:USERPROFILE" --skills ultimate-qa ultimate-qa-client --dry-run
+python tools/install_skills.py --pack ultimate-qa --agent both --scope user --user-home "$env:USERPROFILE" --skills ultimate-qa ultimate-qa-client
 ```
 
-This maps Codex to `<user-home>/.codex/skills` and Claude to `<user-home>/.claude/skills`. Custom runtime config-home layouts are unsupported; use project scope instead. User-scope layout tests use an isolated home, not the real host profile. No global install was performed during development verification.
+Review the displayed destinations and hashes, then type `y`. `--yes` approves that local operation for reviewed automation. `--dry-run` never writes destination files or records, even with `--yes`. Exit codes: 0 success/unchanged/preview; 1 validation or filesystem failure; 2 cancellation or argument parsing failure.
 
-## Integrity and repeat installs
+## Integrity and dependencies
 
-Every selected payload must match its entries in `SHA256SUMS`. The manifest is integrity evidence, not a signature or a license grant. For a trusted separately obtained manifest digest, add `--expected-manifest-sha256 <64-lowercase-hex>`. A mismatch fails before destination writes. Do not trust a digest merely because it arrived with an untrusted source.
+Each selected skill must exactly match its pack's `SHA256SUMS`, including added or missing payload files. Developer metadata is validated when present. Ultimate QA also verifies the support files listed in its manifest. Paths, ancestors and descendants must be regular directories/files; links, junctions, traversal and special files are rejected.
 
-Repeated copies with identical files and directories are unchanged. Added custom files or empty directories count as a collision. Links and Windows junctions in source, destinations, ancestors or transaction paths are rejected. Source and scope roots cannot overlap.
+`--source "D:\Reviewed Pack"` overrides the local pack directory. The source must contain `skills/` and `SHA256SUMS`; it is never fetched or executed. A separately trusted manifest can be pinned with `--expected-manifest-sha256 <64-lowercase-hex>`. A manifest provides integrity, not publisher authentication or a license grant.
 
-## Collisions, backup and recovery
+Ultimate QA core/client copies receive `kit-location.txt` pointing at `packs/ultimate-qa`. Keep that pack and its support files available. After moving the collection, reinstall core/client with `--replace`; the prior copies are retained as backups. No `ULTIMATE_QA_KIT` environment setting is needed for these installed copies.
 
-Existing changed/unmanaged content is preserved by default. Review the selected collision and request a backup replacement explicitly:
+## Existing copies and replacement
+
+Identical managed copies are unchanged, including history. An identical unrecorded copy can be adopted: installation records its digest without rewriting it, making later tracked uninstall possible. A conflicting tree, including added files or empty directories, is preserved unless replacement is explicit:
 
 ```powershell
-py -3.11 .\tools\install_skills.py --agent codex --project "D:\My App" --skills blocker-check --replace --dry-run
-py -3.11 .\tools\install_skills.py --agent codex --project "D:\My App" --skills blocker-check --replace
+python tools/install_skills.py --pack developer-skills --agent codex --project "D:\My App" --skills blocker-check --replace --dry-run
+python tools/install_skills.py --pack developer-skills --agent codex --project "D:\My App" --skills blocker-check --replace
 ```
 
-The approval covers only listed skill destinations. Exact old trees are retained in `<scope-root>/.skills-install-backups/<transaction-id>/backups/<entry-number>`; `journal.json` maps each entry number to its original relative target. There is no automatic deletion of retained backups.
+Replacement retains the exact old tree in `<scope-root>/.skills-install-backups/<operation-id>/backups/<entry-number>`. Its `journal.json` maps entry numbers to original paths. The Markdown record links the backup directory. Existing backups are never automatically pruned.
 
-Copies stage and verify before the first destination change. A shared `<scope-root>/.skills-install-transaction` directory prevents concurrent installers. Ordinary exceptions and keyboard cancellation roll back swaps; an abrupt process exit leaves its journal for explicit recovery. Ensure the previous installer is stopped before recovery:
+## Transactions and recovery
+
+All selected copies and their Markdown record stage before changes begin. A shared `.skills-install-transaction/` directory excludes concurrent mutating operations in one scope. Content is checked after approval and again before each swap. File changes and their record commit together. Ordinary failures roll back; abrupt termination leaves a journal. Records are provisional while a transaction remains active.
+
+After confirming the interrupted process has stopped:
 
 ```powershell
-py -3.11 .\tools\install_skills.py --agent both --project "D:\My App" --recover --dry-run
-py -3.11 .\tools\install_skills.py --agent both --project "D:\My App" --recover
+python tools/install_skills.py --agent both --project "D:\My App" --recover --dry-run
+python tools/install_skills.py --agent both --project "D:\My App" --recover
 ```
 
-Recovery rolls back a prepared transaction or finishes backup archival for an already committed transaction. It checks all recorded targets and backups before changing them. Changed content or a corrupt/missing journal requires manual inspection; preserve the transaction directory and backups. Recovery is explicit and does not perform a new install. Process-interruption recovery is tested; power-loss durability is not claimed.
+Recovery rolls back prepared operations, including their records, or finishes backup archival for committed operations. Changed destinations/backups and malformed journals require inspection; preserve them. A command can return 1 after commit if archival fails: its record is already committed, and `--recover` finishes cleanup. Process interruption is tested; power-loss durability is not claimed.
 
-To restore an older backup after a successful replacement, review its journal and target, preserve the current target separately, and copy the exact backed-up skill to its recorded destination under your normal file-change approval. No automatic restore or uninstall command is supplied. Remove a skill manually only after verifying its selected path and ownership; never remove an entire agent directory to uninstall one skill.
-
-## Troubleshooting
-
-- Missing project/home: supply an existing root; a typo never creates one.
-- Collision: inspect the current content and use an approved `--replace` with retained backup.
-- Checksum mismatch: restore the reviewed source or pin; do not fall back to an unpinned version.
-- Linked path: use a real directory; junction destinations are intentionally unsupported.
-- Interrupted transaction: inspect its journal, stop any active installer and review `--recover`.
-- Permission error: choose a permitted scope; the installer does not elevate itself.
-- Skill absent from the agent UI: refresh/restart, confirm the path and consult `docs/COMPATIBILITY.md`.
-
-No third-party Python imports, environment variables, database migrations or feature flags are required.
-
-## Committed source archives and release status
-
-A locally exported reviewed `git archive` can be extracted into a fresh source folder and used with the same commands above. Run the standalone test suite from that extracted public folder before using it. The installer itself accepts local source directories; it does not download or unpack arbitrary archives. Record the real commit and locally computed archive SHA256 separately from any future published release provenance.
-
-Both-runtime/archive checks and current license/tag/remote gates are in [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md). No private PhasePilot checkout is needed for standalone use. Publication remains blocked until the owner approves a license, destination and release actions.
+For removal, use [UNINSTALL.md](UNINSTALL.md). For the persistent record schema, use [INSTALLATION_RECORDS.md](docs/INSTALLATION_RECORDS.md).

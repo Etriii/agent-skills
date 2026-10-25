@@ -15,8 +15,9 @@ from unittest.mock import patch
 import uuid
 
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools"))
+TOOLS = Path(__file__).resolve().parents[1] / "tools"
+ROOT = TOOLS.parent / "packs/developer-skills"
+sys.path.insert(0, str(TOOLS))
 import catalog
 import install_skills
 import transaction
@@ -176,9 +177,9 @@ class InstallerTests(unittest.TestCase):
             common = ["--agent", "both", "--scope", "user", "--skills", "blocker-check", "--yes"]
             self.assertEqual(install_skills.main(common), 1)
             self.assertEqual(install_skills.main([*common, "--user-home", str(home)]), 0)
-        self.assertTrue((home / ".codex/skills/blocker-check/SKILL.md").is_file())
+        self.assertTrue((home / ".agents/skills/blocker-check/SKILL.md").is_file())
         self.assertTrue((home / ".claude/skills/blocker-check/SKILL.md").is_file())
-        self.assertFalse((home / ".agents").exists())
+        self.assertFalse((home / ".codex").exists())
 
     def test_interrupted_staging_preserves_old_content_and_leaves_no_transaction(self):
         self.target().mkdir(parents=True)
@@ -288,7 +289,7 @@ def crash(path, destination):
 Path.rename = crash
 install(root, [(source, target, digest(target), digest(source))])
 """
-        result = subprocess.run([sys.executable, "-c", script, str(ROOT / "tools"), str(ROOT / "skills/blocker-check"), str(self.target()), str(self.project)], capture_output=True)
+        result = subprocess.run([sys.executable, "-c", script, str(TOOLS), str(ROOT / "skills/blocker-check"), str(self.target()), str(self.project)], capture_output=True)
         self.assertEqual(result.returncode, 73, result.stderr)
         self.assertEqual(self.run_install("--yes"), 1)
         with redirect_stdout(io.StringIO()):
@@ -321,7 +322,7 @@ install(root, [(source, target, digest(target), digest(source))])
     def test_standalone_blocker_and_handoff_from_public_only_archive(self):
         # The isolated bundle has no sibling private repository or runtime package.
         source = self.copy_source()
-        shutil.copytree(ROOT / "tools", source / "tools", ignore=shutil.ignore_patterns("__pycache__"))
+        shutil.copytree(TOOLS, source / "tools", ignore=shutil.ignore_patterns("__pycache__"))
         result = subprocess.run([sys.executable, str(source / "tools/install_skills.py"), "--agent", "both", "--project", str(self.project), "--skills", "blocker-check", "phase-handoff", "--yes"], cwd=self.base, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         for agent in (".agents", ".claude"):

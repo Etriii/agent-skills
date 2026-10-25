@@ -48,7 +48,7 @@ def files_in(root: Path) -> dict[str, str]:
 
 
 def fingerprint(rows: dict[str, str], directories: list[str]) -> str:
-    data = "".join(f"{value}  {name}\n" for name, value in rows.items())
+    data = "".join(f"{value}  {name}\n" for name, value in sorted(rows.items()))
     data += "".join(f"dir  {name}\n" for name in directories)
     return sha256(data.encode()).hexdigest()
 
@@ -70,6 +70,8 @@ def validate_skill(root: Path) -> dict:
         raise ValueError(f"Invalid portable frontmatter: {root}")
     if any(char in match[2] for char in ":#{}[]"):
         raise ValueError(f"Description must be a plain YAML scalar: {root}")
+    if not (root / "metadata.toml").exists():
+        return {"name": root.name}
     metadata = tomllib.loads((root / "metadata.toml").read_text(encoding="utf-8"))
     if metadata.get("schema_version") != 1 or metadata.get("name") != root.name:
         raise ValueError(f"Invalid metadata identity: {root}")
@@ -94,10 +96,15 @@ def bundle(source: Path, names: list[str], expected_manifest: str | None = None)
         raise ValueError("Manifest checksum mismatch")
     manifest = {}
     for line in raw.decode("utf-8").splitlines():
-        match = re.fullmatch(r"([0-9a-f]{64})  (skills/[a-z0-9-]+/[A-Za-z0-9_./-]+)", line)
-        if not match or ".." in match[2].split("/") or match[2] in manifest:
+        match = re.fullmatch(r"([0-9a-f]{64})  ([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)", line)
+        if not match or any(p in {".", "..", ".git"} for p in match[2].split("/")) or match[2] in manifest:
             raise ValueError("Malformed or duplicate manifest entry")
         manifest[match[2]] = match[1]
+    for relative, expected in manifest.items():
+        if not relative.startswith("skills/"):
+            path = safe_path(source / relative)
+            if not path.is_file() or sha256(path.read_bytes()).hexdigest() != expected:
+                raise ValueError(f"Pack support checksum mismatch: {relative}")
     result = {}
     for name in names:
         if not NAME.fullmatch(name) or len(name) > 64:
