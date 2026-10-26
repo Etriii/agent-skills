@@ -19,7 +19,7 @@ python tools/install_skills.py --pack developer-skills --agent codex --project "
 python tools/install_skills.py --pack developer-skills --agent codex --project "D:\My App" --skills completion-check
 ```
 
-To install all 15 related skills, follow the [Developer Skills pack guide](../../README.md).
+To install all related skills, follow the [Developer Skills pack guide](../../README.md).
 
 ## Use
 

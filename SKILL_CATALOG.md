@@ -13,6 +13,7 @@ Every entry links to a human-facing README with installation, invocation and run
 | [completion-check](packs/developer-skills/skills/completion-check/README.md) | Check acceptance criteria against executed evidence, configuration and integration state. |
 | [critical-review](packs/developer-skills/skills/critical-review/README.md) | Challenge unsupported assumptions and complexity using concrete failure paths and simpler alternatives. |
 | [database-review](packs/developer-skills/skills/database-review/README.md) | Review integrity, concurrency, migration ordering and recovery across database changes. |
+| [deep-critique](packs/developer-skills/skills/deep-critique/README.md) | Full generic critique and ratings with combined modes and categorized reports that preserve earlier runs. |
 | [delivery-readiness](packs/developer-skills/skills/delivery-readiness/README.md) | Check configuration, tested artifacts, rollout sequencing and recovery before delivery. |
 | [environment-doctor](packs/developer-skills/skills/environment-doctor/README.md) | Inspect local tool availability, Git state and required services with read-only diagnostics. |
 | [frontend-review](packs/developer-skills/skills/frontend-review/README.md) | Review UI state ownership, forms, accessibility and responsive behavior with explicit evidence limits. |

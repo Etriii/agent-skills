@@ -2,6 +2,8 @@
 
 ## Unreleased collection 0.1.0
 
+- Add deep-critique with a full generic assessment by default, explained ratings and optional review, roast, question, rate, compare and help modes.
+- Support combined deep-critique modes and categorized immutable reports with unique runs, preserved Git ignore rules and interrupted-publication recovery.
 - Document pinned `npx skills` installation for individual skills and complete packs, including persistent Ultimate QA kit setup and external lifecycle limits.
 - Add a README for every shipping skill and link pack catalogs to installation and usage instructions.
 - Add contribution guidance and include it in collection ZIPs.

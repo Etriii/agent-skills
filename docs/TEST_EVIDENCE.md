@@ -1,5 +1,36 @@
 # Collection verification
 
+## Combined Deep Critique modes and report storage, 2026-10-26
+
+Deep Critique now combines modes into one assessment and saves categorized timestamp/unique-ID runs under the target workspace's `.deep-critique/`. Two self-contained standard-library helper modules own mode normalization, root resolution, ignore-file preparation, OS locking, immutable publication and ordered question transcripts. A completion record is published last; identical publication can recover an interrupted completion without replacing the report.
+
+Final Windows verification:
+
+- `py -3.11 -B -m unittest discover -s tests -q`: 77 tests passed.
+- `py -3.14 -B -m unittest discover -s tests -q`: 77 tests passed.
+- `py -3.11 -B -m unittest discover -s packs/ultimate-qa/tests -q`: 10 tests passed.
+- The collection suites include 31 mode/storage tests covering canonical combinations, help without writes, Git and non-Git roots, unique reruns, collisions, preserved BOM/CRLF, negated and partial ignore rules, tracked and unowned output, hard links and junctions, malformed metadata, idempotent completion, ordered transcripts, six concurrent processes, initialization races and actual process death inside hard-link publication.
+- An independent source review reproduced storage defects before repair, then confirmed their regression cases pass: actual output exclusion, interrupted publication, preservation before ownership/tracking refusal, and concurrent initialization. A generic gardening-workshop `roast rate` assessment produced one saved report with a detailed scorecard, actionable findings, counterarguments and uncertainty in an explicitly selected isolated non-Git workspace.
+- Cached `skills@1.7.4` local discovery and isolated selected/full-pack installations copied matching payloads to both agents. Both copied helpers normalized modes; the installed helper reserved and published an actual report. See [CLI evidence](NPX_COMPATIBILITY.md#combined-modes-and-storage-follow-up-2026-10-26).
+
+Payload manifests and installation documentation include both helper modules and the storage reference. No third-party import, new environment setting, database hook, migration, real-profile install, commit or push is required or performed. Saving requires Python 3.11+, a writable target root, and atomic hard-link support; Git is used when present. Chat assessment remains available when persistence is unavailable. Native agent discovery, all possible model responses, other operating systems and power-loss durability remain outside this local proof. Earlier quick-validator/PyYAML limitations still apply; portable identity and integrity checks pass in the collection suites.
+
+## Deep Critique addition, 2026-10-26
+
+Added the independent deep-critique skill to Developer Skills: 16 developer skills and 25 shipping skills across the collection. Bare invocation uses the current subject and runs full assessment without a mode menu. Optional review, roast, question, rate, compare and help modes remain available. Ratings adapt to the subject, disclose the overall calculation and uncertainty, and withhold an overall score when essential evidence is unresolved.
+
+Verification from the collection root:
+
+- `py -3.11 -B -m unittest discover -s tests -q`: 46 tests passed. Catalog identity, payload hashes, complete-pack installation, lifecycle records, discovery boundaries and reproducible ZIP payloads cover the new skill.
+- `py -3.11 -B -m unittest discover -s packs/ultimate-qa/tests -q`: 10 tests passed.
+- A separate temporary ZIP build and extraction passed manifest validation for all 16 developer and 9 QA skill payloads. The extracted deep-critique instructions matched the working-tree bytes; existing `dist/` artifacts were preserved.
+- Cached `skills@1.7.4` local repository listing found deep-critique and excluded the non-shipping fixture. Isolated single-skill and complete developer-pack installs copied matching payload bytes for Codex and Claude Code; see [external CLI evidence](NPX_COMPATIBILITY.md#deep-critique-local-addition-2026-10-26).
+- An independent behavioral evaluation used a non-software neighborhood book-exchange proposal with bare invocation, help without a subject, interactive questioning about a gardening guide, and comparison without supplied alternatives. Responses respectively completed a scored full assessment, listed modes without reviewing, asked one question, and requested the missing alternatives. These four examples support those observed behaviors, not universal model adherence.
+
+The skill-creator quick validator could not start because PyYAML is absent from the available Python environments. The repository's stricter portable-frontmatter, TOML metadata and full manifest validators passed through the collection suite. No dependency was installed to run the optional helper.
+
+No new runtime import, environment variable, database hook, migration, installer behavior or real-profile installation was introduced. Native agent discovery for deep-critique remains unverified; its compatibility metadata is empty. Earlier native compatibility records cover the original 15 developer skills only.
+
 ## Documentation and external installation update, 2026-10-26
 
 All 24 shipping skills now include installation and usage READMEs. The main README and pack guides link to them and to contribution guidance. ZIP packaging includes `CONTRIBUTING.md`, and manifests include every new skill README. Original SKILL.md bodies, metadata, QA runtime scripts and templates remain unchanged. The sample fixture is named `SKILL.md.example` to exclude it from external discovery.

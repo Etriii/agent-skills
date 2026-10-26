@@ -27,12 +27,12 @@ NAMES = {
     "plan-review", "blocker-check", "phase-handoff", "completion-check",
     "environment-doctor", "phase-runner", "version-manager", "architecture-review",
     "frontend-review", "backend-review", "database-review", "security-privacy-review",
-    "business-rules-review", "delivery-readiness", "critical-review",
+    "business-rules-review", "delivery-readiness", "critical-review", "deep-critique",
 }
 
 
 class CatalogTests(unittest.TestCase):
-    def test_all_fifteen_have_valid_identity_and_verified_payload(self):
+    def test_all_shipping_skills_have_valid_identity_and_verified_payload(self):
         self.assertEqual({p.name for p in (ROOT / "skills").iterdir()}, NAMES)
         sources = catalog.bundle(ROOT, sorted(NAMES))
         for name, skill in sources.items():
@@ -40,8 +40,12 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                self.assertEqual(metadata["compatible_agents"], ["codex", "claude"])
-                self.assertEqual(set(catalog.files_in(path)), {"SKILL.md", "README.md", "metadata.toml"})
+                expected_agents = [] if name == "deep-critique" else ["codex", "claude"]
+                self.assertEqual(metadata["compatible_agents"], expected_agents)
+                expected_files = {"SKILL.md", "README.md", "metadata.toml"}
+                if name == "deep-critique":
+                    expected_files |= {"scripts/report_store.py", "scripts/storage_io.py", "references/report-storage.md"}
+                self.assertEqual(set(catalog.files_in(path)), expected_files)
                 self.assertEqual(skill.content_sha256, catalog.digest(path))
 
 

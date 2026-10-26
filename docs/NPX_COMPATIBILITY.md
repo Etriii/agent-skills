@@ -1,5 +1,35 @@
 # External CLI compatibility evidence
 
+## Combined modes and storage follow-up, 2026-10-26
+
+Repeated local discovery and installation with the cached `skills@1.7.4` CLI after adding the report-storage payload:
+
+| Check | Observed result |
+|---|---|
+| Collection listing | deep-critique present; sample-review absent |
+| Selected deep-critique install | Exactly one skill for each of Codex and Claude Code; all six payload files matched source hashes |
+| Complete Developer Skills install | Exactly 16 skills for each agent; every copied payload matched source bytes |
+| Copied helper execution | Both agents' copies normalized `rate roast roast` to `roast rate` without source-relative imports |
+| Installed report persistence | Helper reserved and finalized a categorized report in each isolated test project |
+
+All installations used separate temporary projects, local source, `--copy`, and `--yes` limited to the fixtures. Telemetry and Node compile-cache writes were disabled for child processes. No global flag, real profile, remote publication or collection lifecycle ownership was involved. This checks payload portability and helper execution; native agent discovery remains unverified.
+
+## Deep Critique local addition, 2026-10-26
+
+Using the already cached `skills@1.7.4` CLI directly through Node.js, with telemetry disabled and isolated temporary project destinations:
+
+| Check | Observed result |
+|---|---|
+| Local collection listing | deep-critique listed; sample-review absent |
+| Local root single-skill selection | Only deep-critique installed for Codex and Claude Code |
+| Local complete Developer Skills selection | Exactly 16 skills installed for each agent |
+| Selected and full-pack copied payloads | Every relative file and SHA256 matched the source, including all three deep-critique files |
+| External installation state | No collection `.agent-skills/` records created |
+
+Commands used `node <cached-skills-1.7.4>/bin/cli.mjs add <local-source>` with `--list`, or `--skill deep-critique` / `--skill '*'` plus `--agent codex claude-code --copy --yes`. The approval flag applied only to isolated fixture installs. No global flag or real profile was used. This verifies local CLI selection and copy behavior, not native agent discovery, remote availability, or general model adherence. Remote evidence below remains tied to its recorded older revision.
+
+## Previous collection verification
+
 Verified on Windows PowerShell, 2026-10-26, using Node.js 24.19.0, npm 11.17.0 and `skills@1.7.4`. All installs used isolated temporary project scopes outside the checkout. No real profile install, push or publication was performed.
 
 ## Executed checks
