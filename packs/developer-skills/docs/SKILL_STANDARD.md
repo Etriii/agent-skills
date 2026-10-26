@@ -8,11 +8,6 @@ Metadata schema 1 fields are `skill_id`, `name`, `version` (three integer compon
 
 The displayed tree digest hashes sorted file digest/path records followed by sorted `dir  <relative-path>` records, all UTF-8 with LF. It includes empty directories to preserve custom additions. It is distinct from the manifest file's SHA256 and from Git revision IDs. Installation checks staged and installed tree digests against the manifest-verified source snapshot.
 
-After an intentional reviewed skill edit, regenerate payload checksums from the public repository root and review the resulting diff:
-
-```powershell
-py -3.11 -c "from pathlib import Path; from hashlib import sha256; paths=sorted(Path('skills').rglob('*')); Path('SHA256SUMS').write_text(''.join(sha256(p.read_bytes()).hexdigest()+'  '+p.as_posix()+'\n' for p in paths if p.is_file()), encoding='utf-8', newline='\n')"
-py -3.11 -m unittest discover -s tests -v
-```
+Each skill also includes a human-facing `README.md` with installation, invocation and prerequisites. It is part of the validated payload and must appear in `SHA256SUMS`. After an intentional skill edit, follow the collection [contribution guide](../../../CONTRIBUTING.md#refresh-integrity-manifests) to regenerate the selected pack's manifest from the collection root, then review the hashes and run the documented checks.
 
 The validator intentionally supports this constrained portable frontmatter rather than general YAML. Tests exercise actual installation outcomes and integrity failures using only Python's standard library. Native discovery checks are optional environment proof, recorded separately. Never infer a publishing license or trusted source identity from a filename, prefix, checksum or synthetic fixture.

@@ -2,16 +2,46 @@
 
 A collection of installable skill packs for Codex and Claude. Each pack keeps related skills, templates and helpers together. One shared tool installs and uninstalls selected skills, records completed operations in Markdown, and retains removed or replaced content as backups.
 
-Requires Python 3.11 or newer. Installation uses the Python standard library and works offline after downloading or cloning this repository.
+Install through the external `skills` CLI with Node.js 22.20+ and npm, or use our recorded installer with Python 3.11+. The Python route uses the standard library and works offline after downloading or cloning this repository.
 
 | Pack | Skills | Purpose |
 |---|---:|---|
 | [Developer Skills](packs/developer-skills/README.md) | 15 | Planning, architecture, implementation review and handoff |
 | [Ultimate QA](packs/ultimate-qa/README.md) | 9 | Versioned QA reviews, specialist checks and optional client documents |
 
+Each skill has a README covering its purpose, installation, usage and prerequisites. Browse the [skill catalog](SKILL_CATALOG.md) or read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
+
+## Quick install with npx
+
+Install one skill globally for Codex:
+
+```powershell
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
+```
+
+List available skills or install the complete Developer Skills pack:
+
+```powershell
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --list
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills/tree/main/packs/developer-skills --skill '*' --agent codex -g --copy
+```
+
+Run without `-g` from your application directory for a project install. For Claude Code, use `--agent claude-code`. `--copy` selects copies instead of links. Review the CLI's installation summary before proceeding; when an agent invokes the command, the external CLI may run without an interactive prompt.
+
+For Ultimate QA, follow the [pack setup](packs/ultimate-qa/README.md#install-with-npx) to retain its templates and helpers. A copied skill alone does not include the complete QA kit. [The npx guide](docs/NPX_INSTALLATION.md) covers individual skills, complete packs, removal and the existing kit-path setting.
+
+The external CLI owns its prompts, security assessments and lock files. Its installs do not write this collection's Markdown operation history or use our backup/recovery engine. Choose the Python installer below when those records and protections are required. Use the same installer for updates and removal of a given copy.
+
 ## Download
 
-Once the repository is hosted on GitHub, use **Code > Download ZIP**, extract it, and open a terminal in the extracted `agent-skills` folder. Alternatively, clone the actual repository URL shown by GitHub. Keep the complete collection, including `tools/` and the selected pack's support files.
+Use [GitHub](https://github.com/Etriii/agent-skills) **Code > Download ZIP**, extract it, and open a terminal in the extracted `agent-skills` folder. Alternatively:
+
+```powershell
+git clone https://github.com/Etriii/agent-skills.git
+cd agent-skills
+```
+
+Keep the complete collection, including `tools/` and the selected pack's support files. Remote commands install the version currently on GitHub; local changes become available there only after publication.
 
 To build a local downloadable snapshot:
 
@@ -21,7 +51,7 @@ python tools/package_skills.py
 
 This creates `dist/agent-skills-0.1.0.zip` and `dist/SHA256SUMS`. A local ZIP is a working-tree snapshot, not proof of a published GitHub release. [Publishing instructions](docs/PUBLISHING.md) cover repository setup, license decisions and releases.
 
-## Install
+## Install with Markdown records
 
 Run commands from the collection root. List either pack:
 

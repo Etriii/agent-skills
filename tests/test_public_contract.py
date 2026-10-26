@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class PublicContractTests(unittest.TestCase):
     def test_portable_skill_fixture_has_matching_name_and_human_description(self):
         fixture = ROOT / "tests/fixtures/sample-review"
-        skill = (fixture / "SKILL.md").read_text(encoding="utf-8")
+        skill = (fixture / "SKILL.md.example").read_text(encoding="utf-8")
         frontmatter = re.fullmatch(r"---\nname: ([a-z0-9]+(?:-[a-z0-9]+)*)\ndescription: ([^\n]+)\n---\n(.+)", skill, re.S)
         self.assertIsNotNone(frontmatter)
         self.assertEqual(frontmatter.group(1), fixture.name)
@@ -42,8 +42,16 @@ class PublicContractTests(unittest.TestCase):
                     else:
                         continue
                     self.assertTrue(all(name.split(".")[0] != "phasepilot" for name in imports))
-        fixture = (ROOT / "tests/fixtures/sample-review/SKILL.md").read_text(encoding="utf-8")
+        fixture = (ROOT / "tests/fixtures/sample-review/SKILL.md.example").read_text(encoding="utf-8")
         self.assertNotIn(".phasepilot/", fixture)
+
+    def test_repository_discovery_exposes_only_shipping_skills(self):
+        expected = set(ROOT.glob("packs/*/skills/*/SKILL.md"))
+        self.assertEqual(len(expected), 24)
+        skipped = {"node_modules", ".git", "dist", "build", "__pycache__"}
+        discovered = {path for path in ROOT.rglob("SKILL.md")
+                      if not skipped.intersection(path.relative_to(ROOT).parts)}
+        self.assertEqual(discovered, expected)
 
 
 if __name__ == "__main__":

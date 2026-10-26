@@ -41,7 +41,7 @@ class CatalogTests(unittest.TestCase):
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
                 self.assertEqual(metadata["compatible_agents"], ["codex", "claude"])
-                self.assertEqual(set(catalog.files_in(path)), {"SKILL.md", "metadata.toml"})
+                self.assertEqual(set(catalog.files_in(path)), {"SKILL.md", "README.md", "metadata.toml"})
                 self.assertEqual(skill.content_sha256, catalog.digest(path))
 
 

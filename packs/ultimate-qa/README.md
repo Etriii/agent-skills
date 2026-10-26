@@ -13,7 +13,21 @@ The normal workflow is **initialize → audit → plan**. `$ultimate-qa run` per
 
 Keep this kit directory available after installation. The core and client skills record its absolute location; reinstall those skills if you move the kit.
 
-## Install skills
+## Install with npx
+
+Requires Node.js 22.20+ and npm. Download or clone the complete collection into a durable folder first; core/client instructions need the pack's templates and helpers after installation. From the collection root, install just the core or all nine QA skills:
+
+```powershell
+npx skills@1.7.4 add ./packs/ultimate-qa --skill ultimate-qa --agent codex -g --copy
+npx skills@1.7.4 add ./packs/ultimate-qa --skill '*' --agent codex -g --copy
+$env:ULTIMATE_QA_KIT = (Resolve-Path ./packs/ultimate-qa).Path
+```
+
+Start the agent from this terminal in the application being reviewed so it inherits this existing kit setting, or provide the absolute kit path when asked. This assignment lasts for the current terminal and child processes; repeat it in a new terminal. Keep the collection available, update the path if moved, and keep the installed skills and kit on the same revision.
+
+For project scope, run from the application directory, supply the absolute local pack path, and omit `-g`. For Claude Code use `--agent claude-code`. Review the displayed destinations. The external CLI does not generate `kit-location.txt` or this collection's Markdown history. The [npx guide](../../docs/NPX_INSTALLATION.md) covers support files, updates and removal.
+
+## Install with Markdown records
 
 This kit is the `ultimate-qa` pack in Agent Skills. Use the [collection installer](../../INSTALL.md) from the collection root. The whole pack, including templates and helpers, remains available after installation.
 
@@ -37,6 +51,22 @@ python tools/install_skills.py --pack ultimate-qa --agent codex --project "D:\My
 Every completed changing install/uninstall writes `.agent-skills/history/<operation-id>/operation.md` in the selected scope. Removal requires recorded ownership and an unchanged installed digest, retains a content backup, and preserves `qa-findings/`, other skills and earlier records. Previews and unchanged reruns write nothing. See [UNINSTALL.md](../../UNINSTALL.md) for all-pack/user removal, edited copies and reinstalling.
 
 The older standalone kit's `--target`, implicit user/all selection and custom `--destination` are not this collection's interface. Legacy copies are left alone. The pack-local `tools/install_skills.py` is a thin entry point to the same shared tool and accepts `--agent` plus explicit scope/selection.
+
+## Included skills
+
+| Skill | Purpose |
+|---|---|
+| [ultimate-qa](skills/ultimate-qa/README.md) | Run a versioned initialize → audit → plan review of an existing application. |
+| [ultimate-qa-accessibility](skills/ultimate-qa-accessibility/README.md) | Audit critical pages with automated accessibility checks, keyboard journeys and assistive-technology evidence. |
+| [ultimate-qa-api](skills/ultimate-qa-api/README.md) | Test API contracts, authentication, idempotency, error handling and persisted effects. |
+| [ultimate-qa-architecture](skills/ultimate-qa-architecture/README.md) | Assess architecture ownership, coupling and maintainability through representative user journeys. |
+| [ultimate-qa-browser](skills/ultimate-qa-browser/README.md) | Exercise authorized application journeys, role boundaries and visual states in a browser. |
+| [ultimate-qa-client](skills/ultimate-qa-client/README.md) | Prepare optional client reports and approval checklists, preserving returned decisions. |
+| [ultimate-qa-environment](skills/ultimate-qa-environment/README.md) | Check an isolated QA environment in dependency order and identify precise runtime blockers. |
+| [ultimate-qa-performance](skills/ultimate-qa-performance/README.md) | Measure application latency, throughput, resource use and slow paths against a reproducible baseline. |
+| [ultimate-qa-security](skills/ultimate-qa-security/README.md) | Review role boundaries, data integrity, secrets and safe failure behavior with verified evidence. |
+
+Each skill README includes selected-skill installation, invocation and runtime prerequisites. See [CONTRIBUTING.md](../../CONTRIBUTING.md) before adding or changing skills.
 
 ## Run your first review
 

@@ -1,5 +1,7 @@
 # Uninstall and reinstall
 
+This guide applies to copies managed by the collection's Python installer. For copies installed with `npx skills`, use the [external CLI removal instructions](docs/NPX_INSTALLATION.md#updates-and-removal). Its lock files are separate from this collection's ownership history.
+
 Use the same pack, agent and scope as installation. Run from the collection root. Preview first:
 
 ```powershell

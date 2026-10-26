@@ -1,5 +1,15 @@
 # Collection verification
 
+## Documentation and external installation update, 2026-10-26
+
+All 24 shipping skills now include installation and usage READMEs. The main README and pack guides link to them and to contribution guidance. ZIP packaging includes `CONTRIBUTING.md`, and manifests include every new skill README. Original SKILL.md bodies, metadata, QA runtime scripts and templates remain unchanged. The sample fixture is named `SKILL.md.example` to exclude it from external discovery.
+
+Python 3.11 verification: `py -3.11 -B -m unittest discover -s tests -q` passed 46 tests; `py -3.11 -B -m unittest discover -s packs/ultimate-qa/tests -q` passed 10 tests. The new discovery boundary check excludes generated trees ignored by the external CLI. The packaging suite checks that contribution instructions and all skill READMEs ship in the ZIP. [External CLI evidence](NPX_COMPATIBILITY.md) records local and remote installation checks and their limits.
+
+No new environment variable, third-party Python import, database hook or migration was introduced. The optional npx route requires Node.js 22.20+ and npm, and QA's external installation uses its existing `ULTIMATE_QA_KIT` setting. The recorded Python installer still needs no environment setting.
+
+## Original collection verification, 2026-10-25
+
 Local Windows verification, 2026-10-25. All application/profile destinations used isolated UUID fixture folders. No real user skill installation, PhasePilot integration, GitHub push or publication was performed.
 
 | Check | Result |

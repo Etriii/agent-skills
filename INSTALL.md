@@ -2,6 +2,8 @@
 
 Use Python 3.11+ from the extracted collection root. No third-party package, API key, environment variable, database migration or network connection is required for installation. Existing optional QA document generation still requires `python-docx`; it is unrelated to installation.
 
+For `npx skills` commands instead, use the [external CLI guide](docs/NPX_INSTALLATION.md). That route requires Node.js/npm and uses its own lifecycle. Ultimate QA needs explicit kit-path setup there; the Python route below generates pointers automatically.
+
 ## Choose a pack, agent and scope
 
 ```powershell

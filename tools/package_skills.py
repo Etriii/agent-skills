@@ -10,7 +10,7 @@ from catalog import bundle, safe_path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TOP_FILES = ("README.md", "INSTALL.md", "UNINSTALL.md", "SKILL_CATALOG.md", "CHANGELOG.md", "LICENSE.md", "VERSION", ".gitattributes", ".gitignore")
+TOP_FILES = ("README.md", "CONTRIBUTING.md", "INSTALL.md", "UNINSTALL.md", "SKILL_CATALOG.md", "CHANGELOG.md", "LICENSE.md", "VERSION", ".gitattributes", ".gitignore")
 EXCLUDED = {".git", "__pycache__", ".venv", "dist", ".agent-skills", ".skills-install-backups", ".skills-install-transaction"}
 
 

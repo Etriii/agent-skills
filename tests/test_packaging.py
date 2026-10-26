@@ -30,6 +30,10 @@ class PackagingTests(unittest.TestCase):
             self.assertIn("agent-skills/packs/ultimate-qa/04_REQUIREMENTS_TEMPLATE/02_PROJECT_CONTEXT.md", names)
             self.assertIn("agent-skills/packs/developer-skills/skills/blocker-check/SKILL.md", names)
             self.assertIn("agent-skills/tools/records.py", names)
+            self.assertIn("agent-skills/CONTRIBUTING.md", names)
+            for skill in ROOT.glob("packs/*/skills/*/SKILL.md"):
+                readme = skill.with_name("README.md").relative_to(ROOT).as_posix()
+                self.assertIn(f"agent-skills/{readme}", names)
             manifest = zipped.read("agent-skills/SNAPSHOT_SHA256SUMS").decode()
             rows = dict(line.split("  ", 1)[::-1] for line in manifest.splitlines())
             self.assertEqual(set(rows), {name.removeprefix("agent-skills/") for name in names} - {"SNAPSHOT_SHA256SUMS"})

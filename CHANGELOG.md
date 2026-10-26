@@ -2,6 +2,10 @@
 
 ## Unreleased collection 0.1.0
 
+- Document pinned `npx skills` installation for individual skills and complete packs, including persistent Ultimate QA kit setup and external lifecycle limits.
+- Add a README for every shipping skill and link pack catalogs to installation and usage instructions.
+- Add contribution guidance and include it in collection ZIPs.
+- Keep the sample skill fixture out of external repository discovery by using `SKILL.md.example`.
 - Group Developer Skills and Ultimate QA under `packs/` while keeping their skill names and support assets.
 - Share one installer, content validator and recoverable transaction engine.
 - Record completed changing installs/uninstalls in scoped Markdown history with ownership and content hashes.

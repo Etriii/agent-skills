@@ -4,21 +4,21 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 
 | Skill | Responsibility | Default mode |
 |---|---|---|
-| [plan-review](skills/plan-review/SKILL.md) | Whole-plan coverage and dependencies | Planning |
-| [blocker-check](skills/blocker-check/SKILL.md) | Evidence-linked blockers and independent policy questions | Planning |
-| [phase-handoff](skills/phase-handoff/SKILL.md) | Bounded Markdown handoff and checkpoint | Execution aid |
-| [completion-check](skills/completion-check/SKILL.md) | Acceptance and integration evidence | Verification |
-| [environment-doctor](skills/environment-doctor/SKILL.md) | Read-only deterministic local diagnostics | Diagnostics guidance |
-| [phase-runner](skills/phase-runner/SKILL.md) | Exactly one authorized phase | Execution aid |
-| [version-manager](skills/version-manager/SKILL.md) | Preserved plan-version transition | Versioning |
-| [architecture-review](skills/architecture-review/SKILL.md) | Boundaries, ownership and tradeoffs | Planning advisor |
-| [frontend-review](skills/frontend-review/SKILL.md) | UI states, accessibility and visual evidence | Planning advisor |
-| [backend-review](skills/backend-review/SKILL.md) | API contracts, authorization and side effects | Planning advisor |
-| [database-review](skills/database-review/SKILL.md) | Integrity, migration and recovery | Planning advisor |
-| [security-privacy-review](skills/security-privacy-review/SKILL.md) | Trust boundaries and data policy | Planning advisor |
-| [business-rules-review](skills/business-rules-review/SKILL.md) | Eligibility, authority and transitions | Planning advisor |
-| [delivery-readiness](skills/delivery-readiness/SKILL.md) | Configuration, rollout and delivery evidence | Planning advisor |
-| [critical-review](skills/critical-review/SKILL.md) | Substantiated challenges and simpler alternatives | Planning advisor |
+| [plan-review](skills/plan-review/README.md) | Whole-plan coverage and dependencies | Planning |
+| [blocker-check](skills/blocker-check/README.md) | Evidence-linked blockers and independent policy questions | Planning |
+| [phase-handoff](skills/phase-handoff/README.md) | Bounded Markdown handoff and checkpoint | Execution aid |
+| [completion-check](skills/completion-check/README.md) | Acceptance and integration evidence | Verification |
+| [environment-doctor](skills/environment-doctor/README.md) | Read-only deterministic local diagnostics | Diagnostics guidance |
+| [phase-runner](skills/phase-runner/README.md) | Exactly one authorized phase | Execution aid |
+| [version-manager](skills/version-manager/README.md) | Preserved plan-version transition | Versioning |
+| [architecture-review](skills/architecture-review/README.md) | Boundaries, ownership and tradeoffs | Planning advisor |
+| [frontend-review](skills/frontend-review/README.md) | UI states, accessibility and visual evidence | Planning advisor |
+| [backend-review](skills/backend-review/README.md) | API contracts, authorization and side effects | Planning advisor |
+| [database-review](skills/database-review/README.md) | Integrity, migration and recovery | Planning advisor |
+| [security-privacy-review](skills/security-privacy-review/README.md) | Trust boundaries and data policy | Planning advisor |
+| [business-rules-review](skills/business-rules-review/README.md) | Eligibility, authority and transitions | Planning advisor |
+| [delivery-readiness](skills/delivery-readiness/README.md) | Configuration, rollout and delivery evidence | Planning advisor |
+| [critical-review](skills/critical-review/README.md) | Substantiated challenges and simpler alternatives | Planning advisor |
 
 Essential contains the first four only. The library has no default background loading, invocation telemetry or private runtime requirement. `environment-doctor` provides deterministic command guidance; it does not ship a diagnostics engine. Execution aids are agent instructions, not command runners.
 
