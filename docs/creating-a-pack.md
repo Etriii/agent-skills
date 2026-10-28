@@ -29,6 +29,8 @@ Keep descriptions on one line and avoid YAML punctuation `:#{}[]`. Define the sk
 
 Each skill README documents its purpose, installation, invocation and prerequisites. Keep agent instructions in `SKILL.md`. The pack README links to every skill README and shows selected-skill and full-pack installation. Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for review and integrity updates. Name non-shipping examples `SKILL.md.example` so repository discovery cannot offer them for installation.
 
+Give each shipping skill exactly one primary category in the root [catalog](../SKILL_CATALOG.md), including its README link and installation pack ID. Categories can span packs; a new pack does not require a new category. Follow the [categorization rules](../CONTRIBUTING.md#categorize-a-skill) and link any new category from the main README.
+
 Developer Skills retains validated schema-1 `metadata.toml` sidecars. A sidecar is optional for other packs; if present, it must satisfy the same current contract. Do not invent license grants or compatibility proof.
 
 Generate `SHA256SUMS` from exact payload bytes, one lowercase SHA256, two spaces, and a pack-relative path per file. List every selected skill file. Include pack-wide runtime support files too when skills depend on them. Exclude `SHA256SUMS` itself and generated caches. The QA manifest is an example of support-file coverage. Review changed hashes against the intended edits; the manifest is not a signature.

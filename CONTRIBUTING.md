@@ -25,6 +25,23 @@ Reuse the shared installer and transaction engine under `tools/`. Keep runtime h
 - Update the collection catalog and main README when adding or removing skills or packs. Update the changelog for user-visible changes.
 - Keep comments functional and concise. Report executed checks separately from discovery, browser, provider or production claims. Do not add conversational attribution or AI signatures.
 
+## Categorize a skill
+
+The root [skill catalog](SKILL_CATALOG.md) owns category assignments. Categories describe a skill's primary outcome; packs describe its installation source. Categorizing a skill does not move its files or change its installation commands.
+
+- List every shipping skill exactly once, under one primary category, with its purpose, a link to its own README and its installation pack ID.
+- Choose an existing category when it fits. Add a category only for a meaningfully different purpose, then link it from the main README's purpose table. Avoid catch-all categories.
+- Keep planned skills out of the available-skill tables until their installable files exist. Mark any separate proposals as planned.
+- When adding, removing or renaming a skill, update its catalog entry and relevant pack guides in the same change. When moving a catalog entry, remove its previous entry.
+
+Run the focused catalog and public-contract checks before completing a change:
+
+```powershell
+python -B -m unittest discover -s tests -p test_public_contract.py -v
+```
+
+These checks compare the categorized catalog with shipping skill directories, reject missing or duplicate entries, verify skill README links and pack IDs, and require a main README link to each populated category. Categories need no separate registry or metadata field.
+
 ## Refresh integrity manifests
 
 From the collection root, regenerate the selected pack's existing manifest entries plus every file in its skill directories. This preserves the pack's current support-file coverage:

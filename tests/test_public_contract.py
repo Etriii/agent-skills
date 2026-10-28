@@ -53,6 +53,42 @@ class PublicContractTests(unittest.TestCase):
                       if not skipped.intersection(path.relative_to(ROOT).parts)}
         self.assertEqual(discovered, expected)
 
+    def test_catalog_categorizes_every_shipping_skill_once_with_valid_links(self):
+        expected = {path.parent.name: path.parent
+                    for path in ROOT.glob("packs/*/skills/*/SKILL.md")}
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        catalog = (ROOT / "SKILL_CATALOG.md").read_text(encoding="utf-8")
+        seen = set()
+        categories = set()
+        category = None
+        for line_number, line in enumerate(catalog.splitlines(), 1):
+            if line.startswith("## "):
+                category = line[3:].strip()
+            if not line.startswith("|") or line.startswith(("| Skill |", "|---")):
+                continue
+            with self.subTest(line=line_number):
+                row = re.fullmatch(
+                    r"\| \[([a-z0-9]+(?:-[a-z0-9]+)*)\]\(([^)]+)\)"
+                    r" \| ([^|]+) \| `([a-z0-9]+(?:-[a-z0-9]+)*)` \|", line)
+                self.assertIsNotNone(row, "Use a skill README link, purpose and install pack ID")
+                name, target, purpose, pack = row.groups()
+                self.assertTrue(category, "Every skill needs a category heading")
+                self.assertTrue(purpose.strip(), "Every skill needs a purpose")
+                self.assertIn(name, expected, "Only shipping skills belong in the catalog")
+                self.assertNotIn(name, seen, "List each skill in exactly one category")
+                skill = expected[name]
+                self.assertEqual(target, skill.joinpath("README.md").relative_to(ROOT).as_posix())
+                self.assertTrue((ROOT / target).is_file(), "Skill README link is broken")
+                self.assertEqual(pack, skill.parent.parent.name)
+                seen.add(name)
+                categories.add(category)
+        self.assertEqual(seen, set(expected), "Every shipping skill needs a catalog entry")
+        for category in categories:
+            anchor = re.sub(r"[^\w -]", "", category.lower()).replace(" ", "-")
+            with self.subTest(category=category):
+                self.assertIn(f"](SKILL_CATALOG.md#{anchor})", readme,
+                              "Link every populated category from the main README")
+
 
 if __name__ == "__main__":
     unittest.main()

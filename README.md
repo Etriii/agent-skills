@@ -11,6 +11,19 @@ Install through the external `skills` CLI with Node.js 22.20+ and npm, or use ou
 
 Each skill has a README covering its purpose, installation, usage and prerequisites. Browse the [skill catalog](SKILL_CATALOG.md) or read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
 
+## Find a skill by purpose
+
+Categories describe what a skill helps you do; packs select what you install. The [catalog](SKILL_CATALOG.md) assigns every available skill one primary category and lists its installation pack.
+
+| Category | Use it to |
+|---|---|
+| [Planning and decisions](SKILL_CATALOG.md#planning-and-decisions) | Clarify tasks, review plans, resolve blockers and manage plan versions. |
+| [Critique and evaluation](SKILL_CATALOG.md#critique-and-evaluation) | Challenge assumptions and assess ideas, plans or other work. |
+| [Engineering reviews](SKILL_CATALOG.md#engineering-reviews) | Review architecture, UI, backend, databases, security and business rules. |
+| [Execution and handoff](SKILL_CATALOG.md#execution-and-handoff) | Carry out authorized work and preserve a usable handoff. |
+| [Verification and readiness](SKILL_CATALOG.md#verification-and-readiness) | Check acceptance evidence, prerequisites and delivery readiness. |
+| [QA workflows](SKILL_CATALOG.md#qa-workflows) | Run structured audits and specialist QA checks. |
+
 ## Quick install with npx
 
 Install one skill globally for Codex:
