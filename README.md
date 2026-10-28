@@ -6,7 +6,7 @@ Install through the external `skills` CLI with Node.js 22.20+ and npm, or use ou
 
 | Pack | Skills | Purpose |
 |---|---:|---|
-| [Developer Skills](packs/developer-skills/README.md) | 16 | Planning, generic critique, implementation review and handoff |
+| [Developer Skills](packs/developer-skills/README.md) | 17 | Prompt intake, planning, generic critique, implementation review and handoff |
 | [Ultimate QA](packs/ultimate-qa/README.md) | 9 | Versioned QA reviews, specialist checks and optional client documents |
 
 Each skill has a README covering its purpose, installation, usage and prerequisites. Browse the [skill catalog](SKILL_CATALOG.md) or read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.

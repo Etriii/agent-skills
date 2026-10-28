@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add prompt-intake with context inspection before questions, native question tools when available, chat fallback and optional answer files.
 - Add deep-critique for generic detailed assessments with default full mode, evidence-based ratings and optional focused commands.
 - Combine critique modes and save categorized reports through standard-library helpers with unique runs, verified Git ignore rules, ordered transcripts and safe completion retries.
 - Fifteen standalone development skills with portable frontmatter and independently validated metadata.

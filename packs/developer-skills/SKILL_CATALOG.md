@@ -20,7 +20,8 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 | [delivery-readiness](skills/delivery-readiness/README.md) | Configuration, rollout and delivery evidence | Planning advisor |
 | [critical-review](skills/critical-review/README.md) | Substantiated challenges and simpler alternatives | Planning advisor |
 | [deep-critique](skills/deep-critique/README.md) | Generic assessment with ratings, combined modes and categorized immutable reports | Full critique |
+| [prompt-intake](skills/prompt-intake/README.md) | Prompt analysis and material decisions with recommended choices and optional answer files | Intake before execution |
 
 Essential contains the first four only. The library has no default background loading, invocation telemetry or private runtime requirement. `environment-doctor` provides deterministic command guidance; it does not ship a diagnostics engine. Execution aids are agent instructions, not command runners.
 
-Metadata records local authorship, capabilities, version and undecided license status. Both installed agents discovered the original 15 names through isolated local protocol checks; that compatibility statement covers discovery only, not model compliance, user-scope discovery or every future agent version. The new deep-critique skill has unverified native compatibility and records an empty compatible_agents list. See [compatibility evidence](docs/COMPATIBILITY.md).
+Metadata records local authorship, capabilities, version and undecided license status. Both installed agents discovered the original 15 names through isolated local protocol checks; that compatibility statement covers discovery only, not model compliance, user-scope discovery or every future agent version. The deep-critique and prompt-intake skills have unverified native compatibility and record empty compatible_agents lists. See [compatibility evidence](docs/COMPATIBILITY.md).

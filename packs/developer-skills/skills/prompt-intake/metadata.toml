@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "prompt-intake"
+name = "prompt-intake"
+version = "0.1.0"
+capabilities = ["prompt-intake", "task-clarification", "blocker-triage"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-authored"
