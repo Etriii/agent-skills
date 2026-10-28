@@ -1,12 +1,14 @@
 # Developer Skills pack
 
-Seventeen independent skills for prompt intake, planning, generic critique, development reviews, delivery checks and handoff. Original skill bodies and metadata are preserved; each README is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
+Twenty-three independent skills for prompt intake, planning, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
 
 This pack belongs to [Agent Skills](../../README.md). Each skill has its own README with installation, usage and prerequisites.
 
+Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md), or follow the [workflow guide](../../docs/SKILL_WORKFLOWS.md) for suggested standalone order and PhasePilot integration. The pack remains one installation source; categories do not change skill paths or require invoking every skill.
+
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Install one skill or all 17 globally for Codex:
+Requires Node.js 22.20+ and npm. Install one skill or all 23 globally for Codex:
 
 ```powershell
 npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
@@ -25,7 +27,7 @@ python tools/install_skills.py --pack developer-skills --agent both --project "D
 python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --bundle essential
 ```
 
-Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all seventeen. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
+Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 23. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
 
 The [installation guide](../../INSTALL.md) covers user scope, integrity, matching-copy adoption, backup replacement and recovery. The [removal guide](../../UNINSTALL.md) gives tracked uninstall/reinstall commands. Completed changing operations create scoped Markdown history; removal preserves records and content backups.
 
@@ -45,12 +47,18 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [deep-critique](skills/deep-critique/README.md) | Full generic critique and ratings by default, with optional focused modes. |
 | [delivery-readiness](skills/delivery-readiness/README.md) | Check configuration, tested artifacts, rollout sequencing and recovery before delivery. |
 | [environment-doctor](skills/environment-doctor/README.md) | Inspect local tool availability, Git state and required services with read-only diagnostics. |
+| [investigate-first](skills/investigate-first/README.md) | Diagnose unclear failures before proposing code changes. |
+| [lean-build](skills/lean-build/README.md) | Implement a bounded feature through existing owners. |
+| [migration](skills/migration/README.md) | Make compatibility-sensitive transitions with preservation and recovery proof. |
 | [frontend-review](skills/frontend-review/README.md) | Review UI state ownership, forms, accessibility and responsive behavior with explicit evidence limits. |
 | [phase-handoff](skills/phase-handoff/README.md) | Write a standalone Markdown handoff connecting scope, decisions, Git state and executed checks. |
 | [phase-runner](skills/phase-runner/README.md) | Execute one authorized ready phase with checkpoints, verification and a bounded handoff. |
 | [plan-review](skills/plan-review/README.md) | Review complete-plan coverage, dependencies and existing implementation before development. |
 | [prompt-intake](skills/prompt-intake/README.md) | Clarify a task with recommended choices, custom answers, versioned question files and next-action hints. |
+| [safe-refactor](skills/safe-refactor/README.md) | Restructure code while preserving defined behavior and contracts. |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
+| [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |
+| [verify-and-stop](skills/verify-and-stop/README.md) | Verify acceptance conditions without adding implementation scope. |
 | [version-manager](skills/version-manager/README.md) | Plan and record a development-plan version transition while preserving accepted history. |
 
 Invoke skills in agent chat with `$blocker-check` in Codex or `/blocker-check` in Claude Code, followed by the scope and relevant files. Refresh the agent session after installation. Reviews do not authorize implementation unless that skill's explicit scope and the user's instruction provide it.

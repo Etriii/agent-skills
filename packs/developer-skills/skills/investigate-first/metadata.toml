@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "investigate-first"
+name = "investigate-first"
+version = "0.1.0"
+capabilities = ["failure-investigation"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

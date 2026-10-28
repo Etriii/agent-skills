@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "surgical-patch"
+name = "surgical-patch"
+version = "0.1.0"
+capabilities = ["targeted-bug-fix"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

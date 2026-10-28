@@ -4,6 +4,8 @@ Browse available skills by their primary purpose. Each skill appears once and li
 
 This is the authoritative category directory. Follow the [categorization rules](CONTRIBUTING.md#categorize-a-skill) when adding a skill or category.
 
+Use the [workflow guide](docs/SKILL_WORKFLOWS.md) to choose when to use a skill. A category is a browsing aid, not an execution order or an automatic routing rule.
+
 ## Planning and decisions
 
 Clarify scope and policy, inspect dependencies and preserve plan decisions before development.
@@ -36,6 +38,19 @@ Inspect design and implementation at the responsible technical or business bound
 | [database-review](packs/developer-skills/skills/database-review/README.md) | Review integrity, concurrency, migration ordering and recovery across database changes. | `developer-skills` |
 | [frontend-review](packs/developer-skills/skills/frontend-review/README.md) | Review UI state ownership, forms, accessibility and responsive behavior with explicit evidence limits. | `developer-skills` |
 | [security-privacy-review](packs/developer-skills/skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. | `developer-skills` |
+
+## Implementation and change safety
+
+Choose a helper for the authorized type of work. These skills work independently and remain optional alongside a coordinator; they do not add a scheduler or automatic advisor-selection rule.
+
+| Skill | Purpose | Install pack |
+|---|---|---|
+| [investigate-first](packs/developer-skills/skills/investigate-first/README.md) | Diagnose unclear failures using reproduction and competing evidence before proposing edits. | `developer-skills` |
+| [lean-build](packs/developer-skills/skills/lean-build/README.md) | Implement a bounded feature through existing owners with focused verification. | `developer-skills` |
+| [migration](packs/developer-skills/skills/migration/README.md) | Make compatibility-sensitive transitions with preservation and recovery evidence. | `developer-skills` |
+| [safe-refactor](packs/developer-skills/skills/safe-refactor/README.md) | Change structure while preserving defined behavior and public contracts. | `developer-skills` |
+| [surgical-patch](packs/developer-skills/skills/surgical-patch/README.md) | Correct a specific defect at its responsible owner with regression proof. | `developer-skills` |
+| [verify-and-stop](packs/developer-skills/skills/verify-and-stop/README.md) | Verify existing work against acceptance without adding implementation scope. | `developer-skills` |
 
 ## Execution and handoff
 

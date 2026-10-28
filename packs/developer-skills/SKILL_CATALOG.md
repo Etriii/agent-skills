@@ -21,7 +21,15 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 | [critical-review](skills/critical-review/README.md) | Substantiated challenges and simpler alternatives | Planning advisor |
 | [deep-critique](skills/deep-critique/README.md) | Generic assessment with ratings, combined modes and categorized immutable reports | Full critique |
 | [prompt-intake](skills/prompt-intake/README.md) | Prompt analysis with recommended choices, versioned question files, continuation and next-action hints | Intake before execution |
+| [investigate-first](skills/investigate-first/README.md) | Evidence-led diagnosis before code changes | Task helper |
+| [lean-build](skills/lean-build/README.md) | Bounded feature implementation through existing owners | Task helper |
+| [surgical-patch](skills/surgical-patch/README.md) | Root-cause correction and focused regression proof | Task helper |
+| [safe-refactor](skills/safe-refactor/README.md) | Structural change with behavior-preservation proof | Task helper |
+| [migration](skills/migration/README.md) | Compatibility-sensitive transition and recovery | Task helper |
+| [verify-and-stop](skills/verify-and-stop/README.md) | Acceptance verification without implementation expansion | Task helper |
 
 Essential contains the first four only. The library has no default background loading, invocation telemetry or private runtime requirement. `environment-doctor` provides deterministic command guidance; it does not ship a diagnostics engine. Execution aids are agent instructions, not command runners.
 
-Metadata records local authorship, capabilities, version and undecided license status. Both installed agents discovered the original 15 names through isolated local protocol checks; that compatibility statement covers discovery only, not model compliance, user-scope discovery or every future agent version. The deep-critique and prompt-intake skills have unverified native compatibility and record empty compatible_agents lists. See [compatibility evidence](docs/COMPATIBILITY.md).
+Metadata records local authorship, capabilities, version and undecided license status. Isolated native protocol checks discovered all 23 skills in Codex CLI 0.165.0 and Claude Code 2.1.299, including the six optional implementation helpers. Their compatible_agents metadata records both agents. This proves project discovery, not model compliance, user-scope discovery or every future agent version. See [current evidence](../../docs/TEST_EVIDENCE.md) and [historical compatibility evidence](docs/COMPATIBILITY.md).
+
+For suggested usage order and the boundary between public advisors and PhasePilot's engine, see the [workflow guide](../../docs/SKILL_WORKFLOWS.md). Primary category assignments live in the [collection catalog](../../SKILL_CATALOG.md).

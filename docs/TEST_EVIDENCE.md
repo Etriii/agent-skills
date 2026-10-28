@@ -1,5 +1,39 @@
 # Collection verification
 
+## Optional implementation and change-safety helpers, 2026-10-28
+
+The Developer Skills pack now contains 23 skills, with 32 across both packs. Six optional helpers are categorized under Implementation and Change Safety: investigate-first, lean-build, surgical-patch, safe-refactor, migration and verify-and-stop. Each has self-contained instructions, a usage and installation README, task-specific metadata and payload hashes. The Essential selection is unchanged.
+
+The installed reference folders did not include an authorship or license record. Their files and UI metadata were not imported. The new local instruction bodies implement the six workflow purposes without profile-specific Core dependencies; metadata records local authorship and the existing UNDECIDED license status. This update grants no redistribution license.
+
+Native discovery passed for all 23 skills in Codex CLI 0.165.0 and Claude Code 2.1.299 using local installer copies, disposable projects, isolated configuration homes and initialization/skill-list requests only. No model prompt or real-profile installation was performed. The temporary-home Codex PATH-helper warning did not prevent discovery. Compatibility metadata records these observed project-discovery adapters, not model adherence.
+
+The optional skill-creator validator was attempted but could not import host PyYAML. The repository's portable catalog, metadata, manifest and discovery checks are the available validation path; no dependency was installed to enable the optional validator.
+
+Final verification for this addition:
+
+- Python 3.14: all 78 collection tests and 10 QA-pack tests passed. The collection suite used its documented C: working-directory workaround and absolute source-test path outside the sandbox. The installation/ownership fixtures now verify 32 skills per agent and 64 total owned destinations across both packs.
+- PhasePilot: 16 current-provider tests passed on each of Python 3.11 and 3.14. Coverage includes full-pack setup for both agents, explicit helper sync and read-only preview, unchanged Essential defaults, no automatic domain-based helper routing, source drift, ownership protection, interrupted recovery and mixed builtin/custom transactions.
+- Full-pack setup initially reproduced Windows error 206 on both runtimes because 46 installation rows were serialized onto the provider child command line. The narrow private transport correction sends argument data over standard input and reconstructs the existing script argv. Isolated imports, reviewed provider identity, a fixed executable/script, shell=False and the timeout remain in place. The new actual-child regression round-trips a 70,000-character argument, quotes, newlines, Unicode, empty strings and flag-like data. The full-pack integration regression then passed on both runtimes.
+- The full private suite and six legacy-provider cases were not run because the required sibling `skills` checkout is absent. Current-provider results do not establish legacy migration or real-project acceptance.
+- Cached `skills@1.7.4` local discovery listed all 32 shipping skills and excluded the sample fixture. A selected lean-build install and the full 23-skill developer pack copied to both agents in separate disposable projects; every copied payload hash matched source. No network source, global scope or model prompt was used.
+
+## Developer skill discovery and workflow guidance, 2026-10-28
+
+The workflow guide separates purpose categories, suggested standalone order and PhasePilot's existing engine-owned records and installed-capability routing. Essential selections remain the same four skills; optional selection does not authorize installation or execution.
+
+Native project discovery passed for all 17 Developer Skills in Codex CLI 0.165.0 and Claude Code 2.1.299, including prompt-intake and deep-critique. A temporary adaptation of the existing PhasePilot discovery probe installed the complete local pack into a disposable project through the collection installer. It used separate temporary Codex/Claude homes, disabled nonessential traffic, a loopback-only Claude provider and only initialization/skill-list protocol requests. No model prompt was submitted and no real-profile skill files were changed. Codex reported that PATH helper creation was refused under the temporary home; skill discovery still returned all expected names.
+
+The two skills' compatible_agents metadata now records both discovered agents. This establishes native project availability only, not observed model use, user-scope discovery, production behavior or future runtime compatibility. Earlier unverified compatibility notes below describe the prior snapshots.
+
+Verification against the current source:
+
+- Python 3.14: 78 collection tests and 10 QA-pack tests passed. The collection suite ran outside the sandbox from C: with an absolute source-test path, using the documented same-drive fixture workaround.
+- PhasePilot: four focused integration checks passed on both Python 3.11 and 3.14. They verify full-pack installation for both agents, optional prompt-intake/deep-critique sync with a read-only preview and unchanged Essential defaults, existing Essential setup, and missing-provider refusal without fallback.
+- The focused private methods are `test_all_bundle_uses_pack_payload_and_missing_pack_is_not_flat_fallback`, `test_new_optional_skills_sync_without_expanding_essential_defaults`, `test_new_setup_uses_pack_transactions_and_verified_current_bytes` and `test_unavailable_explicit_collection_never_uses_legacy` in `tests.test_provider_transition.ProviderTransitionTests`.
+- The full private suite was not run: its legacy-provider fixtures require the sibling `skills` checkout, which is absent here. Current-pack fixture success is not legacy compatibility proof or a real-project update.
+- The existing PhasePilot `.gitignore` edit retained SHA256 `bfa4f60a22da6ad2b206f045c123187a08b9d191180621975d31aee18aebdf51`. No default selections, application skill installations, private runtime logic or approval rules were changed.
+
 ## Versioned Prompt Intake and unfinished work, 2026-10-28
 
 Prompt Intake now records each identifiable intake in a flat `.prompt-intake/questions-vNNN.md` sequence. The instructions distinguish answer state from work state, carry relevant unfinished items into later versions of the same task, preserve origins and earlier files, accept recommended or custom answers, and provide file-specific continuation hints. `Needs confirmation` carries forward even when earlier work was marked `Implemented`. Versioning and state reconciliation are agent instructions; no background interceptor or separate state engine is shipped.

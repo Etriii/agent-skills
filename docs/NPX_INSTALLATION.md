@@ -91,6 +91,6 @@ try {
 }
 ```
 
-Repository discovery must list exactly the shipping skills, with no `sample-review` fixture. Repeat in separate empty temporary projects using `Join-Path $collectionPath 'packs/developer-skills'` and `Join-Path $collectionPath 'packs/ultimate-qa'` with `--skill '*'` to check 17 and 9 copied skills. Compare the installed files with the source, including READMEs and the core QA state script. Resolve the QA kit path and run its helper `--help` to verify access without starting a review. Do not use `-g` for fixture checks.
+Repository discovery must list exactly the shipping skills, with no `sample-review` fixture. Repeat in separate empty temporary projects using `Join-Path $collectionPath 'packs/developer-skills'` and `Join-Path $collectionPath 'packs/ultimate-qa'` with `--skill '*'` to check 23 and 9 copied skills. Compare the installed files with the source, including READMEs and the core QA state script. Resolve the QA kit path and run its helper `--help` to verify access without starting a review. Do not use `-g` for fixture checks.
 
 Remote GitHub commands install published files; they cannot validate local unpushed edits. Actual local and remote proof is recorded in [NPX_COMPATIBILITY.md](NPX_COMPATIBILITY.md). Installation and file discovery do not prove model adherence, actual application QA or security-service assessments.

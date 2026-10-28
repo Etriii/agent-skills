@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "verify-and-stop"
+name = "verify-and-stop"
+version = "0.1.0"
+capabilities = ["verification-only"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

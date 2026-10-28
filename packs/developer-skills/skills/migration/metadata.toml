@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "migration"
+name = "migration"
+version = "0.1.0"
+capabilities = ["compatibility-transition"]
+compatible_agents = ["codex", "claude"]
+license_status = "UNDECIDED"
+provenance = "local-authored"

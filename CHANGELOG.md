@@ -2,6 +2,8 @@
 
 ## Unreleased collection 0.1.0
 
+- Add six optional implementation and change-safety helpers with portable instructions, task-specific metadata and explicit PhasePilot usage guidance while preserving the four Essential defaults.
+- Document standalone skill order and PhasePilot integration; verify native discovery and enable Codex/Claude compatibility metadata for prompt-intake and deep-critique.
 - Organize the collection catalog by purpose with installation pack IDs, README category links, contribution rules and checks for complete, unique skill listings.
 - Add prompt-intake for task analysis before execution, recommended-first questions, custom answers, versioned Markdown question files, separate answer and work states, unfinished-item carry-forward, simple continuation and next-action hints.
 - Add deep-critique with a full generic assessment by default, explained ratings and optional review, roast, question, rate, compare and help modes.

@@ -1,5 +1,18 @@
 # External CLI compatibility evidence
 
+## Optional implementation helpers, 2026-10-28
+
+Using the cached `skills@1.7.4` executable through Node.js against local source, with telemetry and Node compile-cache writes disabled:
+
+| Check | Observed result |
+|---|---|
+| Collection listing | All 32 shipping skills present; sample-review absent |
+| Selected lean-build install | Exactly one skill for each of Codex and Claude Code |
+| Full Developer Skills install | Exactly 23 skills for each agent, including the six new helpers |
+| Installed payload integrity | Every copied file hash matched its source, including instructions, README and metadata |
+
+Each install used a separate disposable project with `--copy`, `--agent codex claude-code` and fixture-only `--yes`. Sources were the local root or developer pack; no download, global install or model prompt occurred. Native project discovery is recorded separately in [collection evidence](TEST_EVIDENCE.md). Earlier counts below retain their original snapshot scope.
+
 ## Combined modes and storage follow-up, 2026-10-26
 
 Repeated local discovery and installation with the cached `skills@1.7.4` CLI after adding the report-storage payload:

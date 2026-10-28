@@ -3,6 +3,6 @@ skill_id = "prompt-intake"
 name = "prompt-intake"
 version = "0.1.0"
 capabilities = ["prompt-intake", "task-clarification", "blocker-triage", "versioned-questions", "unfinished-work-tracking"]
-compatible_agents = []
+compatible_agents = ["codex", "claude"]
 license_status = "UNDECIDED"
 provenance = "local-authored"

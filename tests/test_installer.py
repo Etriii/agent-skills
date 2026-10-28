@@ -28,6 +28,7 @@ NAMES = {
     "environment-doctor", "phase-runner", "version-manager", "architecture-review",
     "frontend-review", "backend-review", "database-review", "security-privacy-review",
     "business-rules-review", "delivery-readiness", "critical-review", "deep-critique", "prompt-intake",
+    "investigate-first", "lean-build", "surgical-patch", "safe-refactor", "migration", "verify-and-stop",
 }
 
 
@@ -40,8 +41,7 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                expected_agents = [] if name in {"deep-critique", "prompt-intake"} else ["codex", "claude"]
-                self.assertEqual(metadata["compatible_agents"], expected_agents)
+                self.assertEqual(metadata["compatible_agents"], ["codex", "claude"])
                 expected_files = {"SKILL.md", "README.md", "metadata.toml"}
                 if name == "deep-critique":
                     expected_files |= {"scripts/report_store.py", "scripts/storage_io.py", "references/report-storage.md"}

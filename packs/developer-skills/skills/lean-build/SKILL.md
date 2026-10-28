@@ -1,0 +1,22 @@
+---
+name: lean-build
+description: Implement a bounded new feature by reusing existing owners and delivering the smallest complete verified outcome.
+---
+
+# Lean Build
+
+Input: An authorized feature, acceptance conditions, repository instructions and current implementation.
+
+Output: A complete feature within the selected scope, relevant verification and any material remaining prerequisite.
+
+1. Translate the requested behavior into observable acceptance conditions. Inspect the current implementation and identify the owners of presentation, business rules, persistence and configuration that the feature touches.
+
+2. Reuse existing behavior, helpers and installed dependencies where they fit. Trace invariants before editing; choose a coherent end-to-end change rather than duplicating logic to keep the diff artificially small.
+
+3. Implement only what acceptance requires. Preserve validation, authorization, error handling, accessibility and data integrity. Introduce an abstraction, dependency or setting only when the actual feature justifies it.
+
+4. Exercise the affected user or API path and run the nearest relevant checks. Update required configuration examples and explain missing setup or external proof.
+
+5. Stop when the authorized feature and its required proof are complete. Report material changes, results and remaining risks.
+
+Limits: No private runtime or companion skill is required. Follow the current coordinator's authorization and checkpoints; do not start another feature or execution workflow.
