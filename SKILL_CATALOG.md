@@ -20,7 +20,7 @@ Every entry links to a human-facing README with installation, invocation and run
 | [phase-handoff](packs/developer-skills/skills/phase-handoff/README.md) | Write a standalone Markdown handoff connecting scope, decisions, Git state and executed checks. |
 | [phase-runner](packs/developer-skills/skills/phase-runner/README.md) | Execute one authorized ready phase with checkpoints, verification and a bounded handoff. |
 | [plan-review](packs/developer-skills/skills/plan-review/README.md) | Review complete-plan coverage, dependencies and existing implementation before development. |
-| [prompt-intake](packs/developer-skills/skills/prompt-intake/README.md) | Clarify a task before execution with recommended choices, custom answers and optional answer files. |
+| [prompt-intake](packs/developer-skills/skills/prompt-intake/README.md) | Clarify a task with recommended choices, custom answers, versioned question files and next-action hints. |
 | [security-privacy-review](packs/developer-skills/skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [version-manager](packs/developer-skills/skills/version-manager/README.md) | Plan and record a development-plan version transition while preserving accepted history. |
 

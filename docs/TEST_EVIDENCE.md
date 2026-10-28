@@ -1,5 +1,21 @@
 # Collection verification
 
+## Versioned Prompt Intake and unfinished work, 2026-10-28
+
+Prompt Intake now records each identifiable intake in a flat `.prompt-intake/questions-vNNN.md` sequence. The instructions distinguish answer state from work state, carry relevant unfinished items into later versions of the same task, preserve origins and earlier files, accept recommended or custom answers, and provide file-specific continuation hints. `Needs confirmation` carries forward even when earlier work was marked `Implemented`. Versioning and state reconciliation are agent instructions; no background interceptor or separate state engine is shipped.
+
+Final source verification on Windows with Python 3.14:
+
+- `python -B -m unittest discover -s tests -v`: 77 tests passed.
+- `python -B -m unittest discover -s packs/ultimate-qa/tests -v`: 10 tests passed.
+- The four existing public-contract tests also passed separately. They check public source, metadata and shipping discovery boundaries; they do not exercise the conversational state transitions.
+- Both suites ran from a temporary working directory on the same drive as their fixtures, using absolute source paths. This avoids an existing cross-drive relative-path test limitation. Execution outside the sandbox was required for temporary Git and atomic transaction writes.
+- Skill identity, metadata, payload manifests and ZIP packaging were validated through the repository suites. Whitespace checks passed before staging; the staged check is required before committing.
+
+The host accepted a native question-tool trial request. No submitted answer was observed at the time of this record. This establishes request acceptance only. Visible menu rendering, recommended-option preselection, custom-answer submission and the complete versioned-file, carry-forward and continuation workflow remain unverified end to end. Source inspection and installation tests do not prove model adherence. The optional skill-creator validator remains unavailable because PyYAML is not installed.
+
+No real-profile skill installation, Git ignore change, push or publication is part of this update. The task-folder proposal was superseded by flat versioned question files.
+
 ## Combined Deep Critique modes and report storage, 2026-10-26
 
 Deep Critique now combines modes into one assessment and saves categorized timestamp/unique-ID runs under the target workspace's `.deep-critique/`. Two self-contained standard-library helper modules own mode normalization, root resolution, ignore-file preparation, OS locking, immutable publication and ordered question transcripts. A completion record is published last; identical publication can recover an interrupted completion without replacing the report.

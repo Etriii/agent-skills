@@ -2,7 +2,7 @@
 
 ## Unreleased collection 0.1.0
 
-- Add prompt-intake for task analysis before execution, recommended-first questions, custom answers and optional Markdown answer files.
+- Add prompt-intake for task analysis before execution, recommended-first questions, custom answers, versioned Markdown question files, separate answer and work states, unfinished-item carry-forward, simple continuation and next-action hints.
 - Add deep-critique with a full generic assessment by default, explained ratings and optional review, roast, question, rate, compare and help modes.
 - Support combined deep-critique modes and categorized immutable reports with unique runs, preserved Git ignore rules and interrupted-publication recovery.
 - Document pinned `npx skills` installation for individual skills and complete packs, including persistent Ultimate QA kit setup and external lifecycle limits.

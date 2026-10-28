@@ -49,13 +49,13 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [phase-handoff](skills/phase-handoff/README.md) | Write a standalone Markdown handoff connecting scope, decisions, Git state and executed checks. |
 | [phase-runner](skills/phase-runner/README.md) | Execute one authorized ready phase with checkpoints, verification and a bounded handoff. |
 | [plan-review](skills/plan-review/README.md) | Review complete-plan coverage, dependencies and existing implementation before development. |
-| [prompt-intake](skills/prompt-intake/README.md) | Clarify a task before execution with recommended choices, custom answers and optional answer files. |
+| [prompt-intake](skills/prompt-intake/README.md) | Clarify a task with recommended choices, custom answers, versioned question files and next-action hints. |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [version-manager](skills/version-manager/README.md) | Plan and record a development-plan version transition while preserving accepted history. |
 
 Invoke skills in agent chat with `$blocker-check` in Codex or `/blocker-check` in Claude Code, followed by the scope and relevant files. Refresh the agent session after installation. Reviews do not authorize implementation unless that skill's explicit scope and the user's instruction provide it.
 
-Use `$prompt-intake <task>` to inspect a prompt before starting dependent work. It asks material questions with recommended-first choices and custom answers through an available native question tool, with chat fallback. Request a Markdown answer file when preferred. Clear tasks proceed directly; automatic matching is not a global prompt interception hook.
+Use `$prompt-intake <task>` to inspect a prompt before starting dependent work. Each new intake saves `.prompt-intake/questions-v001.md` or the next version and gives a next-action hint. Answer material questions through an available native question tool or in the file, then reply `continue` to resume the active intake. Clear tasks are recorded and proceed directly; automatic matching is not a global prompt interception hook.
 
 For a generic assessment of the current idea, plan, design, implementation, document or decision, type only `$deep-critique`. Full review and ratings run by default; `$deep-critique help` lists optional modes and combinations such as `roast rate`. Python 3.11+ enables categorized reports in the target's ignored `.deep-critique/` folder; each run preserves earlier results. Use `critical-review` for a short planning-specific challenge instead.
 
