@@ -11,6 +11,8 @@ Install through the external `skills` CLI with Node.js 22.20+ and npm, or use ou
 
 Each skill has a README covering its purpose, installation, usage and prerequisites. Browse the [skill catalog](SKILL_CATALOG.md) or read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
 
+Use the [command guide](docs/SKILL_COMMANDS.md) for copyable requests, supported automatic workflows, expected outputs, and review/implementation boundaries across every skill.
+
 ## Find a skill by purpose
 
 Categories describe what a skill helps you do; packs select what you install. The [catalog](SKILL_CATALOG.md) assigns every available skill one primary category and lists its installation pack.

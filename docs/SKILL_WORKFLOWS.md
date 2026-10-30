@@ -2,6 +2,8 @@
 
 Use the [catalog](../SKILL_CATALOG.md) to find skills by purpose. Categories describe what a skill does; this guide describes when it can help. Packs remain installation sources. The suggested order is guidance, not an automatic pipeline: invoke only skills relevant to the authorized task.
 
+For exact chat requests, defaults, supported automatic execution, continuation and expected outputs, use the [command guide](SKILL_COMMANDS.md). A broad build request can include discovery when its own skill permits it; review commands and QA plans do not become implementation authorization through a generic automation flag.
+
 ## Standalone development
 
 Public skills work without PhasePilot. Use these stages when the corresponding need exists:

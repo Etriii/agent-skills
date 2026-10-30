@@ -1,5 +1,20 @@
 # Collection verification
 
+## Skill command documentation audit, 2026-10-31
+
+Reviewed the instructions and usage documentation for all 39 shipping skills: 30 Developer Skills and 9 Ultimate QA skills. Added a collection command guide linking every skill once, clarified expected outputs/stopping points for 28 natural-language reviewers/helpers, expanded core/client QA operation and continuation tables, documented settings build continuity and UI/UX help/automatic continuation, and retained the earlier Report Builder scan-and-build documentation intact. Thirty-six skill READMEs changed across this update and the preceding Report Builder clarification; the remaining three already covered their applicable workflows.
+
+Contribution and pack-authoring guidance now require copyable chat/terminal examples, defaults, input/target selection, supported options, effects/output paths, approval/continuation rules, prerequisites and verification limits. Automation is documented per skill: a UI/UX automatic implementation, a report/settings build, and a QA run ending at recommendations do not share an interchangeable flag or authorization contract. No new runtime command framework or generic automatic mode was added.
+
+Executed with Python 3.14.7 on Windows, using a temporary C: working directory and absolute test paths for the existing cross-drive fixture limitation:
+
+- All 86 collection tests and all 10 QA-pack tests passed. Existing checks cover installer payload integrity, both-agent copies, lifecycle records, complete catalogs, repeatable archives and shared UI/UX resources.
+- Source review checked command/default/output claims against actual skill instructions and applicable references; it was not an independent model-adherence trial.
+- The command guide lists all 39 skills exactly once. A temporary link checker verified 404 local file links/anchors across 51 Markdown files, including this evidence file; no missing target or anchor was found.
+- Shared-resource synchronization and whitespace checks passed. The earlier two Report Builder files were preserved byte-for-byte during this audit. Both pack manifests were refreshed for changed payloads while retaining their existing support-file coverage.
+
+These are documentation and packaging results. No real-profile install, native agent discovery, target-application/browser run, or unattended automation was exercised. Existing installed copies need an update to receive the revised READMEs. Historical evidence below retains its original scope and counts.
+
 ## System Settings skill, 2026-10-31
 
 Added system-settings under Implementation and change safety with portable scan, plan, build, verify and help instructions. Discovery assesses actual workflows and runtime consumers, supports applications without settings infrastructure, and can conclude no new settings are justified. Implementation guidance covers category-first loading, preserved drafts, transactional audit reuse or minimal missing history, concurrency, scope and cache freshness. Developer Skills now contains 30 skills; the collection contains 39. Essential defaults are unchanged.

@@ -31,6 +31,12 @@ $ultimate-qa-performance Measure the search workflow against its baseline using 
 
 In Claude Code use `/ultimate-qa-performance`. These are agent chat instructions, not terminal commands. For versioned reports integrated with the core workflow, also install `ultimate-qa` and invoke `$ultimate-qa run`.
 
+## Expected result and stopping point
+
+Expect reproducible workload/baseline measurements with latency, throughput, errors and resource limits, followed by evidence-ranked slow-path findings. Use disposable data; overload tests need the kit's separate safety gate and no fix is implied.
+
+Supply the target application, selected journeys/endpoints and authorized test environment in the request or conversation. This specialist accepts natural-language scope; it defines no generic `run`, `build` or `--auto` mode. When a current QA version exists, evidence belongs to that review. A standalone review does not silently create a complete versioned QA run.
+
 ## Prerequisites and limits
 
 Needs an authorized disposable stack, representative data, a defined workload and the project's existing benchmark/profiling tools. Record hardware and environment limits.

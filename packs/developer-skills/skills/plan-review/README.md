@@ -31,6 +31,12 @@ $plan-review Review docs/plan.md for requirement coverage and dependency order. 
 
 In Claude Code use `/plan-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect requirement coverage, source-referenced dependency findings, already-covered/missing/unknown work and unanswered decisions. Reordering is previewed before approved plan replacement; the review does not implement the plan.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the source plan, requirements and repository evidence. Reordering needs approval; the review does not implement phases.

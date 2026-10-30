@@ -31,6 +31,12 @@ $security-privacy-review Review the export workflow for object authorization, se
 
 In Claude Code use `/security-privacy-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect evidence-ranked findings with impact, safe reproduction and narrow mitigation, plus unresolved authoritative privacy decisions. This review does not authorize intrusive testing, production access or a new policy.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide data flows, roles and authoritative policy. Intrusive testing, production access and privacy-policy decisions require their own authorization.

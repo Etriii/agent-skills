@@ -6,6 +6,8 @@ The normal workflow is **initialize → audit → plan**. `$ultimate-qa run` per
 
 ## What you need
 
+Use the [command guide](../../docs/SKILL_COMMANDS.md#ultimate-qa-requests) for core/client operations, standalone specialist requests and output boundaries. Continuous `run` ends at recommendations; it does not authorize implementing them.
+
 - **Python 3.11 or newer** to run the installer and helpers; **Git** and a Git repository for the application being reviewed. Run the examples below from this kit's directory unless a command says otherwise.
 - A coding agent that supports the installed skills (Codex or Claude for the built-in targets). Start a new agent session in the **application repository** after installation.
 - The application's own local test setup and test accounts for checks that require them. Docker and Compose are checked during initialization; if they are unavailable, runtime checks that depend on them are reported as blocked. Use disposable data for destructive checks.

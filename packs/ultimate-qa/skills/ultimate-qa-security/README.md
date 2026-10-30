@@ -31,6 +31,12 @@ $ultimate-qa-security Review download authorization and tenant isolation using s
 
 In Claude Code use `/ultimate-qa-security`. These are agent chat instructions, not terminal commands. For versioned reports integrated with the core workflow, also install `ultimate-qa` and invoke `$ultimate-qa run`.
 
+## Expected result and stopping point
+
+Expect role/entrypoint findings with prerequisites, safe reproduction, observed/expected behavior and redacted evidence. Use synthetic data; active/destructive checks require the isolated environment and restore gate. This review does not implement fixes or authorize production testing.
+
+Supply the target application, selected journeys/endpoints and authorized test environment in the request or conversation. This specialist accepts natural-language scope; it defines no generic `run`, `build` or `--auto` mode. When a current QA version exists, evidence belongs to that review. A standalone review does not silently create a complete versioned QA run.
+
 ## Prerequisites and limits
 
 Needs source, test roles and the project's installed security/dependency tools. Active or destructive checks require the full kit's isolated-environment gate and restore plan.

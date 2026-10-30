@@ -31,6 +31,12 @@ $environment-doctor Diagnose this workspace using its documented prerequisites. 
 
 In Claude Code use `/environment-doctor`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect local command results and exit codes for Git, required tooling/configuration, and Docker only when the project requires it. It remains read-only: missing tools are reported without installations, builds, service starts, network requests or secret output.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Needs the project's documented local CLI tools. Docker is checked only when required. No diagnostics engine is bundled; the agent runs read-only checks.

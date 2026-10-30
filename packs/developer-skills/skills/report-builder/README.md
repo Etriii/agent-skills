@@ -2,6 +2,49 @@
 
 Discover reporting needs across an application, specify useful business reports, and implement role-aware report pages with styled PDF and Excel exports.
 
+## Automatic scan and build
+
+Open the target application in your coding agent. If this skill is not installed there, follow [Install](#install) first. Paste this into **agent chat**, not PowerShell or another terminal:
+
+```text
+$report-builder build all clearly justified missing reports across this project --detail detailed
+```
+
+This is one continuous scan, selection, implementation, and verification request. You do not need to run `scan` or `plan` first. The words after `build` define the authorized scope; there is no separate `auto` subcommand or `--auto` flag.
+
+For core report content, use:
+
+```text
+$report-builder build all clearly justified missing reports across this project --detail mid
+```
+
+For Claude Code, use the same request with `/report-builder`:
+
+```text
+/report-builder build all clearly justified missing reports across this project --detail detailed
+```
+
+If the target is outside the open project, identify it in the same chat message, for example:
+
+```text
+$report-builder build all clearly justified missing reports across this project --detail detailed
+Target application: D:\My App
+```
+
+The run should:
+
+1. Trace features, pages, workflows, source data, roles, permissions, and existing reports across the selected application.
+2. Classify reporting needs as Required, Recommended, Covered, Unknown, or Unnecessary. Select Required and Recommended gaps only when the audience, decision, metrics, and data boundaries are supported by evidence. Reuse existing reports that already meet the need.
+3. Specify each eligible report and implement it through the existing owners, including necessary shared reporting infrastructure. Do not stop after producing an inventory or plan when implementation is authorized and unblocked.
+4. Deliver the agreed PDF/Excel design, effective filters, status/type colors and counts, permission/data isolation, dedicated Generated Reports page, durable background generation with recoverable progress, and configurable 24-hour retention from successful completion.
+5. Run relevant checks and return implemented reports, reused coverage, deferred candidates with reasons, executed verification, and remaining setup or manual checks.
+
+Detailed mode adds supported analysis and explanations; mid mode keeps essential content. Both retain the same access, export design, correctness, progress, and retention requirements. Do not equate every page with a necessary report or invent historical data to fill a detailed section.
+
+The agent continues without routine approval pauses for the authorized scope. It asks when material business rules, sharing authority, or another consequential choice cannot be established, and continues independent unblocked work. Missing source data, runtime services, credentials, or rendering tools remain explicit limitations. Covered reports are not duplicated, and Unknown or Unnecessary candidates are not automatically built. If no justified gap exists, the result can be no application changes with evidence explaining why.
+
+This chat request runs in the current agent session; it does not install a recurring scanner or unattended agent. Background workers are part of the application reporting behavior it implements. It does not automatically execute itself on future feature changes. Existing installed copies must receive this documentation/instruction update before relying on the clarified workflow.
+
 ## Use
 
 Run these in agent chat from the target application, or include its path:

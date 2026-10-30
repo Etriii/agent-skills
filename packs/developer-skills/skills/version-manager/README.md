@@ -31,6 +31,12 @@ $version-manager Compare the current plan with the proposed next version. Previe
 
 In Claude Code use `/version-manager`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect an old-to-new plan mapping, REUSE/REVALIDATE decisions and affected-file preview before transition consent. After consent, prior plans/evidence stay intact and the new version receives its own record. It does not execute the new plan.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide both plans, completion evidence and the requested transition. Prior history remains immutable; transition consent precedes writes.

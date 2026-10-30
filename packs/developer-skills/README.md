@@ -4,6 +4,8 @@ Thirty independent skills for prompt intake, planning, UI/UX and mobile review, 
 
 This pack belongs to [Agent Skills](../../README.md). Each skill has its own README with installation, usage and prerequisites.
 
+The [command guide](../../docs/SKILL_COMMANDS.md) lists copyable requests, supported continuous workflows, expected outputs and stopping points for every skill. Natural-language reviewers do not inherit another skill's automation flags.
+
 Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md), or follow the [workflow guide](../../docs/SKILL_WORKFLOWS.md) for suggested standalone order and PhasePilot integration. The pack remains one installation source; categories do not change skill paths or require invoking every skill.
 
 ## Install with npx

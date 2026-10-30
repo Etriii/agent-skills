@@ -33,6 +33,7 @@ $ultimate-mobile run --page /orders
 $ultimate-mobile run --page /orders --page /settings --auto
 $ultimate-mobile continue <run-folder> I approve the selected findings for sketches.
 $ultimate-mobile verify <run-folder>
+$ultimate-mobile help
 ```
 
 Bare/run reviews all discovered pages for mobile UI and UX, shows a saved proposal and stops. Approval authorizes low-fidelity comparisons; subsequent design approval authorizes application edits. Replace `<run-folder>` with the exact path provided by the agent. Generic continuation is not new approval.

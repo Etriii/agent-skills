@@ -25,6 +25,20 @@ Bare invocation defaults to `scan`. If no target can be inferred, ask for the ap
 
 Scan and plan do not edit application code, generate exports, change permissions, install dependencies, or create state files unless the task requests a saved artifact. Build only selected reports and their required integration. Do not implement every discovered candidate, alter unrelated workflows, or deploy, publish, install globally, commit, or change branches without task authorization.
 
+## Whole-project scan and build
+
+Recognize this as an explicit broad build scope, not a read-only scan or an ambiguous combination of commands:
+
+```text
+$report-builder build all clearly justified missing reports across this project --detail detailed
+```
+
+The same scope accepts `--detail mid` and Claude Code's `/report-builder` prefix. It uses the existing `build` command with a natural-language scope; do not require a separate `auto` command, `--auto` flag, preceding scan/plan, or routine approval between discovery and implementation.
+
+Within the identified application, scan and classify candidates using the discovery reference, specify eligible gaps, implement them and their necessary shared reporting infrastructure, and verify the result in one session. Required and Recommended gaps are eligible only when their purpose/audience, source data, metric meaning, and access boundaries are established. The whole-project scope authorizes that evidence-based selection; do not require the user to name every discovered eligible report individually. Covered reports are reused. Unknown and Unnecessary candidates are recorded with reasons, not automatically implemented. If nothing qualifies, explain the no-change result with coverage evidence.
+
+Do not stop at an inventory or plan while eligible work remains authorized and unblocked. Resolve material business/sharing decisions before dependent edits and continue independent work. Report unavailable prerequisites and partial verification accurately instead of inventing policy, data, or successful runtime proof. Return implemented reports, reused coverage, deferred/blocked candidates, executed checks, and remaining setup/manual checks. This is an agent-session workflow, not a recurring scheduler or permission to modify unrelated features.
+
 ## Detail levels
 
 Detail controls report content, not scan coverage, security rigor, correctness, or chat verbosity.

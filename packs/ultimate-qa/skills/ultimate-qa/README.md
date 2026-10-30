@@ -32,6 +32,24 @@ $ultimate-qa run
 
 In Claude Code use `/ultimate-qa`. These are agent chat instructions, not terminal commands. Use `status` to inspect progress; add `--client` only when client deliverables are wanted and the client skill is installed.
 
+## Commands, continuation and expected output
+
+Enter these in the same target application's agent chat:
+
+| Request | Behavior and stopping point |
+|---|---|
+| `$ultimate-qa run` | Initialize or reconcile the active review, audit relevant areas, and produce the improvement plan in one workflow. Stop before implementation. |
+| `$ultimate-qa run --client` | Complete that review, then prepare optional client deliverables when the client skill and document tools are available. Stop before implementing or sending them. |
+| `$ultimate-qa initialize` | Complete intake, preflight and versioned state/template preparation. Use when setup alone is wanted. |
+| `$ultimate-qa audit request creation and approval` | Audit the named scope in an initialized review; save findings and executed evidence. Replace the example scope. |
+| `$ultimate-qa plan` | Build the improvement plan from current findings/gaps and existing plans. No automatic client files or implementation. |
+| `$ultimate-qa status` | Read current version state, findings and next action without file changes. |
+| `$ultimate-qa next-version` | Reconcile unresolved work against current evidence, preserve earlier versions, create the next version and audit for new issues. |
+
+There is no `--auto` switch: `run` is the supported continuous intake/audit/plan request. It asks only unanswered intake questions and resumes after the reply. If setup or checks are blocked, provide the missing input/service and repeat the original invocation, retaining `--client` if supplied. `status` identifies the recorded next action; repeating a still-applicable completed `run` does not create another version. Use `next-version` explicitly for that transition.
+
+Expected output lives under the verified application's `qa-findings/` root: version state, requirements, audit/gap reports, improvement plan, and evidence with commands/results. Optional client files appear only when requested. A missing state directs standalone `audit` or `plan` back to initialization. Bare invocation is not documented as a complete run; use `run` explicitly. `--client` does not convert the plan into implementation approval.
+
 ## Prerequisites and limits
 
 Requires the complete QA kit, Python 3.11+, Git and an existing application repository. Use the application's own runtime, test accounts and safe environment. Docker-dependent checks remain blocked when Docker is unavailable. Client documents require the optional client skill.

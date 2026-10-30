@@ -31,6 +31,12 @@ $delivery-readiness Assess this release against CI evidence, required configurat
 
 In Claude Code use `/delivery-readiness`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect a gate report for the tested revision, required configuration, CI evidence, rollout and recovery, with owners for remaining blockers. It reports readiness; it does not publish, deploy or merge.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide release scope, tested revision and delivery evidence. Readiness assessment does not authorize publishing or deployment.

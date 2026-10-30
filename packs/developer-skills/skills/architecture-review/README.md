@@ -31,6 +31,12 @@ $architecture-review Review the proposed API extraction in docs/plan.md. Trace e
 
 In Claude Code use `/architecture-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect source-linked ownership and dependency findings, tradeoffs, and a minimal recommendation with regression needs. This is a planning review; stop before refactoring unless that work is separately authorized.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the affected modules, plan and available tests. This is a planning review; refactoring requires separate authorization.

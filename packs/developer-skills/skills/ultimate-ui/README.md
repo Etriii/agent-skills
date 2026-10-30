@@ -33,6 +33,7 @@ $ultimate-ui run --page /stores/:slug
 $ultimate-ui run --page /orders --page /settings --auto
 $ultimate-ui continue <run-folder> I approve the selected findings for sketches.
 $ultimate-ui verify <run-folder>
+$ultimate-ui help
 ```
 
 Bare/run defaults to all discovered pages and approval checkpoints. Replace `<run-folder>` with the exact path supplied by the agent. The default workflow shows findings, waits for proposal approval, shows low-fidelity comparisons, waits for design approval, then implements and verifies. Generic continuation does not grant new approval. Relevant drift invalidates affected approvals.

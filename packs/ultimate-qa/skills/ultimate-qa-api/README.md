@@ -31,6 +31,12 @@ $ultimate-qa-api Review the cancellation API with authorized test accounts and d
 
 In Claude Code use `/ultimate-qa-api`. These are agent chat instructions, not terminal commands. For versioned reports integrated with the core workflow, also install `ultimate-qa` and invoke `$ultimate-qa run`.
 
+## Expected result and stopping point
+
+Expect contract, authorization, retry and persistence results with redacted request/response and database evidence. Schema drift and coverage gaps remain distinct from reproduced defects. Fixes or new regressions in application code require implementation authorization.
+
+Supply the target application, selected journeys/endpoints and authorized test environment in the request or conversation. This specialist accepts natural-language scope; it defines no generic `run`, `build` or `--auto` mode. When a current QA version exists, evidence belongs to that review. A standalone review does not silently create a complete versioned QA run.
+
 ## Prerequisites and limits
 
 Needs route/schema information, the project's integration tooling and an authorized disposable database for writes. Use the documented test container when available.

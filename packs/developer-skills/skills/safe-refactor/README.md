@@ -25,6 +25,12 @@ In Claude Code use `/safe-refactor`. This is an agent instruction, not a termina
 
 With PhasePilot, add the skill to the project's desired selection and review the existing sync preview. Invoke it explicitly for the already authorized scope; the helper does not change automatic advisor routing, defaults or approvals. Follow the [workflow guide](../../../../docs/SKILL_WORKFLOWS.md#implementation-and-change-safety).
 
+## Expected result and stopping point
+
+Expect the requested structural change with baseline/after proof that the specified public behavior, errors and side effects are preserved. It does not silently add features or schema/policy changes; any required external behavior left untested stays explicit.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the selected scope and relevant repository evidence. The skill needs no private runner, API key or third-party package; actual checks use the target project's tools and permissions. Installation and native discovery do not establish model adherence.

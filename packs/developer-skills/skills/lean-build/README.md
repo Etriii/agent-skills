@@ -25,6 +25,12 @@ In Claude Code use `/lean-build`. This is an agent instruction, not a terminal c
 
 With PhasePilot, add the skill to the project's desired selection and review the existing sync preview. Invoke it explicitly for the already authorized scope; the helper does not change automatic advisor routing, defaults or approvals. Follow the [workflow guide](../../../../docs/SKILL_WORKFLOWS.md#implementation-and-change-safety).
 
+## Expected result and stopping point
+
+Expect the complete authorized feature through existing owners, focused verification and required configuration/setup notes. Discovery, implementation and checks run within that feature request without a separate command at each stage; the skill stops when its scope is satisfied.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the selected scope and relevant repository evidence. The skill needs no private runner, API key or third-party package; actual checks use the target project's tools and permissions. Installation and native discovery do not establish model adherence.

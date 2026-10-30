@@ -51,6 +51,7 @@ The agent supplies exact run-folder and artifact links at each checkpoint. To re
 $ultimate-ui-ux continue <run-folder> I approve findings UX-001 and UI-003 for sketches.
 $ultimate-ui-ux continue <run-folder> I approve the current design for implementation.
 $ultimate-ui-ux verify <run-folder>
+$ultimate-ui-ux help
 ```
 
 Replace `<run-folder>` with the generated path. A generic `continue` resumes authorized work; it does not silently approve the next stage. Proposal approval authorizes sketches; design approval authorizes application changes. Relevant source/design drift is rechecked before using an approval.
@@ -61,9 +62,12 @@ Replace `<run-folder>` with the generated path. A generic `continue` resumes aut
 $ultimate-ui-ux run --auto
 $ultimate-ui-ux run --page /stores/:slug --auto
 $ultimate-ui-ux run --focus ux --page /checkout --auto
+$ultimate-ui-ux continue <run-folder> --auto
 ```
 
 `--auto`, or an explicit task-specific instruction to proceed without approvals, authorizes review, design decisions, previews, implementation and verification for the selected scope. The agent creates previews before edits and retains rationale/evidence without waiting for skill approvals. Required platform permissions still apply. Unresolved material business/data/billing decisions are deferred rather than invented; independent work continues. Publication, dependency installation, Git operations and unrelated features need their own authorization.
+
+On `continue`, `--auto` authorizes only remaining work within that saved run's recorded scope. Replace `<run-folder>` with its actual path; it does not select another run or broaden the approved pages.
 
 ## Outputs and prerequisites
 

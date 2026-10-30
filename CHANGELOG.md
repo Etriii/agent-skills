@@ -2,6 +2,7 @@
 
 ## Unreleased collection 0.1.0
 
+- Document commands, defaults, continuous execution, expected outputs and stopping points across the skill collection; add a command guide and contributor requirements for usable command documentation.
 - Add system-settings for evidence-based runtime settings assessment, new or existing implementations, category-first loading, and transactional reuse of settings history and central auditing.
 - Rename report-creator to report-builder across skill identity, invocation, selection, documentation and integrity manifests; preserve all reporting behavior.
 - Require durable report-generation jobs with recoverable status/progress on Generated Reports, measured progress, reliable dispatch, and safe worker retries.

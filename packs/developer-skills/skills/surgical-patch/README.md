@@ -25,6 +25,12 @@ In Claude Code use `/surgical-patch`. This is an agent instruction, not a termin
 
 With PhasePilot, add the skill to the project's desired selection and review the existing sync preview. Invoke it explicitly for the already authorized scope; the helper does not change automatic advisor routing, defaults or approvals. Follow the [workflow guide](../../../../docs/SKILL_WORKFLOWS.md#implementation-and-change-safety).
 
+## Expected result and stopping point
+
+Expect a root-cause fix, focused regression evidence and preserved surrounding behavior. The scoped fix request includes tracing, correction and checks; unrelated cleanup and failures remain separate.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the selected scope and relevant repository evidence. The skill needs no private runner, API key or third-party package; actual checks use the target project's tools and permissions. Installation and native discovery do not establish model adherence.

@@ -23,7 +23,19 @@ $investigate-first Diagnose the intermittent request failure and identify its re
 
 In Claude Code use `/investigate-first`. This is an agent instruction, not a terminal command.
 
+To authorize diagnosis and the specific fix in one request:
+
+```text
+$investigate-first Diagnose and fix the stale request result on the orders page. Reproduce it, trace the owner, apply the scoped correction and run relevant checks.
+```
+
 With PhasePilot, add the skill to the project's desired selection and review the existing sync preview. Invoke it explicitly for the already authorized scope; the helper does not change automatic advisor routing, defaults or approvals. Follow the [workflow guide](../../../../docs/SKILL_WORKFLOWS.md#implementation-and-change-safety).
+
+## Expected result and stopping point
+
+Expect a supported cause or ranked remaining hypotheses, reproduction limits, the responsible owner and the smallest useful next check. Diagnosis alone stops before code edits; a request that also authorizes the scoped fix can continue into that fix after tracing the cause.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
 
 ## Prerequisites and limits
 

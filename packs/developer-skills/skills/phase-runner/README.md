@@ -31,6 +31,12 @@ $phase-runner Execute only phase 2 in docs/plan.md after checking prerequisites 
 
 In Claude Code use `/phase-runner`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect implementation of only the identified ready scope, relevant tests/checkpoints and a truthful handoff. It verifies prerequisites first and stops before another scope. Required integration without authorization remains MERGE_PENDING; the invocation is not a private CLI or unattended scheduler.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Needs explicit phase scope, resolved blockers and the application's own tools. It does not provide a command runner or authorize later phases or integration.

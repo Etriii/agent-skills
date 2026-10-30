@@ -31,6 +31,12 @@ $phase-handoff Write docs/handoff.md for the selected phase using the current Gi
 
 In Claude Code use `/phase-handoff`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect a standalone Markdown handoff at the requested path with scope, current Git state, acceptance/evidence, decisions, blockers and next-session reading. The document distinguishes tested from integrated work. It does not start the recommended next task.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide the phase, report location and evidence. Uses ordinary Markdown; no runner or private state format is required.

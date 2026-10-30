@@ -25,6 +25,32 @@ Reuse the shared installer and transaction engine under `tools/`. Keep runtime h
 - Update the collection catalog and main README when adding or removing skills or packs. Update the changelog for user-visible changes.
 - Keep comments functional and concise. Report executed checks separately from discovery, browser, provider or production claims. Do not add conversational attribution or AI signatures.
 
+## Document skill commands and automation
+
+A reader should be able to install a skill, copy a supported request, predict its effects, and know what to do when it pauses. Check the actual `SKILL.md`, referenced workflow, and executable helper contracts before documenting commands. Do not infer an `auto`, `run`, `help`, or `--auto` option from another skill's interface.
+
+Every skill README must cover the applicable parts of this usage contract without padding simple skills into command frameworks:
+
+| Document | Required explanation |
+|---|---|
+| Starting point | Install/update prerequisites, session refresh, and the target project or other input to open. Distinguish the skill's installation directory from the application being reviewed. |
+| Where to type | Label agent-chat requests separately from terminal commands. Give the relevant agent spelling; label shell and starting folder for terminal commands. |
+| Copyable request | Show a concrete first request. Identify paths, routes, report names, run IDs, and other placeholders the reader must replace. |
+| Defaults and scope | Explain bare invocation, default mode/detail/focus, how the target is selected, and what happens when required input is missing. For natural-language skills, state the required input rather than inventing subcommands. |
+| Commands and options | Document each supported user-facing operation and meaningful option, including combinations, invalid/conflicting inputs, and verification-only behavior. Link detailed references instead of duplicating long procedures. |
+| Continuous execution | If supported, show the exact scan/review-and-build or automatic request. Explain what it authorizes, which stages it completes, what it still asks about, and where it stops. If unavailable, state the real review or implementation boundary. |
+| Effects and result | Explain application edits, report/state files, ignore-file updates, output locations, preserved history, and expected feedback. Do not describe a successful install as successful execution. |
+| Pause and resume | Explain actual approval checkpoints, continuation wording/run paths, rerun behavior, unresolved decisions, and missing prerequisites. Silence and generic continuation do not supply approvals. |
+| Verification and recovery | Give the expected result, relevant checks, evidence limits, and the next action for missing tools, stale state, partial work, or failed file writes. |
+
+Use one continuous implementation example where the skill already supports it. `report-builder build <scope>` can include evidence-based discovery and implementation in one request; UI/UX skills define `run --auto`; `ultimate-qa run` combines intake, audit and planning but stops before implementation. These are different contracts, not interchangeable automation flags. Review advisors remain reviews unless their instructions and the user's scope authorize more. Distinguish an agent-session workflow from a recurring scheduler and from background jobs inside the target application.
+
+Preserve existing authorization: do not add an approval pause to already authorized work or remove an explicit workflow checkpoint while improving documentation. Clearly separate consequential policy choices from routine implementation decisions. Describe incomplete, blocked, no-change, and unavailable-evidence outcomes when relevant; never promise guaranteed completion without the required source, credentials, services, or tools.
+
+When changing an interface or documenting previously unclear behavior, update the skill README, relevant agent instructions, the [command guide](docs/SKILL_COMMANDS.md), and pack/workflow links that mention it. Update `SKILL.md` only when its contract needs clarification; documentation work alone must not change runtime behavior. Keep historical evidence truthful, document renamed-install migration, refresh payload manifests, and verify links and copies after installation.
+
+Review documentation with realistic requests: the first run, a scoped run, a supported continuous run, a pause/resume, a verification-only request, and a missing prerequisite as applicable. Execute helper and installation checks where useful; label manual source review separately from a model-adherence or application trial. Avoid tests that only enforce prose, heading names, or keyword presence.
+
 ## Categorize a skill
 
 The root [skill catalog](SKILL_CATALOG.md) owns category assignments. Categories describe a skill's primary outcome; packs describe its installation source. Categorizing a skill does not move its files or change its installation commands.

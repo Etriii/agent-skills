@@ -31,6 +31,12 @@ $backend-review Review the order cancellation endpoint, including denied request
 
 In Claude Code use `/backend-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect findings that trace request validation, authorization, transactions and side effects, plus focused success/denial/retry test cases. Review remains advisory; recommendations do not silently become endpoint changes.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide routes, contracts, services and integration evidence. Database and provider behavior need checks in their actual environments.

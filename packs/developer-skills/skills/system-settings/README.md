@@ -25,6 +25,16 @@ The skill reuses existing settings history and central auditing before proposing
 
 Read the complete [agent instructions](SKILL.md) and their linked discovery and implementation references.
 
+## Inspect and implement in one request
+
+For a known implementation objective, use this in agent chat:
+
+```text
+$system-settings build category loading and transactional settings history using existing settings, consumers and audit owners
+```
+
+`build` inspects the current implementation, specifies the selected changes, implements them and verifies them without requiring a preceding `scan` or `plan`. Reuse already-covered behavior. A scan may still conclude that no settings should be added; it does not grant permission to implement every candidate. This skill defines no `--auto` flag. Material unresolved policy choices block dependent work while independent authorized work continues.
+
 ## Install
 
 PowerShell, starting in the local collection root; Python 3.11+:

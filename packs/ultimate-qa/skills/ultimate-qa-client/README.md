@@ -32,6 +32,22 @@ $ultimate-qa-client prepare
 
 In Claude Code use `/ultimate-qa-client`. These are agent chat instructions, not terminal commands. For the combined review plus client preparation, install the core skill too and invoke `$ultimate-qa run --client`.
 
+## Supported operations and outputs
+
+These are agent-chat requests in the same verified application and QA version:
+
+| Request | Result and boundary |
+|---|---|
+| `$ultimate-qa-client prepare` | Create plain-language QA Markdown and matching rendered/inspected Word reports and approval checklists from the completed audit and plan. Leave client choices blank. |
+| `$ultimate-qa-client intake` | Read the returned form, ask only unanswered intake questions, and record supported requirements/conditions without credentials. |
+| `$ultimate-qa-client decisions` | Record returned approvals, rejections, deferrals, reasons and alternatives verbatim; missing choices stay pending. |
+| `$ultimate-qa-client report` | After separately authorized implementation, summarize actual changes and evidence for the client. Proposed work is not reported as completed. |
+| `$ultimate-qa-client next-version` | Carry unresolved decisions and accepted unfinished work with their original IDs; preserve closed history. |
+
+Provide the actual returned form or decision source when it is not already clear. Client artifacts live under `qa-findings/v<N>/client/`; implementation summaries use its `after_implementation/` subtree. Reruns archive generated files and preserve returned decisions. Missing audit/plan, client skill dependencies, or rendering capability remain explicit blockers. Supplying decisions does not itself change QA finding status without implementation evidence.
+
+Use `prepare` explicitly; there is no documented bare-invocation default or generic `--auto` mode. For the complete review and preparation workflow use `$ultimate-qa run --client`. None of these operations automatically implements recommendations or sends documents.
+
 ## Prerequisites and limits
 
 Requires the complete QA kit, a completed audit and improvement plan, Python 3.11+, and the optional `python-docx` package for Word output. Word deliverables also need a compatible renderer and visual inspection.

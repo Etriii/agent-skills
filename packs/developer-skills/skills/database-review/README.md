@@ -31,6 +31,12 @@ $database-review Review the account migration for old/new reader compatibility, 
 
 In Claude Code use `/database-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect integrity/migration findings with old/new reader compatibility, concurrency risks, preservation and recovery checks. Stop at the review; this request does not run schema changes or modify data.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide schemas, queries, migrations and backup evidence. Engine-specific claims need the actual database; the review does not run migrations.

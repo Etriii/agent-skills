@@ -31,6 +31,12 @@ $completion-check Verify phase 2 against docs/plan.md and the current revision. 
 
 In Claude Code use `/completion-check`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect a criterion-by-criterion pass, fail, unavailable or blocked result with executed checks and remaining proof. It verifies existing work; application fixes, merging and deployment are outside this request.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide acceptance criteria, revision and prior evidence. Verification does not authorize product edits, merges or deployment.

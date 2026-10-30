@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Clarify skill results and execution boundaries, document continuous build requests and supported UI/UX help, and link the complete command guide and contribution checklist.
 - Add system-settings with detailed necessity discovery, scoped implementation for new or existing settings, category loading, and transactional audit reuse.
 - Rename report-creator to report-builder with updated chat/install examples and guidance for existing installed copies.
 - Strengthen report-builder with durable worker execution, persisted progress, reload/navigation recovery, reliable dispatch, and idempotent file publication.

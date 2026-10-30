@@ -31,6 +31,12 @@ $business-rules-review Review the approval workflow, including existing approved
 
 In Claude Code use `/business-rules-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect a rule/source matrix, unresolved policy questions and boundary-case acceptance examples. The default is advice: no policy is selected or implemented from UI wording or convenience.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide policy sources, workflow states and representative records. Missing policy needs an authorized decision rather than inference from UI fields.

@@ -31,6 +31,12 @@ $ultimate-qa-architecture Trace the request approval journey from UI through per
 
 In Claude Code use `/ultimate-qa-architecture`. These are agent chat instructions, not terminal commands. For versioned reports integrated with the core workflow, also install `ultimate-qa` and invoke `$ultimate-qa run`.
 
+## Expected result and stopping point
+
+Expect source-linked journey findings, evidence-supported dimension scores, and a risk/dependency-ordered repair recommendation. Unassessed dimensions remain blank; the review does not refactor the application.
+
+Supply the target application, selected journeys/endpoints and authorized test environment in the request or conversation. This specialist accepts natural-language scope; it defines no generic `run`, `build` or `--auto` mode. When a current QA version exists, evidence belongs to that review. A standalone review does not silently create a complete versioned QA run.
+
 ## Prerequisites and limits
 
 Needs application source and available tests/static analysis. The skill includes [architecture checks](references/checks.md); no full QA kit is required for a standalone source review.

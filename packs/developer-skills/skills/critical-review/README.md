@@ -31,6 +31,12 @@ $critical-review Challenge docs/plan.md using the current source. Report only su
 
 In Claude Code use `/critical-review`. These are agent chat instructions, not terminal commands.
 
+## Expected result and stopping point
+
+Expect a short ranked set of evidence-backed objections, simpler alternatives and the checks that would settle each concern. If no concern survives source review, the result says so. This is critique, not implementation.
+
+Supply the selected task or subject and relevant paths in the request or conversation. This skill uses natural-language scope rather than a fixed set of subcommands; do not add another skill's `run`, `build` or `--auto` syntax.
+
 ## Prerequisites and limits
 
 Provide a specific plan or diff and acceptance criteria. This review does not implement changes or expand the requested scope.

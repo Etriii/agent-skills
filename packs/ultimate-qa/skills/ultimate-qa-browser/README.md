@@ -31,6 +31,12 @@ $ultimate-qa-browser Exercise request creation on local staging with the provide
 
 In Claude Code use `/ultimate-qa-browser`. These are agent chat instructions, not terminal commands. For versioned reports integrated with the core workflow, also install `ultimate-qa` and invoke `$ultimate-qa run`.
 
+## Expected result and stopping point
+
+Expect journey results with URL, role, steps, expected/observed behavior and available screenshots/traces. Pending navigation is awaited; missing browser/runtime access is a coverage limit. Application fixes or new regression tests require implementation authorization.
+
+Supply the target application, selected journeys/endpoints and authorized test environment in the request or conversation. This specialist accepts natural-language scope; it defines no generic `run`, `build` or `--auto` mode. When a current QA version exists, evidence belongs to that review. A standalone review does not silently create a complete versioned QA run.
+
 ## Prerequisites and limits
 
 Needs an authorized local/staging URL, test roles, reset method and an available browser tool such as the project's installed Playwright. The kit's browser guide supplies additional guidance when available.
