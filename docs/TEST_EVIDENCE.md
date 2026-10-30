@@ -1,5 +1,17 @@
 # Collection verification
 
+## Durable report generation guidance, 2026-10-31
+
+Report Creator now requires durable backend generation for PDF and Excel, prompt acknowledgement of a persisted request, server-owned status/progress on Generated Reports, reload/navigation/tab-close recovery, measured stages/counts, and an indeterminate display for unknown totals. Guidance covers reliable dispatch after commit, idempotent submission and worker retries, stale-job detection, complete-file publication, permission-scoped updates, and retention starting at successful completion.
+
+Focused verification with Python 3.14.7 used a temporary C: working directory and absolute source-test paths to avoid the existing cross-drive fixture limitation:
+
+- Installer tests: 25 passed, including selected report-creator copies and reference access for both agents.
+- Public-contract tests: 5 passed. Packaging tests: 3 passed, including complete manifests and repeatable archive bytes.
+- All 11 local Markdown links in report-creator resolved. Only its four changed payload hashes were refreshed; whitespace checks passed.
+
+This is an instruction update. No application job runner, actual worker, browser recovery, realtime progress, or fault-injection trial was executed. Those checks are explicit requirements for target-application delivery; packaging tests do not establish that behavior.
+
 ## Mobile review, alignment and action hierarchy, 2026-10-31
 
 Added standalone `ultimate-mobile` using the existing shared-resource owner and approval/auto workflow. Main, UI-only and UX-only responsive web reviews now explicitly load the same mobile playbook; mobile is not dependent on installing the shortcut. There are 29 Developer Skills and 38 skills across the collection, with unchanged Essential defaults.

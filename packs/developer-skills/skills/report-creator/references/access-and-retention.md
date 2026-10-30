@@ -32,6 +32,22 @@ Treat queued, running, ready, failed, and expired as lifecycle concepts and map 
 
 Download the stored artifact without regenerating it. A regeneration creates a new artifact/reference, its own generation time, scope, and retention window. Do not silently change an old file's content or audience.
 
+## Durable background generation and progress
+
+For both PDF and Excel, submitting Generate must create a durable export request with its validated selection, generator, authorized scope, and a stable reference. Return an accepted response promptly using the application's API conventions, with that reference and a status/page location. The request handler must not wait for document rendering. A short submission indicator is appropriate only while acceptance is unresolved.
+
+Reuse the application's backend queue, worker, transaction, and job-status owners. Enqueue after the export request commits, using the existing outbox or reliable dispatch/reconciliation pattern so an accepted request cannot be silently lost between database commit and queue publication. A browser worker, local promise, request-scoped background callback, or in-memory task alone does not provide durability. If no durable job facility exists, identify the prerequisite and implement the smallest persistent worker pattern appropriate to the authorized scope; never claim background delivery through a synchronous fallback.
+
+Keep the accepted job independent of the browser connection. Reloading, navigating away, closing the tab, or returning later must not cancel it or require another Generate click. After acceptance, show the request's row on Generated Reports and link or navigate to that page using existing navigation patterns. Persisted job state, not the originating page, owns progress. Fetch current authorized status on entry/reload; optional inline progress or completion notifications may supplement that page.
+
+The Generated Reports table must include a Status field and a Progress field or clearly labelled combined cell. Show Queued, Generating/Running, Ready, Failed, and Expired using existing lifecycle mappings. While processing, show the actual stage, such as Reading records, Building summary, Rendering PDF/Writing workbook, or Saving file. Include processed counts and percentages only where the worker has a trustworthy denominator and defined units. Never invent progress, an ETA, or use a preview row count as a generation total. When total work is unknown, show an indeterminate indicator with the stage and last update rather than implying a stalled task is progressing.
+
+Persist progress at useful bounded intervals through the job/export owner, including current stage, measured counts where available, started/completed times, and last progress or heartbeat time. Keep progress scoped and avoid leaking row values through status messages. Use the existing realtime channel when available with bounded polling fallback; refetch persisted state after reconnect, stop polling terminal jobs, and clear subscriptions/timers on unmount. Polling failures mean status is temporarily unavailable, not that generation failed. Announce meaningful status transitions accessibly without announcing every progress tick.
+
+Use the existing job retry, timeout, heartbeat/lease, and recovery rules. Detect stale or worker-interrupted jobs and expose truthful delayed/retrying/failed feedback instead of leaving Running indefinitely or promising a deadline without evidence. Protect against duplicate submission retries with the existing request-idempotency mechanism; disabling a button alone is insufficient. Distinguish a deliberate new generation from retrying the same submission. Make worker execution idempotent, with atomic claiming/finalization and ownership protection so concurrent or retried jobs cannot publish duplicate artifacts, regress terminal state, or overwrite a completed file.
+
+Mark Ready only after the complete file is safely stored and its metadata committed. Failed attempts must not expose partial files; retain safe errors and offer an authorized retry/regeneration through existing flows. Start the configured 24-hour retention window only at successful completion. Report missing worker, queue, storage, or scheduler prerequisites explicitly; a queued row alone does not prove a functioning worker.
+
 ## Retention configuration and clock
 
 Default availability: **24 hours from successful completion**, not from request, first download, or last download. Keep any existing generation timeout separate from file-retention time.

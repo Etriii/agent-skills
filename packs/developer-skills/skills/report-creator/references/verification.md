@@ -25,6 +25,16 @@ Verify default 24-hour availability beginning at successful completion. Use a co
 
 Confirm setting changes follow the stated future-artifact rule and that private storage access cannot bypass expiry or authorization. Run the existing cleanup/job tests and verify scheduler registration. Distinguish fixture proof from an actually observed scheduled execution.
 
+## Background execution and progress recovery
+
+Exercise both PDF and Excel through the actual submission, persisted export record, dispatch, worker, storage, and status endpoints. Confirm an accepted response with a stable reference arrives before rendering finishes, and the Generated Reports row immediately reflects queued/running state.
+
+Reload the originating page and Generated Reports page, navigate away and return, and close the originating tab during generation. The job must continue without a second submission; the page must recover current server-owned status and eventually enable the stored download. Verify stage/count updates, unknown-total indeterminate progress, authorized status visibility, polling/realtime reconnection, terminal polling stop, cleanup on unmount, and accessible status transitions.
+
+Test submission-response loss/retry, dispatch failure after commit, duplicate/concurrent worker delivery, worker interruption/restart, timeout, stale heartbeat, rendering/storage failure, and eventual recovery through existing job mechanisms. Ensure no accepted job disappears, no stale job remains falsely Running indefinitely, and no retry publishes duplicate or partial files. Verify an intentional new generation remains possible. A failed poll must not mark a running job Failed.
+
+Verify Ready only after successful file publication, and expiry measured from completion even for a slow job. Do not claim measured percentages without a reliable denominator; ensure no artificial timer reports progress. Separate fixture tests from a real worker/browser trial and identify missing queue/worker prerequisites.
+
 ## PDF artifacts
 
 Generate representative permitted fixtures with short and long records, empty results, many sections, long labels, meaningful status/type categories, Unicode/currency symbols, and a capped dataset.

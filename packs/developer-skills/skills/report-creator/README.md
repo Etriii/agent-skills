@@ -26,6 +26,12 @@ A dedicated Generated Reports page lists files available to their authorized aud
 
 Read the [agent instructions](SKILL.md) for command boundaries and linked discovery, document, access, lifecycle, and verification guidance.
 
+## Background processing
+
+Both export formats use durable backend jobs, preferably the application's existing workers. Generate returns a persisted request reference promptly. The dedicated Generated Reports table owns status and progress, showing queued/generating/ready/failed/expired states and measured stages or counts. Unknown totals use an indeterminate indicator rather than a fabricated percentage.
+
+Reloading, navigating away, or closing the tab does not stop generation. Returning to Generated Reports reloads current authorized state from the server, using realtime updates or bounded polling. Retries and worker restarts must not lose accepted requests, publish duplicate/partial files, or leave stale jobs falsely running. The 24-hour retention clock starts when the complete file becomes ready.
+
 ## Install
 
 PowerShell, starting in the local collection root; Python 3.11+:

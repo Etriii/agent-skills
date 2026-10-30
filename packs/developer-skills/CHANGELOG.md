@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Strengthen report-creator with durable worker execution, persisted progress, reload/navigation recovery, reliable dispatch, and idempotent file publication.
 - Add ultimate-mobile and strengthen default mobile, control-alignment, header-context and dialog/button-hierarchy guidance across the UI/UX suite.
 
 - Add independent combined/UI-only/UX-only interface review skills with gated or automatic execution, saved comparisons, scoped implementation and licensed offline design references.
