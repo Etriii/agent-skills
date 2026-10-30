@@ -53,20 +53,20 @@ class LifecycleTests(unittest.TestCase):
         return catalog.files_in(self.project)
 
     def test_both_complete_packs_and_agents_have_real_records_and_qa_kit_markers(self):
-        for pack, expected in (("developer-skills", 29), ("ultimate-qa", 9)):
+        for pack, expected in (("developer-skills", 30), ("ultimate-qa", 9)):
             self.assertEqual(self.run_tool("--bundle", "all", pack=pack, agent="both", names=None), 0, self.last_error)
             event = self.history()[-1]
             self.assertEqual(event["pack"], pack)
             self.assertEqual(len(event["entries"]), expected * 2)
             self.assertRegex(event["manifest_sha256"], r"^[0-9a-f]{64}$")
         for directory in (".agents", ".claude"):
-            self.assertEqual(len(list((self.project / directory / "skills").iterdir())), 38)
+            self.assertEqual(len(list((self.project / directory / "skills").iterdir())), 39)
             for name in ("ultimate-qa", "ultimate-qa-client"):
                 kit = (self.target(name, directory) / "kit-location.txt").read_text().strip()
                 self.assertEqual(Path(kit), ROOT / "packs/ultimate-qa")
                 self.assertTrue((Path(kit) / "02_QA_CHECKLIST.md").is_file())
         owners, sequence = records.inventory(self.project)
-        self.assertEqual((len(owners), sequence), (76, 2))
+        self.assertEqual((len(owners), sequence), (78, 2))
 
     def test_selective_uninstall_preserves_other_agents_packs_reports_and_backups(self):
         self.assertEqual(self.run_tool(agent="both"), 0)
@@ -235,7 +235,7 @@ raise SystemExit(install_skills.main(['--agent', 'both', '--project', sys.argv[2
         self.assertEqual(self.snapshot(), before)
 
     def test_pack_wrappers_use_shared_list_command(self):
-        for pack, expected in (("developer-skills", 29), ("ultimate-qa", 9)):
+        for pack, expected in (("developer-skills", 30), ("ultimate-qa", 9)):
             result = subprocess.run([sys.executable, "-B", str(ROOT / "packs" / pack / "tools/install_skills.py"), "--list"],
                                     cwd=self.base, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)

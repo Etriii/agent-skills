@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add system-settings with detailed necessity discovery, scoped implementation for new or existing settings, category loading, and transactional audit reuse.
 - Rename report-creator to report-builder with updated chat/install examples and guidance for existing installed copies.
 - Strengthen report-builder with durable worker execution, persisted progress, reload/navigation recovery, reliable dispatch, and idempotent file publication.
 - Add ultimate-mobile and strengthen default mobile, control-alignment, header-context and dialog/button-hierarchy guidance across the UI/UX suite.

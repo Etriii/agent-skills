@@ -63,6 +63,7 @@ Choose a helper for the authorized type of work. These skills work independently
 | [report-builder](packs/developer-skills/skills/report-builder/README.md) | Discover reporting needs and implement scoped reports with styled PDF and Excel exports and retained generated files. | `developer-skills` |
 | [safe-refactor](packs/developer-skills/skills/safe-refactor/README.md) | Change structure while preserving defined behavior and public contracts. | `developer-skills` |
 | [surgical-patch](packs/developer-skills/skills/surgical-patch/README.md) | Correct a specific defect at its responsible owner with regression proof. | `developer-skills` |
+| [system-settings](packs/developer-skills/skills/system-settings/README.md) | Assess runtime settings needs and build scoped settings with category loading and transactional audit reuse. | `developer-skills` |
 | [verify-and-stop](packs/developer-skills/skills/verify-and-stop/README.md) | Verify existing work against acceptance without adding implementation scope. | `developer-skills` |
 
 ## Execution and handoff

@@ -1,6 +1,6 @@
 # Developer Skills pack
 
-Twenty-nine independent skills for prompt intake, planning, UI/UX and mobile review, report creation, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
+Thirty independent skills for prompt intake, planning, UI/UX and mobile review, reports, system settings, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
 
 This pack belongs to [Agent Skills](../../README.md). Each skill has its own README with installation, usage and prerequisites.
 
@@ -8,7 +8,7 @@ Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md
 
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Install one skill or all 29 globally for Codex:
+Requires Node.js 22.20+ and npm. Install one skill or all 30 globally for Codex:
 
 ```powershell
 npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
@@ -27,7 +27,7 @@ python tools/install_skills.py --pack developer-skills --agent both --project "D
 python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --bundle essential
 ```
 
-Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 29. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
+Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 30. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
 
 The [installation guide](../../INSTALL.md) covers user scope, integrity, matching-copy adoption, backup replacement and recovery. The [removal guide](../../UNINSTALL.md) gives tracked uninstall/reinstall commands. Completed changing operations create scoped Markdown history; removal preserves records and content backups.
 
@@ -59,6 +59,7 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [safe-refactor](skills/safe-refactor/README.md) | Restructure code while preserving defined behavior and contracts. |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |
+| [system-settings](skills/system-settings/README.md) | Assess runtime settings needs and implement scoped settings with category loading and audit reuse. |
 | [table-ux-review](skills/table-ux-review/README.md) | Audit table detail navigation and row actions with role-aware recommendations and accessibility checks. |
 | [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Coordinate UI/UX audits, before/after wireframes and gated or autonomous scoped improvements. |
 | [ultimate-ui](skills/ultimate-ui/README.md) | Review and improve visual presentation while preserving task flows. |

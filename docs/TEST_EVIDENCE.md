@@ -1,5 +1,19 @@
 # Collection verification
 
+## System Settings skill, 2026-10-31
+
+Added system-settings under Implementation and change safety with portable scan, plan, build, verify and help instructions. Discovery assesses actual workflows and runtime consumers, supports applications without settings infrastructure, and can conclude no new settings are justified. Implementation guidance covers category-first loading, preserved drafts, transactional audit reuse or minimal missing history, concurrency, scope and cache freshness. Developer Skills now contains 30 skills; the collection contains 39. Essential defaults are unchanged.
+
+Executed checks:
+
+- All 86 collection tests passed on Python 3.14.7 from a disposable C: working directory, including selected system-settings copies for both agents, exact payload hashes, accessible instruction references, catalogs, lifecycle records and packaging.
+- All 10 Ultimate QA tests passed. Sandbox attempts could not write temporary Git configuration or installer journals; successful suites ran outside the sandbox in disposable folders. The first collection rerun exposed one remaining expected ownership count, corrected from 76 to 78 before the final successful run.
+- All 137 local Markdown file targets in the new skill and affected catalogs/workflow guide resolved. The manifest adds exactly the five new skill files; existing payload hashes are unchanged. ZIP packaging and whitespace checks passed.
+- Cached skills@1.7.4 discovered exactly 39 shipping skills. Selected and complete Developer Skills copies matched source for both agents, including both system-settings references. See [external CLI evidence](NPX_COMPATIBILITY.md#system-settings-2026-10-31).
+- An independent source-only scenario exercise distinguished a complete PNG CLI with deployment configuration and fixed protocol constants from an existing commerce settings/audit feature slice. It recommended no new settings for the former and scoped extension for the latter, retained read-only scan boundaries, and found no instruction contradiction. This is limited scenario evidence, not proof of behavior across arbitrary applications.
+
+The skill-creator quick validator could not run because PyYAML is unavailable (`ModuleNotFoundError: No module named 'yaml'`). Collection-native constrained frontmatter, metadata, payload and catalog checks passed; no dependency was installed for this optional validator. Native agent discovery remains unverified, so compatible_agents stays empty. No real-profile installation, target-application implementation, browser trial, database concurrency trial, production change, commit or publication was performed.
+
 ## Report Builder rename, 2026-10-31
 
 Renamed the shipping report-creator directory, frontmatter, stable metadata identity, chat/install examples, catalogs, and installer coverage to report-builder. The four instruction references are byte-identical to the previous commit; the entrypoint changes only the name. No alias, profile migration, runtime behavior change, or skill-count change was introduced. The README explains removal/update boundaries for existing installed copies. Earlier evidence retains the old name to describe the snapshots actually tested.

@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "system-settings"
+name = "system-settings"
+version = "0.1.0"
+capabilities = ["settings-discovery", "settings-design", "settings-implementation", "settings-verification"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-authored"

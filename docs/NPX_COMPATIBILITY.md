@@ -1,5 +1,15 @@
 # External CLI compatibility evidence
 
+## System Settings, 2026-10-31
+
+Cached skills@1.7.4 ran through Node.js against local sources in disposable projects, with an isolated profile and telemetry disabled:
+
+- Root discovery listed exactly 39 shipping skills, including system-settings; sample-review and report-creator were absent.
+- Selected installation copied only system-settings for Codex and Claude Code. Every payload hash matched source, and both instruction references were accessible in each copy.
+- A separate complete Developer Skills installation copied exactly 30 skills per agent. Every copied payload hash matched source, with both system-settings references accessible.
+
+The changing commands used explicit agents, project scope, --copy and fixture-only -y. No remote source, downloads, global installation, real-profile change or target-application implementation was involved. These checks prove external discovery and copy integrity, not native agent discovery, model adherence, database behavior or browser interaction. Earlier entries retain their original snapshot counts.
+
 ## Report Builder rename, 2026-10-31
 
 Cached skills@1.7.4 local discovery listed all 38 shipping skills with report-builder present and report-creator/sample-review absent. Selected report-builder and the complete 29-skill Developer Skills pack installed into separate disposable projects for Codex and Claude Code. Every copied payload hash matched source; all four instruction references resolved in each installed report-builder copy.

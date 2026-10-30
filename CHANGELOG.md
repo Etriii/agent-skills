@@ -2,6 +2,7 @@
 
 ## Unreleased collection 0.1.0
 
+- Add system-settings for evidence-based runtime settings assessment, new or existing implementations, category-first loading, and transactional reuse of settings history and central auditing.
 - Rename report-creator to report-builder across skill identity, invocation, selection, documentation and integrity manifests; preserve all reporting behavior.
 - Require durable report-generation jobs with recoverable status/progress on Generated Reports, measured progress, reliable dispatch, and safe worker retries.
 - Add ultimate-mobile as an independent mobile web UI/UX shortcut; keep mobile checks enabled in normal reviews and specify control alignment, header priorities, account-menu access, filter reflow and semantic dialog/action hierarchy.

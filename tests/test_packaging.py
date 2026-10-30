@@ -50,7 +50,7 @@ class PackagingTests(unittest.TestCase):
             self.assertFalse(seen.intersection(names))
             seen.update(names)
             self.assertEqual(set(catalog.bundle(pack, names)), set(names))
-        self.assertEqual(len(seen), 38)
+        self.assertEqual(len(seen), 39)
 
     def test_tree_fingerprint_is_independent_of_platform_filename_order(self):
         rows = {"SKILL.md": "a" * 64, "kit-location.txt": "b" * 64}

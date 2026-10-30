@@ -55,12 +55,15 @@ Select a helper according to the authorized work. Diagnose an unclear failure fi
 |---|---|
 | Unclear or intermittent failure | `investigate-first` |
 | New feature | `lean-build` |
+| Runtime settings discovery, design, implementation or verification | `system-settings` |
 | Specific defect or small behavior change | `surgical-patch` |
 | Structural change preserving behavior | `safe-refactor` |
 | Compatibility-sensitive transition | `migration` |
 | Verification without new implementation | `verify-and-stop` |
 
 Suggested flow: review the plan, resolve blockers, select the applicable helper, perform the authorized work, verify acceptance and record a handoff. A helper is optional at each stage. `completion-check` remains the Essential acceptance reviewer; `verify-and-stop` supplies a bounded verification method rather than a competing completion record.
+
+Use `$system-settings scan` to inspect application behavior, existing configuration, real consumers and audit coverage before deciding whether runtime settings are justified. It supports applications with no settings infrastructure and can recommend no new settings. `plan` remains read-only; `build <scope>` implements selected settings, category-first loading and audit reuse within that authorization. `verify` checks existing work without automatic fixes. See the [skill guide](../packs/developer-skills/skills/system-settings/README.md).
 
 For a PhasePilot-managed project, include the desired helper names in `selected_skills`, review `skills sync --dry-run`, then approve the exact local copies through the existing lifecycle. Once the selected scope is authorized, invoke the installed helper in the same coding-agent session, for example:
 

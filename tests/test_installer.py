@@ -30,7 +30,7 @@ NAMES = {
     "frontend-review", "backend-review", "database-review", "security-privacy-review",
     "business-rules-review", "delivery-readiness", "critical-review", "deep-critique", "prompt-intake",
     "investigate-first", "lean-build", "surgical-patch", "safe-refactor", "migration", "verify-and-stop",
-    "report-builder",
+    "report-builder", "system-settings",
     "table-ux-review",
     "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile",
 }
@@ -45,7 +45,7 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                expected_agents = [] if name in {"report-builder", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"} else ["codex", "claude"]
+                expected_agents = [] if name in {"report-builder", "system-settings", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"} else ["codex", "claude"]
                 self.assertEqual(metadata["compatible_agents"], expected_agents)
                 expected_files = {"SKILL.md", "README.md", "metadata.toml"}
                 if name == "deep-critique":
@@ -55,6 +55,8 @@ class CatalogTests(unittest.TestCase):
                         "references/discovery-and-metrics.md", "references/documents.md",
                         "references/access-and-retention.md", "references/verification.md",
                     }
+                elif name == "system-settings":
+                    expected_files |= {"references/discovery.md", "references/implementation.md"}
                 elif name in {"ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"}:
                     expected_files |= {
                         "THIRD_PARTY.md", "assets/comparison.html",
@@ -117,6 +119,28 @@ class InstallerTests(unittest.TestCase):
                     installed_reference = (target / reference).resolve()
                     self.assertTrue(installed_reference.is_relative_to(target.resolve()))
                     self.assertTrue(installed_reference.is_file())
+
+    def test_selected_system_settings_is_self_contained_for_both_agents(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            result = install_skills.main([
+                "--agent", "both", "--project", str(self.project),
+                "--skills", "system-settings", "--yes",
+            ])
+        self.assertEqual(result, 0)
+        source = ROOT / "skills/system-settings"
+        for agent in (".agents", ".claude"):
+            target = self.target("system-settings", agent)
+            self.assertEqual({path.name for path in target.parent.iterdir()}, {"system-settings"})
+            self.assertEqual(catalog.files_in(target), catalog.files_in(source))
+            body = (target / "SKILL.md").read_text(encoding="utf-8")
+            references = re.findall(r"\]\((references/[^)]+)\)", body)
+            self.assertEqual(len(references), 2)
+            for reference in references:
+                with self.subTest(agent=agent, reference=reference):
+                    installed_reference = (target / reference).resolve()
+                    self.assertTrue(installed_reference.is_relative_to(target.resolve()))
+                    self.assertTrue(installed_reference.is_file())
+        self.assertEqual(self.keep.read_text(), "developer-owned\n")
 
     def test_one_codex_skill_only_and_idempotent_repeat(self):
         self.assertEqual(self.run_install("--yes"), 0)
