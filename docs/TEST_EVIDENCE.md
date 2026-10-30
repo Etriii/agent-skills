@@ -1,5 +1,19 @@
 # Collection verification
 
+## Table navigation and row-action review, 2026-10-31
+
+Added table-ux-review as a self-contained Developer Skills review with a usage README, schema-1 metadata and three payload-manifest entries. The pack now contains 24 skills, with 33 across the collection. The skill inventories table instances and shared owners, decides detail navigation per workflow, reviews more than three visible actions without imposing a hard cap, and preserves role access, nested controls, selection, editing and bulk workflows. Review remains the default; an explicit audit-and-fix request authorizes bounded implementation without a second approval step.
+
+Executed verification on Python 3.14.7:
+
+- All 5 focused public-contract checks passed, including complete categorized catalog coverage and shipping-only discovery.
+- All 78 collection tests and all 10 QA-pack tests passed outside the Windows sandbox from a C: temporary working directory with absolute source-test paths. Initial sandbox runs failed on temporary Git configuration and atomic fixture writes; those failures did not recur outside the sandbox.
+- Existing packaging checks validated complete payload manifests, exact archive checksums, included READMEs and repeatable ZIP bytes. Installer lifecycle checks now verify 33 skills per agent and 66 owned destinations across both packs.
+- Offline cached skills@1.7.4 discovery listed all 33 shipping skills, including table-ux-review, and excluded the sample fixture. Selected table-ux-review and full 24-skill Developer Skills installs ran in separate disposable projects for Codex and Claude Code; every copied payload file matched its source hash. No global installation or remote source was used.
+- The optional skill-creator quick validator could not import PyYAML. Repository portable-frontmatter, metadata, catalog and integrity validation passed; no dependency was installed for the optional helper.
+
+Native Codex/Claude protocol discovery for this new skill, model adherence, and application/browser trials remain unverified. Its compatible_agents metadata is empty rather than inheriting older skills' discovery evidence. No application table behavior was changed by this addition.
+
 ## Optional implementation and change-safety helpers, 2026-10-28
 
 The Developer Skills pack now contains 23 skills, with 32 across both packs. Six optional helpers are categorized under Implementation and Change Safety: investigate-first, lean-build, surgical-patch, safe-refactor, migration and verify-and-stop. Each has self-contained instructions, a usage and installation README, task-specific metadata and payload hashes. The Essential selection is unchanged.

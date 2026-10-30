@@ -38,6 +38,7 @@ Inspect design and implementation at the responsible technical or business bound
 | [database-review](packs/developer-skills/skills/database-review/README.md) | Review integrity, concurrency, migration ordering and recovery across database changes. | `developer-skills` |
 | [frontend-review](packs/developer-skills/skills/frontend-review/README.md) | Review UI state ownership, forms, accessibility and responsive behavior with explicit evidence limits. | `developer-skills` |
 | [security-privacy-review](packs/developer-skills/skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. | `developer-skills` |
+| [table-ux-review](packs/developer-skills/skills/table-ux-review/README.md) | Audit table detail navigation and row-action placement with role-aware decisions and accessibility evidence. | `developer-skills` |
 
 ## Implementation and change safety
 

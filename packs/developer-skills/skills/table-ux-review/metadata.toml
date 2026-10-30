@@ -1,0 +1,8 @@
+schema_version = 1
+skill_id = "table-ux-review"
+name = "table-ux-review"
+version = "0.1.0"
+capabilities = ["table-inventory", "detail-navigation-review", "row-action-review", "table-accessibility"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-authored"
