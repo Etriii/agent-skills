@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store layout comparison — illustrative wireframe</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #202020; background: #f3f3f3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.5; }
+    main { max-width: 1200px; margin: auto; padding: 24px; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.2; }
+    h2 { margin-top: 0; }
+    h3 { font-size: 1.1rem; }
+    p { max-width: 72ch; }
+    .note { padding: 16px; border-left: 4px solid #444; background: #fff; }
+    .comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    .screen { min-width: 0; padding: 24px; background: #fff; border: 1px solid #999; }
+    .store { padding-bottom: 16px; border-bottom: 1px solid #aaa; }
+    .products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0; list-style: none; }
+    .product { min-width: 0; border: 1px solid #aaa; padding: 12px; overflow-wrap: anywhere; }
+    .image { aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, #eee, #eee 8px, #ddd 8px, #ddd 9px); }
+    .secondary { margin-top: 32px; padding: 16px; background: #eee; }
+    [role="tablist"] { display: flex; gap: 4px; flex-wrap: wrap; margin: 20px 0; border-bottom: 1px solid #777; }
+    button { font: inherit; min-height: 44px; padding: 10px 16px; color: inherit; background: #eee; border: 1px solid transparent; cursor: pointer; }
+    [role="tab"][aria-selected="true"] { font-weight: 700; border-color: #444; background: #fff; border-bottom: 3px solid #222; }
+    :focus-visible { outline: 3px solid #222; outline-offset: 3px; }
+    [role="tabpanel"] { min-height: 160px; }
+    [hidden] { display: none !important; }
+    .caption { font-size: .9rem; }
+    @media (max-width: 760px) { .comparison { grid-template-columns: 1fr; } main { padding: 16px; } .screen { padding: 16px; } }
+    @media (max-width: 360px) { .products { grid-template-columns: 1fr; } [role="tab"] { padding-inline: 10px; } }
+    @media print { .comparison { display: block; } .screen { margin-bottom: 24px; } [role="tabpanel"][hidden] { display: block !important; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Store content grouping</h1>
+  <p class="note"><strong>Illustrative starter, not an application capture.</strong> Replace this example with the reviewed page, evidence and approved findings. Both views use the same sample content. No business actions or network requests occur.</p>
+  <div class="comparison">
+    <section aria-labelledby="before-title">
+      <h2 id="before-title">Before — illustrative stacked layout</h2>
+      <p class="caption">Reconstruct from inspected source or replace with recorded baseline screenshots. Runtime appearance is unverified.</p>
+      <div class="screen">
+        <header class="store"><h3>Example store</h3><p>Store identity and rating summary remain visible.</p></header>
+        <section aria-labelledby="before-products"><h3 id="before-products">Products</h3>
+          <ul class="products">
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product A</p></li>
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product B</p></li>
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product C with a longer title</p></li>
+          </ul>
+        </section>
+        <section class="secondary" aria-labelledby="before-channel"><h3 id="before-channel">Channel</h3><p>No channel posts in this sample state.</p></section>
+        <section class="secondary" aria-labelledby="before-reviews"><h3 id="before-reviews">Reviews</h3><p>No reviews in this sample state.</p></section>
+      </div>
+    </section>
+    <section aria-labelledby="after-title">
+      <h2 id="after-title">Proposed — one peer view at a time</h2>
+      <p class="caption">Low-fidelity proposal. Test each tab with mouse and keyboard. Application history, filters and permissions require separate implementation checks.</p>
+      <div class="screen">
+        <header class="store"><h3>Example store</h3><p>Store identity and rating summary remain visible.</p></header>
+        <div role="tablist" aria-label="Store content">
+          <button type="button" role="tab" id="tab-products" aria-controls="panel-products" aria-selected="true" tabindex="0">Products</button>
+          <button type="button" role="tab" id="tab-channel" aria-controls="panel-channel" aria-selected="false" tabindex="-1">Channel</button>
+          <button type="button" role="tab" id="tab-reviews" aria-controls="panel-reviews" aria-selected="false" tabindex="-1">Reviews</button>
+        </div>
+        <section role="tabpanel" id="panel-products" aria-labelledby="tab-products" tabindex="0">
+          <h3>Products</h3>
+          <ul class="products">
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product A</p></li>
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product B</p></li>
+            <li class="product"><div class="image" aria-hidden="true"></div><p>Sample product C with a longer title</p></li>
+          </ul>
+        </section>
+        <section role="tabpanel" id="panel-channel" aria-labelledby="tab-channel" tabindex="0" hidden><h3>Channel</h3><p>No channel posts in this sample state.</p></section>
+        <section role="tabpanel" id="panel-reviews" aria-labelledby="tab-reviews" tabindex="0" hidden><h3>Reviews</h3><p>No reviews in this sample state.</p></section>
+      </div>
+    </section>
+  </div>
+  <section aria-labelledby="decision-title">
+    <h2 id="decision-title">Decision to validate</h2>
+    <p>Tabs fit when these are peer tasks within one store context. Keep sections if users need simultaneous comparison; use routes when standalone destinations matter.</p>
+    <p>Use Products for a fresh visit. Preserve valid direct links, browsing state, review access and existing permissions in the actual application.</p>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('[role="tablist"]').forEach((list) => {
+    const tabs = Array.from(list.querySelectorAll('[role="tab"]'));
+    const moveFocus = (target) => {
+      tabs.forEach((tab) => { tab.tabIndex = tab === target ? 0 : -1; });
+      target.focus();
+    };
+    const activate = (target) => {
+      tabs.forEach((tab) => {
+        const selected = tab === target;
+        tab.setAttribute('aria-selected', String(selected));
+        document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
+      });
+      moveFocus(target);
+    };
+    list.addEventListener('focusout', (event) => {
+      if (!list.contains(event.relatedTarget)) {
+        tabs.forEach((tab) => { tab.tabIndex = tab.getAttribute('aria-selected') === 'true' ? 0 : -1; });
+      }
+    });
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        if (next !== undefined) { event.preventDefault(); moveFocus(tabs[next]); }
+      });
+      // Native buttons activate on Enter/Space; arrow keys move focus without selecting a panel.
+    });
+  });
+</script>
+</body>
+</html>

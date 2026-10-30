@@ -14,6 +14,9 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 | [architecture-review](skills/architecture-review/README.md) | Boundaries, ownership and tradeoffs | Planning advisor |
 | [frontend-review](skills/frontend-review/README.md) | UI states, accessibility and visual evidence | Planning advisor |
 | [table-ux-review](skills/table-ux-review/README.md) | Table inventory, detail navigation and role-aware row-action placement | Review |
+| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Combined interface audit, before/after previews and scoped improvements | Gated review; explicit auto mode |
+| [ultimate-ui](skills/ultimate-ui/README.md) | Visual hierarchy, layout, typography and responsive review | UI-only gated review |
+| [ultimate-ux](skills/ultimate-ux/README.md) | Navigation, content grouping, task flows and interaction review | UX-only gated review |
 | [backend-review](skills/backend-review/README.md) | API contracts, authorization and side effects | Planning advisor |
 | [database-review](skills/database-review/README.md) | Integrity, migration and recovery | Planning advisor |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trust boundaries and data policy | Planning advisor |
@@ -32,6 +35,6 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 
 Essential contains the first four only. The library has no default background loading, invocation telemetry or private runtime requirement. `environment-doctor` provides deterministic command guidance; it does not ship a diagnostics engine. Execution aids are agent instructions, not command runners.
 
-Metadata records local authorship, capabilities, version and undecided license status. Before report-creator and table-ux-review were added, isolated native protocol checks discovered the then-shipping 23 skills in Codex CLI 0.165.0 and Claude Code 2.1.299, including the six optional implementation helpers. Those skills' compatible_agents metadata records both agents; report-creator and table-ux-review remain unverified in native agent discovery. This proves project discovery for the observed skills, not model compliance, user-scope discovery or every future agent version. See [current evidence](../../docs/TEST_EVIDENCE.md) and [historical compatibility evidence](docs/COMPATIBILITY.md).
+Metadata records provenance, capabilities, version and undecided license status for local material. The three UI/UX skills declare `local-with-third-party` provenance and bundle source notices/licenses. Before the later additions, isolated native protocol checks discovered the then-shipping 23 skills in Codex CLI 0.165.0 and Claude Code 2.1.299, including the six optional implementation helpers. Those skills' compatible_agents metadata records both agents; report-creator, table-ux-review and the UI/UX suite remain unverified in native agent discovery. This proves project discovery for the observed skills, not model compliance, user-scope discovery or every future agent version. See [current evidence](../../docs/TEST_EVIDENCE.md) and [historical compatibility evidence](docs/COMPATIBILITY.md).
 
 For suggested usage order and the boundary between public advisors and PhasePilot's engine, see the [workflow guide](../../docs/SKILL_WORKFLOWS.md). Primary category assignments live in the [collection catalog](../../SKILL_CATALOG.md).

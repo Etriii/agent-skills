@@ -1,0 +1,9 @@
+schema_version = 1
+skill_id = "ultimate-ui-ux"
+name = "ultimate-ui-ux"
+version = "0.1.0"
+capabilities = ["ui-review", "ux-review", "page-inventory", "wireframe-preview", "scoped-redesign"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-with-third-party"
+third_party_notices = "THIRD_PARTY.md"

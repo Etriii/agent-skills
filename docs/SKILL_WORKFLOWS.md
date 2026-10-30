@@ -29,6 +29,23 @@ $blocker-check Check unresolved decisions for the selected feature in docs/plan.
 
 A review does not authorize implementation. Each invocation must retain the requested scope; completing one stage does not automatically start the next.
 
+## UI and UX reviews with previews
+
+Use `ultimate-ui-ux` to inventory all application pages or selected routes, review visual and task-flow problems, choose fitting patterns, and save findings before creating proposed layouts. The main skill contains both disciplines; `ultimate-ui` and `ultimate-ux` are independently installable focused entrypoints.
+
+These are agent-chat requests in the target application:
+
+```text
+$ultimate-ui-ux run
+$ultimate-ui-ux run --page /stores/:slug
+$ultimate-ui run --page /orders
+$ultimate-ux run --page /checkout --auto
+```
+
+Default execution stops after the proposal, then after low-fidelity before/after comparisons. Proposal approval authorizes previews; design approval authorizes implementation. Explicit `--auto` or a task-specific no-approval request authorizes review, sketches, changes and verification inside the selected scope without skill approval pauses. Platform permissions and material unresolved policy choices still apply. Generic continuation is not new approval.
+
+The agent saves coverage, recommendations, revisions, decisions and proof under the target's `.ui-ux/runs/` directory, preserving previous runs. It does not assume every long page needs tabs, alter unselected shared callers, fabricate rendered evidence or change business/data policy to finish a redesign. Refer to [the suite guide](../packs/developer-skills/skills/ultimate-ui-ux/README.md) for commands, continuation and source licenses.
+
 ## Implementation and change safety
 
 Select a helper according to the authorized work. Diagnose an unclear failure first; for implementation, normally choose one of the feature, fix, refactor or migration helpers. Use verification-only guidance when the task is to check existing work.

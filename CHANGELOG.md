@@ -2,6 +2,8 @@
 
 ## Unreleased collection 0.1.0
 
+- Add ultimate-ui-ux, ultimate-ui and ultimate-ux for all-pages or selected-page interface audits, staged approvals, autonomous improvements, saved before/after wireframes and evidence-based verification. Bundle selected Taste, UI UX Pro Max and frontend-design material with pinned provenance and original licenses.
+
 - Add report-creator with feature/role discovery, mid and detailed reports, styled PDF and Excel exports, effective filters, scoped shared downloads, generated-report history and configurable 24-hour retention.
 - Add table-ux-review for complete scoped table inventories, accessible detail navigation, role-aware action placement and bounded cleanup using existing application patterns.
 - Add six optional implementation and change-safety helpers with portable instructions, task-specific metadata and explicit PhasePilot usage guidance while preserving the four Essential defaults.

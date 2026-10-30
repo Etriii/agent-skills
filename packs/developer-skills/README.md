@@ -1,6 +1,6 @@
 # Developer Skills pack
 
-Twenty-five independent skills for prompt intake, planning, report creation, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
+Twenty-eight independent skills for prompt intake, planning, UI/UX review and previews, report creation, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
 
 This pack belongs to [Agent Skills](../../README.md). Each skill has its own README with installation, usage and prerequisites.
 
@@ -8,7 +8,7 @@ Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md
 
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Install one skill or all 25 globally for Codex:
+Requires Node.js 22.20+ and npm. Install one skill or all 28 globally for Codex:
 
 ```powershell
 npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
@@ -27,7 +27,7 @@ python tools/install_skills.py --pack developer-skills --agent both --project "D
 python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --bundle essential
 ```
 
-Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 25. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
+Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 28. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
 
 The [installation guide](../../INSTALL.md) covers user scope, integrity, matching-copy adoption, backup replacement and recovery. The [removal guide](../../UNINSTALL.md) gives tracked uninstall/reinstall commands. Completed changing operations create scoped Markdown history; removal preserves records and content backups.
 
@@ -60,6 +60,9 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |
 | [table-ux-review](skills/table-ux-review/README.md) | Audit table detail navigation and row actions with role-aware recommendations and accessibility checks. |
+| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Coordinate UI/UX audits, before/after wireframes and gated or autonomous scoped improvements. |
+| [ultimate-ui](skills/ultimate-ui/README.md) | Review and improve visual presentation while preserving task flows. |
+| [ultimate-ux](skills/ultimate-ux/README.md) | Review and improve navigation and task flows while preserving visual identity. |
 | [verify-and-stop](skills/verify-and-stop/README.md) | Verify acceptance conditions without adding implementation scope. |
 | [version-manager](skills/version-manager/README.md) | Plan and record a development-plan version transition while preserving accepted history. |
 
@@ -68,6 +71,8 @@ Invoke skills in agent chat with `$blocker-check` in Codex or `/blocker-check` i
 Use `$prompt-intake <task>` to inspect a prompt before starting dependent work. Each new intake saves `.prompt-intake/questions-v001.md` or the next version and gives a next-action hint. Answer material questions through an available native question tool or in the file, then reply `continue` to resume the active intake. Clear tasks are recorded and proceed directly; automatic matching is not a global prompt interception hook.
 
 For a generic assessment of the current idea, plan, design, implementation, document or decision, type only `$deep-critique`. Full review and ratings run by default; `$deep-critique help` lists optional modes and combinations such as `roast rate`. Python 3.11+ enables categorized reports in the target's ignored `.deep-critique/` folder; each run preserves earlier results. Use `critical-review` for a short planning-specific challenge instead.
+
+Use `$ultimate-ui-ux run` for a combined all-pages interface review, or add `--page /route` and `--auto` for selected-page autonomous work. The default shows findings before sketches and sketches before application edits, with approval between stages. Each of the three UI/UX entrypoints works alone and bundles licensed reference material; see [the suite guide](skills/ultimate-ui-ux/README.md).
 
 ## Contribute
 

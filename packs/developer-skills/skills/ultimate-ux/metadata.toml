@@ -1,0 +1,9 @@
+schema_version = 1
+skill_id = "ultimate-ux"
+name = "ultimate-ux"
+version = "0.1.0"
+capabilities = ["ux-review", "journey-review", "content-grouping", "wireframe-preview"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-with-third-party"
+third_party_notices = "THIRD_PARTY.md"

@@ -1,5 +1,26 @@
 # Collection verification
 
+## UI and UX reviews, previews and autonomous improvements, 2026-10-31
+
+Added `ultimate-ui-ux`, `ultimate-ui` and `ultimate-ux`. The main entrypoint contains both disciplines; each focused entrypoint also works after a one-skill install. Shared resources have one maintained owner in `ultimate-ui-ux` and checked distribution copies for portable standalone installation. The collection now contains 28 Developer Skills and 37 total skills; the four Essential defaults are unchanged.
+
+The instructions cover all-pages or selected-page inventories, UI-only/UX-only boundaries, deliberate choices among sections/tabs/disclosure/routes, source/runtime evidence limits, saved proposals, before/after wireframes, continuation and revision-bound approval records. Default execution stops before sketches and again before application edits. Explicit auto mode completes review, design, implementation and verification without skill approval pauses while retaining selected scope and platform permissions. These are agent instructions, not a separate command parser or approval enforcement service.
+
+Selected Taste-Skill and UI UX Pro Max excerpts/data retain their MIT licenses. Selected Anthropic frontend-design excerpts retain Apache-2.0. Pinned revisions, original and local SHA256 hashes, excerpt boundaries and complete licenses are bundled in every standalone payload. Mixed provenance requires a bundled notice file in the catalog validator. This does not resolve the existing collection/local-material license decision.
+
+Executed on Windows with Python 3.14.7:
+
+- Collection suite: 85 tests passed; QA-pack suite: 10 tests passed. The collection includes six new tests for independent installations to both agents, installed runtime reference containment, pinned source/license integrity, required notices, read-only synchronization checks and preservation of unexpected resources.
+- Windows sandbox execution initially blocked the installer's atomic journal rename with `WinError 5`. The focused six tests and full suites passed outside the sandbox from a C: working directory, using absolute source-test paths. This is the existing fixture/environment limitation, not product runtime proof.
+- Public-contract checks passed, including 37 shipping-only entrypoints, complete/unique catalog categories and valid README/pack links.
+- Cached external `skills@1.7.4` discovered all 37 skills. Each of the three new entrypoints installed alone to both agents in separate disposable projects; full Developer Skills installation copied 28 per agent. Every installed file hash matched source. No global or real application install was used.
+- `node tests/ui_ux_preview.cjs <existing-playwright-core-path> <existing-browser-executable>` passed against headless Edge. It exercised all panels, manual arrow/Enter/Space activation, Home/End/wraparound, selected-state/panel consistency, roving focus and tablist re-entry. No horizontal page overflow occurred at 1280, 390 or 320 pixels. No script errors or HTTP requests occurred. Wide and narrow screenshots were visually inspected; they show the labeled illustrative starter, not a target application.
+- All 90 local Markdown links in the suite's 33 Markdown files resolved. Runtime references stayed inside each copied skill. Resource synchronization, portable frontmatter/metadata, payload manifests, repeatable archive checks and whitespace validation passed.
+
+The optional skill-creator validator could not import host PyYAML; no dependency was installed. The repository's portable validation and real installer/package checks provide structural evidence. The new compatible_agents lists remain empty because native agent protocol discovery was not run.
+
+No independent model-adherence trial, real-application redesign, user acceptance, screen-reader trial, global skill installation, remote publication or production behavior was verified. Approval decisions and review quality remain model-executed instructions; packaging and the sample interaction tests do not prove every future design decision. See [external CLI evidence](NPX_COMPATIBILITY.md#ui-and-ux-suite-2026-10-31).
+
 ## Report Creator, 2026-10-31
 
 Added one portable report-creator skill with scan, plan, build, verify, and help commands. Bare invocation scans; mid and detailed select report content without weakening discovery, access, document, or lifecycle requirements.

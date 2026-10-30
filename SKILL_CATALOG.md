@@ -40,6 +40,16 @@ Inspect design and implementation at the responsible technical or business bound
 | [security-privacy-review](packs/developer-skills/skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. | `developer-skills` |
 | [table-ux-review](packs/developer-skills/skills/table-ux-review/README.md) | Audit table detail navigation and row-action placement with role-aware decisions and accessibility evidence. | `developer-skills` |
 
+## UI and UX design
+
+Review all pages or selected routes, show evidence and before/after wireframes, and implement after approval or explicit autonomous authorization.
+
+| Skill | Purpose | Install pack |
+|---|---|---|
+| [ultimate-ui-ux](packs/developer-skills/skills/ultimate-ui-ux/README.md) | Coordinate UI and UX audits, careful pattern choices, previews and scoped improvements with gated or automatic execution. | `developer-skills` |
+| [ultimate-ui](packs/developer-skills/skills/ultimate-ui/README.md) | Improve visual hierarchy, layout, typography and responsive presentation while preserving task flows. | `developer-skills` |
+| [ultimate-ux](packs/developer-skills/skills/ultimate-ux/README.md) | Improve navigation, content grouping and task flows while preserving visual identity and permissions. | `developer-skills` |
+
 ## Implementation and change safety
 
 Choose a helper for the authorized type of work. These skills work independently and remain optional alongside a coordinator; they do not add a scheduler or automatic advisor-selection rule.

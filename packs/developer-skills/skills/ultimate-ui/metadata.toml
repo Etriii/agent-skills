@@ -1,0 +1,9 @@
+schema_version = 1
+skill_id = "ultimate-ui"
+name = "ultimate-ui"
+version = "0.1.0"
+capabilities = ["ui-review", "visual-hierarchy", "responsive-review", "wireframe-preview"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-with-third-party"
+third_party_notices = "THIRD_PARTY.md"

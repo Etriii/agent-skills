@@ -83,8 +83,11 @@ def validate_skill(root: Path) -> dict:
     agents = metadata.get("compatible_agents")
     if not isinstance(agents, list) or any(a not in {"codex", "claude"} for a in agents):
         raise ValueError(f"Invalid compatible agents: {root}")
-    if metadata.get("license_status") != "UNDECIDED" or metadata.get("provenance") != "local-authored":
+    if metadata.get("license_status") != "UNDECIDED" or metadata.get("provenance") not in ("local-authored", "local-with-third-party"):
         raise ValueError(f"Unsupported license/provenance: {root}")
+    if metadata["provenance"] == "local-with-third-party":
+        if metadata.get("third_party_notices") != "THIRD_PARTY.md" or not (root / "THIRD_PARTY.md").is_file():
+            raise ValueError(f"Third-party content requires bundled notices: {root}")
     return metadata
 
 

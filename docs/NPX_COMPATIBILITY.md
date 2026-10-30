@@ -1,5 +1,15 @@
 # External CLI compatibility evidence
 
+## UI and UX suite, 2026-10-31
+
+The cached `skills@1.7.4` CLI checked local source directly through Node.js with telemetry disabled and project-only copies in disposable directories.
+
+- Collection discovery listed all 37 shipping skills, including `ultimate-ui-ux`, `ultimate-ui` and `ultimate-ux`. Renamed source excerpts did not become extra skills; sample-review remained excluded.
+- Each new skill was installed alone in its own temporary project for Codex and Claude Code with `--copy`, explicit agents and fixture-only `-y`. Exactly the selected skill was present for each agent, and every copied file hash matched source.
+- A separate complete Developer Skills copy contained exactly 28 skills per agent with all payload hashes matching, including local references, preview assets, third-party source records and licenses.
+
+No remote installation source, global scope, real application install, model prompt or native agent protocol discovery was used. Downloads of pinned public reference material for authorship/license review are separate from these offline local-install checks. These checks establish external discovery and copy integrity, not approval adherence, design quality or target-application behavior. Earlier evidence retains its original counts.
+
 ## Report Creator, 2026-10-31
 
 The cached `skills@1.7.4` CLI checked the local report-creator source in disposable projects with an isolated profile, telemetry disabled, and project copies only.

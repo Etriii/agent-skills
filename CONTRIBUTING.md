@@ -14,7 +14,7 @@ packs/<pack>/
     references/ or scripts/    optional
 ```
 
-`SKILL.md` contains agent instructions; `README.md` explains the skill to someone deciding whether to install it. Use unique lowercase hyphenated names and match directory and frontmatter names. Keep examples and fixtures named `SKILL.md.example` so external repository discovery cannot install them. Developer Skills also requires its existing `metadata.toml` contract.
+`SKILL.md` contains agent instructions; `README.md` explains the skill to someone deciding whether to install it. Use unique lowercase hyphenated names and match directory and frontmatter names. Keep examples and fixtures named `SKILL.md.example` so external repository discovery cannot install them. Developer Skills also requires its existing `metadata.toml` contract. Skills that bundle upstream material declare mixed provenance and include `THIRD_PARTY.md`, pinned sources and applicable licenses; checksums alone do not establish reuse rights.
 
 Reuse the shared installer and transaction engine under `tools/`. Keep runtime helpers and templates with their responsible pack or skill. If instructions depend on files outside the skill directory, document how both the recorded installer and the external `skills` CLI locate those files after installation. A cloned temporary source is not a durable kit location.
 
@@ -43,6 +43,8 @@ python -B -m unittest discover -s tests -p test_public_contract.py -v
 These checks compare the categorized catalog with shipping skill directories, reject missing or duplicate entries, verify skill README links and pack IDs, and require a main README link to each populated category. Categories need no separate registry or metadata field.
 
 ## Refresh integrity manifests
+
+For the UI/UX suite, edit shared resources in `ultimate-ui-ux`, then run `python -B tools/sync_ui_ux.py` before refreshing the manifest. The standalone UI/UX payloads carry distribution copies so one-skill installation remains self-contained. `python -B tools/sync_ui_ux.py --check` verifies those copies without writes. Do not edit the mirrors independently.
 
 From the collection root, regenerate the selected pack's existing manifest entries plus every file in its skill directories. This preserves the pack's current support-file coverage:
 
