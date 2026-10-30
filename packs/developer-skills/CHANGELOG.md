@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Add report-creator for evidence-based reporting discovery, specifications, implementation and verification with styled exports, role/data isolation and retained generated files.
-
+- Add table-ux-review with per-table navigation decisions, action-placement recommendations, workflow preservation and explicit evidence limits.
 - Add prompt-intake with context inspection, native question tools when available, chat fallback, versioned question files, separate answer and work states, unfinished-item carry-forward, simple continuation and next-action hints.
 - Add deep-critique for generic detailed assessments with default full mode, evidence-based ratings and optional focused commands.
 - Combine critique modes and save categorized reports through standard-library helpers with unique runs, verified Git ignore rules, ordered transcripts and safe completion retries.

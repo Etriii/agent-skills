@@ -6,7 +6,7 @@ Install through the external `skills` CLI with Node.js 22.20+ and npm, or use ou
 
 | Pack | Skills | Purpose |
 |---|---:|---|
-| [Developer Skills](packs/developer-skills/README.md) | 24 | Prompt intake, planning, report creation, implementation helpers, reviews and handoff |
+| [Developer Skills](packs/developer-skills/README.md) | 25 | Prompt intake, planning, report creation, implementation helpers, reviews and handoff |
 | [Ultimate QA](packs/ultimate-qa/README.md) | 9 | Versioned QA reviews, specialist checks and optional client documents |
 
 Each skill has a README covering its purpose, installation, usage and prerequisites. Browse the [skill catalog](SKILL_CATALOG.md) or read [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
