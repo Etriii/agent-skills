@@ -49,6 +49,7 @@ Review all pages or selected routes, show evidence and before/after wireframes, 
 | [ultimate-ui-ux](packs/developer-skills/skills/ultimate-ui-ux/README.md) | Coordinate UI and UX audits, careful pattern choices, previews and scoped improvements with gated or automatic execution. | `developer-skills` |
 | [ultimate-ui](packs/developer-skills/skills/ultimate-ui/README.md) | Improve visual hierarchy, layout, typography and responsive presentation while preserving task flows. | `developer-skills` |
 | [ultimate-ux](packs/developer-skills/skills/ultimate-ux/README.md) | Improve navigation, content grouping and task flows while preserving visual identity and permissions. | `developer-skills` |
+| [ultimate-mobile](packs/developer-skills/skills/ultimate-mobile/README.md) | Review and improve mobile web headers, filters, dialogs, layout and journeys while checking desktop preservation. | `developer-skills` |
 
 ## Implementation and change safety
 

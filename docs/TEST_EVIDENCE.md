@@ -1,5 +1,20 @@
 # Collection verification
 
+## Mobile review, alignment and action hierarchy, 2026-10-31
+
+Added standalone `ultimate-mobile` using the existing shared-resource owner and approval/auto workflow. Main, UI-only and UX-only responsive web reviews now explicitly load the same mobile playbook; mobile is not dependent on installing the shortcut. There are 29 Developer Skills and 38 skills across the collection, with unchanged Essential defaults.
+
+The guidance covers field/label/control alignment, phone reflow, header priorities, distinct store/account identity, accessible avatar menus, filter state, dialog fit/focus/cancellation, primary/secondary/danger styling and truthful sign-out warnings. Recommendations remain conditional on actual product context; the skills do not force profile-name removal, red sign-out buttons, hidden labels or one layout on every page. Mobile scope includes desktop regression checks without authorizing a desktop redesign.
+
+Executed with Python 3.14.7 on Windows:
+
+- All 85 collection tests and all 10 QA-pack tests passed outside the sandbox from a C: working directory. Existing portability/source/license/synchronization tests now cover all four entrypoints, including mobile-only installation to both agents and contained runtime links.
+- Public catalog/discovery checks passed for exactly 38 shipping skills. The optional metadata for native compatibility remains unverified rather than inheriting other skills' historical evidence.
+- Cached `skills@1.7.4` discovered all 38 skills. Mobile-only and complete 29-skill Developer Skills copies installed in separate disposable projects for Codex and Claude Code, with exact source hashes for every copied file.
+- All 142 local links in the suite's 48 Markdown files resolved. Shared-resource synchronization, payload manifests, repeatable packaging and whitespace checks passed.
+
+The existing example HTML/JavaScript and its browser regression were unchanged; no new browser or device proof is claimed for these instruction additions. No target application was edited, no real-device/mobile screen-reader behavior or independent model-adherence trial was observed, and no global install or publication occurred. See [external CLI evidence](NPX_COMPATIBILITY.md#mobile-review-2026-10-31).
+
 ## UI and UX reviews, previews and autonomous improvements, 2026-10-31
 
 Added `ultimate-ui-ux`, `ultimate-ui` and `ultimate-ux`. The main entrypoint contains both disciplines; each focused entrypoint also works after a one-skill install. Shared resources have one maintained owner in `ultimate-ui-ux` and checked distribution copies for portable standalone installation. The collection now contains 28 Developer Skills and 37 total skills; the four Essential defaults are unchanged.

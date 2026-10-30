@@ -1,0 +1,84 @@
+[
+  {
+    "name": "taste",
+    "repository": "https://github.com/Leonxlnx/taste-skill",
+    "revision": "12af471f627f866411b4bd785b19646d3672784c",
+    "license": "MIT",
+    "source_path": "skills/taste-skill/SKILL.md",
+    "source_sha256": "3435ed963b15a1b6447746ec8844ab2cd38d8d2e8ead3451937f42df01e408c4",
+    "excerpt_lines": [
+      [
+        76,
+        86
+      ],
+      [
+        299,
+        302
+      ],
+      [
+        469,
+        473
+      ]
+    ],
+    "local_path": "vendor/taste/excerpts.md",
+    "local_sha256": "9dc67cc40ba478cdf86e05d770e4236f3e0f3d0c2597d02cea292bab701962c8",
+    "license_path": "vendor/taste/LICENSE.txt",
+    "license_sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df"
+  },
+  {
+    "name": "pro-max",
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "revision": "9a3f14f7423037ccb8feeb4fee7482291b9c820e",
+    "license": "MIT",
+    "source_path": ".claude/skills/ui-ux-pro-max/SKILL.md",
+    "source_sha256": "ea087c341bfb5b23195c7302027268ede86da802554c18a5c4896a6017b439f9",
+    "excerpt_lines": [
+      [
+        10,
+        34
+      ],
+      [
+        65,
+        71
+      ]
+    ],
+    "local_path": "vendor/pro-max/excerpts.md",
+    "local_sha256": "0ff629343cdc44f49fff16caf18a6ff3ec1d3f0644a49ea7dd500de990d105d3",
+    "license_path": "vendor/pro-max/LICENSE.txt",
+    "license_sha256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014"
+  },
+  {
+    "name": "pro-max-ux-data",
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "revision": "9a3f14f7423037ccb8feeb4fee7482291b9c820e",
+    "license": "MIT",
+    "source_path": "src/ui-ux-pro-max/data/ux-guidelines.csv",
+    "source_sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+    "local_path": "vendor/pro-max/ux-guidelines.csv",
+    "local_sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+    "license_path": "vendor/pro-max/LICENSE.txt",
+    "license_sha256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014"
+  },
+  {
+    "name": "frontend-design",
+    "repository": "https://github.com/anthropics/skills",
+    "revision": "ca45fc496a3436251f191354091d557da31c15b5",
+    "license": "Apache-2.0",
+    "source_path": "skills/frontend-design/SKILL.md",
+    "source_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+    "excerpt_lines": [
+      [
+        15,
+        34
+      ],
+      [
+        57,
+        71
+      ]
+    ],
+    "local_path": "vendor/frontend-design/excerpts.md",
+    "local_sha256": "1256d8115590c6507ca2dc6d2ded815eae5a100294d427350c6e3e7019893f77",
+    "license_path": "vendor/frontend-design/LICENSE.txt",
+    "license_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+  }
+]

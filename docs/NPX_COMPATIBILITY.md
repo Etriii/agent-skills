@@ -1,5 +1,15 @@
 # External CLI compatibility evidence
 
+## Mobile review, 2026-10-31
+
+Using cached `skills@1.7.4` directly through Node.js with telemetry disabled and local sources:
+
+- Root discovery found exactly 38 shipping skills, including `ultimate-mobile`; vendored excerpts did not become extra entrypoints.
+- A mobile-only install copied exactly one skill to each of Codex and Claude Code in a disposable project. All payload hashes matched, including its local mobile/UI/UX playbooks, notices/licenses and preview resources.
+- A separate full Developer Skills copy installed exactly 29 skills per agent with every file matching source hashes.
+
+Fixtures used explicit agents, `--copy` and fixture-only `-y`; no global scope, remote installation source or real application was used. These checks prove discovery/copy integrity, not native agent protocol discovery, model adherence, application redesign or mobile-device behavior.
+
 ## UI and UX suite, 2026-10-31
 
 The cached `skills@1.7.4` CLI checked local source directly through Node.js with telemetry disabled and project-only copies in disposable directories.

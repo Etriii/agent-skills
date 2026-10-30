@@ -31,7 +31,7 @@ A review does not authorize implementation. Each invocation must retain the requ
 
 ## UI and UX reviews with previews
 
-Use `ultimate-ui-ux` to inventory all application pages or selected routes, review visual and task-flow problems, choose fitting patterns, and save findings before creating proposed layouts. The main skill contains both disciplines; `ultimate-ui` and `ultimate-ux` are independently installable focused entrypoints.
+Use `ultimate-ui-ux` to inventory all application pages or selected routes, review visual and task-flow problems, choose fitting patterns, and save findings before creating proposed layouts. The main skill contains both disciplines and includes mobile checks by default; `ultimate-ui` and `ultimate-ux` are independently installable focused entrypoints. `ultimate-mobile` is an independent shortcut for mobile web UI/UX work with desktop regression checks.
 
 These are agent-chat requests in the target application:
 
@@ -40,6 +40,7 @@ $ultimate-ui-ux run
 $ultimate-ui-ux run --page /stores/:slug
 $ultimate-ui run --page /orders
 $ultimate-ux run --page /checkout --auto
+$ultimate-mobile run --page /orders --auto
 ```
 
 Default execution stops after the proposal, then after low-fidelity before/after comparisons. Proposal approval authorizes previews; design approval authorizes implementation. Explicit `--auto` or a task-specific no-approval request authorizes review, sketches, changes and verification inside the selected scope without skill approval pauses. Platform permissions and material unresolved policy choices still apply. Generic continuation is not new approval.

@@ -2,7 +2,7 @@
 
 Review existing application interfaces across all pages or selected routes. The suite finds visual and usability problems, decides whether sections, tabs, disclosure or routes fit the actual task, and produces reviewable before/after wireframes before application changes.
 
-The main skill includes both specialists. Install it alone for combined or focused work, or install the independent `ultimate-ui` and `ultimate-ux` entrypoints for shorter discipline-specific commands. Every entrypoint carries its own required resources; no sibling skill, private kit or online design service is required.
+The main skill includes both specialists and mobile checks by default. Install it alone for combined or focused work, or install the independent `ultimate-ui`, `ultimate-ux` and `ultimate-mobile` shortcuts. Every entrypoint carries its own required resources; no sibling skill, private kit or online design service is required.
 
 ## Install
 
@@ -13,7 +13,7 @@ python tools/install_skills.py --pack developer-skills --agent codex --project "
 python tools/install_skills.py --pack developer-skills --agent codex --project "D:\My App" --skills ultimate-ui-ux
 ```
 
-Replace the application path. The first command previews the installation; the second asks for confirmation and records the copy with payload checksums and Markdown history. Use `--agent claude` or `--agent both` for other supported destinations. To install all three commands, select `--skills ultimate-ui-ux ultimate-ui ultimate-ux`. See the [pack guide](../../README.md) for whole-pack and user-scope options.
+Replace the application path. The first command previews the installation; the second asks for confirmation and records the copy with payload checksums and Markdown history. Use `--agent claude` or `--agent both` for other supported destinations. To install all four commands, select `--skills ultimate-ui-ux ultimate-ui ultimate-ux ultimate-mobile`. See the [pack guide](../../README.md) for whole-pack and user-scope options.
 
 After publication, from the application directory, Node.js 22.20+ and npm offer a project install:
 
@@ -36,6 +36,8 @@ $ultimate-ui-ux run --focus ux
 ```
 
 Bare invocation defaults to all discovered pages, both disciplines, and approval checkpoints. A page selector accepts a URL, route, page file or unambiguous page name. Invalid or unresolved selectors do not fall back to a full audit. Shared callers are inspected for impact without redesigning unselected pages.
+
+Mobile is included in normal responsive web reviews. Checks cover misaligned controls, crowded headers, readable store/account context, filter reflow, dialog sizing and distinct primary/cancel/destructive actions. For mobile-only work install [ultimate-mobile](../ultimate-mobile/README.md) and use `$ultimate-mobile run --page /orders`, optionally with `--auto`. It uses the same approval/artifact workflow and checks desktop for regressions.
 
 Default workflow:
 

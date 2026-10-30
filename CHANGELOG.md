@@ -2,6 +2,8 @@
 
 ## Unreleased collection 0.1.0
 
+- Add ultimate-mobile as an independent mobile web UI/UX shortcut; keep mobile checks enabled in normal reviews and specify control alignment, header priorities, account-menu access, filter reflow and semantic dialog/action hierarchy.
+
 - Add ultimate-ui-ux, ultimate-ui and ultimate-ux for all-pages or selected-page interface audits, staged approvals, autonomous improvements, saved before/after wireframes and evidence-based verification. Bundle selected Taste, UI UX Pro Max and frontend-design material with pinned provenance and original licenses.
 
 - Add report-creator with feature/role discovery, mid and detailed reports, styled PDF and Excel exports, effective filters, scoped shared downloads, generated-report history and configurable 24-hour retention.

@@ -2,6 +2,8 @@
 
 Review visual hierarchy, layout, spacing, typography, consistency, responsive composition and visual accessibility. This independent UI-only entrypoint preserves routes, information architecture and task order. Structural UX opportunities are reported separately.
 
+Mobile is included by default. Inspect label/control alignment, crowded headers, touch presentation and primary/secondary/destructive button distinctions. Use `ultimate-mobile` when the selected task needs mobile UI and UX together.
+
 ## Install
 
 PowerShell, starting in the downloaded collection root, with Python 3.11+:

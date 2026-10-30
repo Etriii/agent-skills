@@ -19,6 +19,8 @@ This is the independently installable UX-only entrypoint of the Ultimate UI/UX s
 
 Read [workflow](references/workflow.md) for every run. This entrypoint overrides that reference's coordinator default focus with `ux`. Read [UX review](references/ux-review.md), then [wireframes and verification](references/preview-and-verify.md) for previews/implementation/checks. Consult [source guidance](references/source-guidance.md) only when relevant.
 
+For responsive web work, also read [mobile review](references/mobile-review.md); apply its journey/navigation checks within UX-only scope. Mobile account-menu access, filter discoverability and dialog recovery are part of the default review, not an optional extra.
+
 Gated mode shows the review before any proposed layout; proposal approval authorizes sketches, and design approval authorizes application edits. Auto mode executes those stages without pausing while retaining artifacts and rationale. Preserve current visual identity except where the interaction requires an accessible presentation change. Keep roles, data access, validation and business policy intact. Choose tabs, sections, disclosure or routes per journey; never apply tabs to every long page.
 
 Limits: Source evidence is not observed user behavior. Auto mode does not bypass platform permissions or expand scope. No fixed framework, external runtime, hosted service, other installed skill or network access is required. Publication, dependency installation and Git changes need separate task authorization.

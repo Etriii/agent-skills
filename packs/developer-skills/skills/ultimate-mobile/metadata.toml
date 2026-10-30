@@ -1,0 +1,9 @@
+schema_version = 1
+skill_id = "ultimate-mobile"
+name = "ultimate-mobile"
+version = "0.1.0"
+capabilities = ["mobile-ui-review", "responsive-review", "mobile-journey-review", "wireframe-preview"]
+compatible_agents = []
+license_status = "UNDECIDED"
+provenance = "local-with-third-party"
+third_party_notices = "THIRD_PARTY.md"

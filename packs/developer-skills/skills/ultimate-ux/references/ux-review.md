@@ -36,4 +36,8 @@ When relevant, reuse existing table/detail/navigation patterns and optionally co
 
 ## Recommendation and proof
 
+Review confirmation dialogs for explicit action labels, a recognizable cancel path, truthful consequences and sensible focus/default behavior. A Sign out dialog should preserve access to Cancel and identify any real unsaved-work risk; verify authentication and save behavior before claiming that all work will be lost or a password is required. Keep the existing confirmation/authentication owners. Test keyboard dismissal and focus return without accidentally confirming the consequential action.
+
+For responsive web work read [mobile review](mobile-review.md). Make account identity, current store/tenant, navigation, filters and secondary actions reachable on mobile. Moving a profile name into its menu can save space, but does not justify hiding the only visible indication of the active business context.
+
 Explain the current friction, user task, evidence, chosen pattern, rejected alternative and affected roles/states. Define acceptance as an observable journey, such as finding a review, switching back to Products without losing a filter, or recovering from a failed save. Include unchanged pages and counterexamples where sections are better than tabs. For relevant heuristics consult [source guidance](source-guidance.md); the product's actual task determines the choice.

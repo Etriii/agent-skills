@@ -32,7 +32,7 @@ NAMES = {
     "investigate-first", "lean-build", "surgical-patch", "safe-refactor", "migration", "verify-and-stop",
     "report-creator",
     "table-ux-review",
-    "ultimate-ui-ux", "ultimate-ui", "ultimate-ux",
+    "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile",
 }
 
 
@@ -45,7 +45,7 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                expected_agents = [] if name in {"report-creator", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux"} else ["codex", "claude"]
+                expected_agents = [] if name in {"report-creator", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"} else ["codex", "claude"]
                 self.assertEqual(metadata["compatible_agents"], expected_agents)
                 expected_files = {"SKILL.md", "README.md", "metadata.toml"}
                 if name == "deep-critique":
@@ -55,11 +55,12 @@ class CatalogTests(unittest.TestCase):
                         "references/discovery-and-metrics.md", "references/documents.md",
                         "references/access-and-retention.md", "references/verification.md",
                     }
-                elif name in {"ultimate-ui-ux", "ultimate-ui", "ultimate-ux"}:
+                elif name in {"ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"}:
                     expected_files |= {
                         "THIRD_PARTY.md", "assets/comparison.html",
                         "references/workflow.md", "references/ui-review.md", "references/ux-review.md",
                         "references/preview-and-verify.md", "references/source-guidance.md",
+                        "references/mobile-review.md",
                         "vendor/SOURCES.json", "vendor/taste/excerpts.md", "vendor/taste/LICENSE.txt",
                         "vendor/pro-max/excerpts.md", "vendor/pro-max/LICENSE.txt", "vendor/pro-max/ux-guidelines.csv",
                         "vendor/frontend-design/excerpts.md", "vendor/frontend-design/LICENSE.txt",

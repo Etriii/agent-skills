@@ -9,7 +9,7 @@ from catalog import safe_path
 
 ROOT = Path(__file__).resolve().parents[1] / "packs/developer-skills/skills"
 CANONICAL = "ultimate-ui-ux"
-STANDALONE = ("ultimate-ui", "ultimate-ux")
+STANDALONE = ("ultimate-ui", "ultimate-ux", "ultimate-mobile")
 RESOURCE_DIRS = ("references", "assets", "vendor")
 
 

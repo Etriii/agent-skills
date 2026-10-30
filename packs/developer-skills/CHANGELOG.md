@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add ultimate-mobile and strengthen default mobile, control-alignment, header-context and dialog/button-hierarchy guidance across the UI/UX suite.
+
 - Add independent combined/UI-only/UX-only interface review skills with gated or automatic execution, saved comparisons, scoped implementation and licensed offline design references.
 
 - Add report-creator for evidence-based reporting discovery, specifications, implementation and verification with styled exports, role/data isolation and retained generated files.

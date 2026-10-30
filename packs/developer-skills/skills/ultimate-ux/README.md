@@ -2,6 +2,8 @@
 
 Review navigation, content grouping, discoverability, forms, task flows, interaction states and recovery. This independent UX-only entrypoint preserves the current visual identity except where an interaction needs an accessible presentation change. It chooses patterns per journey rather than turning every long page into tabs.
 
+Mobile is included by default. Inspect account-menu and store-context access, filter discoverability, dialog consequences and cancellation. Use `ultimate-mobile` when the selected task needs mobile UI and UX together.
+
 ## Install
 
 PowerShell, starting in the downloaded collection root, with Python 3.11+:
