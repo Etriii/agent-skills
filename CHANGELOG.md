@@ -2,6 +2,7 @@
 
 ## Unreleased collection 0.1.0
 
+- Make direct npx installation the recommended documented route across all skills; retain explicit Python acquisition/recorded-install steps, add curl ZIP setup for the QA kit, and ship repository instructions enforcing complete installation guidance.
 - Document commands, defaults, continuous execution, expected outputs and stopping points across the skill collection; add a command guide and contributor requirements for usable command documentation.
 - Add system-settings for evidence-based runtime settings assessment, new or existing implementations, category-first loading, and transactional reuse of settings history and central auditing.
 - Rename report-creator to report-builder across skill identity, invocation, selection, documentation and integrity manifests; preserve all reporting behavior.

@@ -8,30 +8,44 @@ The normal workflow is **initialize → audit → plan**. `$ultimate-qa run` per
 
 Use the [command guide](../../docs/SKILL_COMMANDS.md#ultimate-qa-requests) for core/client operations, standalone specialist requests and output boundaries. Continuous `run` ends at recommendations; it does not authorize implementing them.
 
-- **Python 3.11 or newer** to run the installer and helpers; **Git** and a Git repository for the application being reviewed. Run the examples below from this kit's directory unless a command says otherwise.
+- **Node.js 22.20+ with npm/npx** for recommended direct installation; network access and Git for repository fallback. **Python 3.11+** runs QA helpers and the optional recorded installer. The application being reviewed needs Git and its own repository. Every command section below states its starting folder.
 - A coding agent that supports the installed skills (Codex or Claude for the built-in targets). Start a new agent session in the **application repository** after installation.
 - The application's own local test setup and test accounts for checks that require them. Docker and Compose are checked during initialization; if they are unavailable, runtime checks that depend on them are reported as blocked. Use disposable data for destructive checks.
 - **Optional:** `python-docx` to generate Word reports: `python -m pip install python-docx`. Markdown reports are the source files.
 
-Keep this kit directory available after installation. The core and client skills record its absolute location; reinstall those skills if you move the kit.
+Keep a complete matching kit available for core/client execution. External installs use `ULTIMATE_QA_KIT`; the Python installer writes a kit pointer. Update the path or recorded copies if the retained kit moves.
 
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Download or clone the complete collection into a durable folder first; core/client instructions need the pack's templates and helpers after installation. From the collection root, install just the core or all nine QA skills:
+Use curl to download the complete kit ZIP, then npx to install from that same snapshot. A manual Git clone is optional. PowerShell, from any folder; replace `D:\My App` with your existing application and choose a new durable kit folder. Skip acquisition if you already have a matching kit and use its actual path.
 
 ```powershell
-npx skills@1.7.4 add ./packs/ultimate-qa --skill ultimate-qa --agent codex -g --copy
-npx skills@1.7.4 add ./packs/ultimate-qa --skill '*' --agent codex -g --copy
-$env:ULTIMATE_QA_KIT = (Resolve-Path ./packs/ultimate-qa).Path
+$qaKitFolder = 'D:\Tools\agent-skills-qa'
+if (Test-Path -LiteralPath $qaKitFolder) { throw 'Reuse the existing QA kit, or choose a new kit folder.' }
+New-Item -ItemType Directory -Path $qaKitFolder -ErrorAction Stop | Out-Null
+curl.exe --fail --location --output "$qaKitFolder\agent-skills-main.zip" 'https://github.com/Etriii/agent-skills/archive/refs/heads/main.zip'
+if ($LASTEXITCODE -ne 0) { throw 'QA kit download failed.' }
+Expand-Archive -LiteralPath "$qaKitFolder\agent-skills-main.zip" -DestinationPath $qaKitFolder -ErrorAction Stop
+$env:ULTIMATE_QA_KIT = Join-Path $qaKitFolder 'agent-skills-main\packs\ultimate-qa'
+Set-Location 'D:\My App'
+npx skills@1.7.4 add "$env:ULTIMATE_QA_KIT" --skill '*' --agent codex claude-code --copy
 ```
 
 Start the agent from this terminal in the application being reviewed so it inherits this existing kit setting, or provide the absolute kit path when asked. This assignment lasts for the current terminal and child processes; repeat it in a new terminal. Keep the collection available, update the path if moved, and keep the installed skills and kit on the same revision.
 
-For project scope, run from the application directory, supply the absolute local pack path, and omit `-g`. For Claude Code use `--agent claude-code`. Review the displayed destinations. The external CLI does not generate `kit-location.txt` or this collection's Markdown history. The [npx guide](../../docs/NPX_INSTALLATION.md) covers support files, updates and removal.
+This selects all nine QA skills for both agents in the application. For only core/client, replace `--skill '*'` with `--skill ultimate-qa ultimate-qa-client`. For one agent use `--agent codex` or `--agent claude-code`; add `-g` only for an intended global install. Review selected names and destinations. Confirm the application contains `.agents/skills/ultimate-qa/SKILL.md` and `.claude/skills/ultimate-qa/SKILL.md`, then refresh the agent session. The external CLI does not generate `kit-location.txt` or collection Markdown history. The [npx guide](../../docs/NPX_INSTALLATION.md#ultimate-qa-support-files) shows existing-kit reuse and helper verification.
+
+For a standalone specialist that does not need core/client state, use the ordinary direct remote route from the application folder, for example:
+
+```powershell
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill ultimate-qa-architecture --agent codex claude-code --copy
+```
+
+Its runtime prerequisites remain in the skill README. Installing instructions does not start a QA review.
 
 ## Install with Markdown records
 
-This kit is the `ultimate-qa` pack in Agent Skills. Use the [collection installer](../../INSTALL.md) from the collection root. The whole pack, including templates and helpers, remains available after installation.
+This is the optional Python route for recorded/offline installation. Obtain the complete collection using the [ZIP/curl or clone steps](../../INSTALL.md#optional-local-copy-for-python-and-offline-use), then open PowerShell in its inner root containing `tools/` and `packs/`. Python 3.11+ and that local source are required; the script is not globally installed. The source root differs from the destination application. Keep the whole QA pack, templates and helpers available. Run each line separately:
 
 ```powershell
 python tools/install_skills.py --pack ultimate-qa --list
@@ -43,7 +57,7 @@ Project scope is the default. For a user installation, use `--scope user --user-
 
 ## Uninstall skills
 
-Use the same pack, scope and agent. Preview first, then approve the real operation:
+For npx-owned copies, use the [external CLI removal workflow](../../docs/NPX_INSTALLATION.md#updates-and-removal). The retained Python examples below apply only to Python-managed copies. From the local collection root, use the same pack, scope and agent; preview first, then approve the real operation:
 
 ```powershell
 python tools/install_skills.py --pack ultimate-qa --agent codex --project "D:\My App" --skills ultimate-qa-client --uninstall --dry-run

@@ -10,18 +10,26 @@ Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md
 
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Install one skill or all 30 globally for Codex:
+Recommended route: install Node.js 22.20+ with npm/npx, ensure Git is available for repository fallback, and use network access to npm/GitHub. No manual clone of this collection is required. PowerShell, starting in an existing target application; replace the example path:
 
 ```powershell
-npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
-npx skills@1.7.4 add https://github.com/Etriii/agent-skills/tree/main/packs/developer-skills --skill '*' --agent codex -g --copy
+Set-Location 'D:\My App'
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill system-settings --agent codex claude-code --copy
 ```
 
-Omit `-g` from your application directory for project scope. Use `--agent claude-code` for Claude Code. Quote `'*'` and use this pack-specific source to avoid selecting other packs. Review the displayed destinations. The [npx guide](../../docs/NPX_INSTALLATION.md) covers scope, updates and removal. External installs do not write the collection's Markdown history.
+Expected result: only system-settings is selected for Codex and Claude Code, with `.agents/skills/system-settings/SKILL.md` and `.claude/skills/system-settings/SKILL.md` under the application. Review the CLI summary, refresh the agent session, then use `$system-settings scan` or `/system-settings scan` in agent chat. For one agent choose `--agent codex` or `--agent claude-code`; add `-g` only for intended global availability.
+
+For all 30 Developer Skills instead, run this separate selection from the same application folder:
+
+```powershell
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills/tree/main/packs/developer-skills --skill '*' --agent codex claude-code --copy
+```
+
+Quote `'*'` and use this pack-specific source to avoid selecting other packs. Remote commands use published files; an unpushed local change is not installed from GitHub. The [npx guide](../../docs/NPX_INSTALLATION.md) gives prerequisite checks, expected files, troubleshooting, scope, updates and removal. External installs do not write this collection's Markdown operation history.
 
 ## Install with Markdown records
 
-Use Python 3.11+ from the collection root:
+This is the optional recorded/offline alternative. Obtain the complete collection first using the [ZIP/curl or Git clone steps](../../INSTALL.md#optional-local-copy-for-python-and-offline-use). Use Python 3.11+ from its actual inner root containing `tools/` and `packs/`, not from the destination application. `tools/install_skills.py` is a local file. Run preview and install as separate commands:
 
 ```powershell
 python tools/install_skills.py --pack developer-skills --list

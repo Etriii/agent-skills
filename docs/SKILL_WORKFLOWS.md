@@ -4,6 +4,8 @@ Use the [catalog](../SKILL_CATALOG.md) to find skills by purpose. Categories des
 
 For exact chat requests, defaults, supported automatic execution, continuation and expected outputs, use the [command guide](SKILL_COMMANDS.md). A broad build request can include discovery when its own skill permits it; review commands and QA plans do not become implementation authorization through a generic automation flag.
 
+For a standalone install, recommend the [direct npx route](NPX_INSTALLATION.md) first. Ordinary skills need no manual clone. The optional recorded Python installer requires acquiring a local collection and running its script from that root; [installation prerequisites](../INSTALL.md) explain acquisition and the QA kit exception. Existing PhasePilot-managed copies keep their recorded provider/lifecycle below; npx preference does not authorize replacing them.
+
 ## Standalone development
 
 Public skills work without PhasePilot. Use these stages when the corresponding need exists:

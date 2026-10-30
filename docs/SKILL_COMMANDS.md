@@ -4,7 +4,7 @@ Use this guide to choose a supported request and understand its effects. Every s
 
 ## Before entering a request
 
-Install the selected skill, refresh the agent session, and open the target application or establish the subject in the conversation. The skill installation directory is not the application target. Include an absolute target path when it is outside the open project. Replace example routes, filenames, feature names, and `<run-folder>` placeholders with actual inputs.
+Use the [direct npx installation steps](../INSTALL.md#direct-installation-with-npx-recommended) first; ordinary skills require no manual clone. Then refresh the agent session and open the target application or establish the subject in the conversation. The skill installation directory is not the application target. Include an absolute target path when it is outside the open project. Replace example routes, filenames, feature names, and `<run-folder>` placeholders with actual inputs. The optional Python route needs a complete local checkout/ZIP and its collection root; QA core/client additionally need a durable kit as documented in the installation guide.
 
 All requests below go in **agent chat**, not PowerShell, Bash, or a terminal. Codex uses `$skill-name`; Claude Code uses `/skill-name` with the same request text. Installation commands are separate terminal operations in each README. A skill name followed by a sentence is a natural-language request, not proof of a fixed CLI parser.
 

@@ -31,6 +31,7 @@ class PackagingTests(unittest.TestCase):
             self.assertIn("agent-skills/packs/developer-skills/skills/blocker-check/SKILL.md", names)
             self.assertIn("agent-skills/tools/records.py", names)
             self.assertIn("agent-skills/CONTRIBUTING.md", names)
+            self.assertIn("agent-skills/AGENTS.md", names)
             for skill in ROOT.glob("packs/*/skills/*/SKILL.md"):
                 readme = skill.with_name("README.md").relative_to(ROOT).as_posix()
                 self.assertIn(f"agent-skills/{readme}", names)

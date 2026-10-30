@@ -6,7 +6,19 @@ This kit lives at `packs/ultimate-qa/` in Agent Skills. Keep its templates and h
 
 ## Install
 
-Use the collection root and shared lifecycle tool:
+Recommended installation uses npx. Standalone specialists can install directly from the repository without a manual clone. Core/client workflows additionally require a retained kit: first follow the [curl ZIP/npx kit setup](../../docs/NPX_INSTALLATION.md#ultimate-qa-support-files). Keep that snapshot available; then run the selection from the target application. PowerShell, with example paths to replace:
+
+```powershell
+$env:ULTIMATE_QA_KIT = 'D:\Tools\agent-skills-qa\agent-skills-main\packs\ultimate-qa'
+Set-Location 'D:\My App'
+npx skills@1.7.4 add "$env:ULTIMATE_QA_KIT" --skill ultimate-qa ultimate-qa-architecture --agent codex claude-code --copy
+```
+
+Node.js 22.20+ supplies npm/npx; remote source acquisition needs network access and Git for repository fallback. The application/QA helpers have their own runtime requirements. Confirm the selected project copies exist under `.agents/skills/` and `.claude/skills/`, refresh the agent session, and start the agent from this terminal or provide the retained kit path. `--skill '*'` at the kit path selects all nine QA skills. Add `-g` only for an intended global install.
+
+### Optional recorded installation with Python
+
+Keep the shared Python lifecycle for checksums, backups, recovery and Markdown records. It requires Python 3.11+ and a complete local collection acquired through the [ZIP/curl or clone steps](../../INSTALL.md#optional-local-copy-for-python-and-offline-use). Change to its actual root containing `tools/` and `packs/` before running the local script; do not run it relative to the application. Run preview and install separately:
 
 ```powershell
 python tools/install_skills.py --pack ultimate-qa --list
@@ -34,7 +46,7 @@ Each optional skill works alone when given a target project and enough context. 
 
 ## Uninstall and reinstall
 
-Use the same scope and agent as installation. The shared tool checks the whole selection, recorded ownership and current content hashes before moving removed copies to retained backups:
+For npx-owned copies, use the [external CLI removal workflow](../../docs/NPX_INSTALLATION.md#updates-and-removal). The following optional Python route applies only to Python-managed copies: open PowerShell in the acquired collection root and use the same scope and agent as installation. The shared tool checks the whole selection, recorded ownership and current content hashes before moving removed copies to retained backups:
 
 ```powershell
 python tools/install_skills.py --pack ultimate-qa --agent codex --project "D:\My App" --bundle all --uninstall --dry-run

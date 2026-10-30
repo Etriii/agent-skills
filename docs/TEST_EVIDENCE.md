@@ -1,5 +1,20 @@
 # Collection verification
 
+## Direct installation documentation, 2026-10-31
+
+Rewrote installation sections for all 39 skill READMEs to recommend npx first, with prerequisites, shell/starting folder, agent and scope selection, expected files, refresh instructions, and a clearly optional Python route. Ordinary skills need no manual source acquisition. Python examples now explain ZIP/clone acquisition and the collection root before local-script commands. QA core/client instructions use curl ZIP acquisition and npx from the retained matching kit, with existing-kit reuse and environment-path scope explained.
+
+Added repository AGENTS.md instructions and matching contribution/pack-authoring rules. Updated root/pack installation, removal and workflow guides. The package builder now includes AGENTS.md and its existing archive test verifies that file ships. Installer behavior, Python ownership/records/backups, runtime skill instructions, historical evidence and source-selection authority were preserved.
+
+Executed on Windows with Python 3.14.7 and Node.js 24.19.0. Python suites used a temporary C: working directory and absolute source-test paths to avoid the existing cross-drive fixture limitation:
+
+- All 86 collection tests and all 10 QA-pack tests passed, including the updated archive contract and both installer lifecycle suites.
+- Remote/local project installation, full-pack copies, curl ZIP extraction and retained QA helper access passed in disposable folders. Every installed payload hash matched its selected source. See [direct installation evidence](NPX_COMPATIBILITY.md#direct-installation-and-qa-zip-setup-2026-10-31).
+- All 39 READMEs preserved their non-installation sections exactly. No shipping SKILL.md or installer implementation changed. Shared UI/UX resources remained synchronized.
+- A temporary checker parsed 247 PowerShell documentation blocks without executing them. Link/anchor checks and final manifest/archive checks were performed separately; syntax and packaging results are not proof of executing every example.
+
+No actual user profile/global skill installation, model-adherence trial, native discovery, application QA, or publication was performed. npm first-use prompting, actual global destinations, and runtime prerequisites remain subject to the selected environment. Existing installed copies need an update to receive revised READMEs; changing the documented default does not migrate Python-managed ownership.
+
 ## Skill command documentation audit, 2026-10-31
 
 Reviewed the instructions and usage documentation for all 39 shipping skills: 30 Developer Skills and 9 Ultimate QA skills. Added a collection command guide linking every skill once, clarified expected outputs/stopping points for 28 natural-language reviewers/helpers, expanded core/client QA operation and continuation tables, documented settings build continuity and UI/UX help/automatic continuation, and retained the earlier Report Builder scan-and-build documentation intact. Thirty-six skill READMEs changed across this update and the preceding Report Builder clarification; the remaining three already covered their applicable workflows.

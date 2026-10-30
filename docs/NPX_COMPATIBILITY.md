@@ -1,5 +1,17 @@
 # External CLI compatibility evidence
 
+## Direct installation and QA ZIP setup, 2026-10-31
+
+Verified the npx-first documentation using cached skills@1.7.4 with Node.js 24.19.0, disposable application directories, an isolated profile, and telemetry disabled. Fixture installs supplied noninteractive approval only inside those disposable targets; the reader-facing commands do not force it.
+
+- Remote GitHub discovery listed the published skill names and excluded sample-review.
+- Remote system-settings installation selected exactly one skill for Codex and Claude Code; every installed file matched a separately curl-downloaded published source snapshot.
+- Local current-source system-settings and complete Developer Skills/Ultimate QA installs copied 1, 30 and 9 skills respectively for each agent, with every copied payload hash matching source.
+- The documented GitHub ZIP downloaded through curl and extracted through PowerShell Expand-Archive. Installing core/client QA from that retained kit selected exactly those two skills per agent with matching source hashes.
+- The retained QA kit's qa_preflight.py matched the current helper bytes and its --help command passed. No QA application audit was started.
+
+The CLI was executed through its verified cached Node entrypoint, avoiding another npm package download while exercising the same pinned CLI and install arguments. This proves remote/local source selection, project copies and kit access; it does not prove npm first-use prompting, global installation, native agent discovery, model adherence, or application behavior. No real profile was installed or migrated, and no publication occurred.
+
 ## System Settings, 2026-10-31
 
 Cached skills@1.7.4 ran through Node.js against local sources in disposable projects, with an isolated profile and telemetry disabled:

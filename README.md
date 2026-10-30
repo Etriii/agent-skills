@@ -1,8 +1,8 @@
 # Agent Skills
 
-A collection of installable skill packs for Codex and Claude. Each pack keeps related skills, templates and helpers together. One shared tool installs and uninstalls selected skills, records completed operations in Markdown, and retains removed or replaced content as backups.
+A collection of installable skill packs for Codex and Claude. Each pack keeps related skills, templates and helpers together. Direct npx commands install selected skills; an optional shared Python tool provides Markdown operation records and retained content backups.
 
-Install through the external `skills` CLI with Node.js 22.20+ and npm, or use our recorded installer with Python 3.11+. The Python route uses the standard library and works offline after downloading or cloning this repository.
+Install directly with `npx skills` using Node.js 22.20+ and npm; ordinary skills need no manual clone or checkout. The optional Python 3.11+ route preserves manifest checks, backups and Markdown operation records after you acquire a complete local copy. [Installation steps](INSTALL.md) explain both routes and every prerequisite.
 
 | Pack | Skills | Purpose |
 |---|---:|---|
@@ -32,32 +32,37 @@ For a suggested order, read [skill workflows](docs/SKILL_WORKFLOWS.md). It cover
 
 ## Quick install with npx
 
-Install one skill globally for Codex:
+Prerequisites: Node.js 22.20+ with npm/npx, network access to npm/GitHub, and Git for repository fallback. PowerShell: replace the example path with your existing application folder and run each line separately. This installs one skill into that project for both agents:
 
 ```powershell
-npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
+Set-Location 'D:\My App'
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill system-settings --agent codex claude-code --copy
 ```
 
-List available skills or install the complete Developer Skills pack:
+Review the CLI's selection and destination summary. Confirm `.agents/skills/system-settings/SKILL.md` and `.claude/skills/system-settings/SKILL.md` exist in the application, refresh the agent session, then enter `$system-settings scan` in agent chat. Installing files does not start the skill. [Detailed checks and troubleshooting](docs/NPX_INSTALLATION.md) cover missing tools, names and refresh issues.
+
+List published skills or install the complete Developer Skills pack from the same application folder:
 
 ```powershell
 npx skills@1.7.4 add https://github.com/Etriii/agent-skills --list
-npx skills@1.7.4 add https://github.com/Etriii/agent-skills/tree/main/packs/developer-skills --skill '*' --agent codex -g --copy
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills/tree/main/packs/developer-skills --skill '*' --agent codex claude-code --copy
 ```
 
-Run without `-g` from your application directory for a project install. For Claude Code, use `--agent claude-code`. `--copy` selects copies instead of links. Review the CLI's installation summary before proceeding; when an agent invokes the command, the external CLI may run without an interactive prompt.
+Project scope is the example above. Add `-g` only when you want availability across projects; choose `--agent codex` or `--agent claude-code` for one agent. `--copy` selects copies instead of links. npm may request permission to download the pinned CLI, and installation prompts vary by host. These examples do not force noninteractive approval.
 
 For Ultimate QA, follow the [pack setup](packs/ultimate-qa/README.md#install-with-npx) to retain its templates and helpers. A copied skill alone does not include the complete QA kit. [The npx guide](docs/NPX_INSTALLATION.md) covers individual skills, complete packs, removal and the existing kit-path setting.
 
 The external CLI owns its prompts, security assessments and lock files. Its installs do not write this collection's Markdown operation history or use our backup/recovery engine. Choose the Python installer below when those records and protections are required. Use the same installer for updates and removal of a given copy.
 
-## Download
+## Optional local download or checkout
 
-Use [GitHub](https://github.com/Etriii/agent-skills) **Code > Download ZIP**, extract it, and open a terminal in the extracted `agent-skills` folder. Alternatively:
+You only need to obtain the collection yourself for the optional recorded/offline Python route, a local unpublished source, contribution, or a persistent QA kit. Ordinary remote npx installation obtains its source for you. Follow the [complete ZIP/curl or clone steps](INSTALL.md#optional-local-copy-for-python-and-offline-use). You can also use [GitHub](https://github.com/Etriii/agent-skills) **Code > Download ZIP**, extract it completely, and open PowerShell in the inner root containing `tools/` and `packs/`. Optional Git alternative:
 
 ```powershell
-git clone https://github.com/Etriii/agent-skills.git
-cd agent-skills
+New-Item -ItemType Directory -Path 'D:\Tools' -Force | Out-Null
+git clone https://github.com/Etriii/agent-skills.git 'D:\Tools\agent-skills'
+if ($LASTEXITCODE -ne 0) { throw 'Clone failed; resolve the error before using the destination.' }
+Set-Location 'D:\Tools\agent-skills'
 ```
 
 Keep the complete collection, including `tools/` and the selected pack's support files. Remote commands install the version currently on GitHub; local changes become available there only after publication.
@@ -70,9 +75,9 @@ python tools/package_skills.py
 
 This creates `dist/agent-skills-0.1.0.zip` and `dist/SHA256SUMS`. A local ZIP is a working-tree snapshot, not proof of a published GitHub release. [Publishing instructions](docs/PUBLISHING.md) cover repository setup, license decisions and releases.
 
-## Install with Markdown records
+## Optional installation with Markdown records
 
-Run commands from the collection root. List either pack:
+This retained Python workflow requires the complete downloaded/cloned collection and Python 3.11+. Complete the acquisition steps above first. Run each command separately from the collection root containing `tools/install_skills.py`; the `--project` path is the destination application, not the source root. List either pack:
 
 ```powershell
 python tools/install_skills.py --pack developer-skills --list
@@ -100,12 +105,21 @@ Codex copies go under `.agents/skills/`; Claude copies go under `.claude/skills/
 
 ## Uninstall and records
 
+Use the same installer that created the copy. For the recommended npx route, PowerShell from the original application folder can remove only the named skill across its agents:
+
+```powershell
+Set-Location 'D:\My App'
+npx skills@1.7.4 remove --skill system-settings
+```
+
+For a global npx copy add `-g` intentionally. Save local edits and check actual destinations after removal; see [npx lifecycle details](docs/NPX_INSTALLATION.md#updates-and-removal). The retained Python commands below apply only to Python-managed copies and run from the acquired collection root:
+
 ```powershell
 python tools/install_skills.py --pack ultimate-qa --agent codex --project "D:\My App" --skills ultimate-qa-api --uninstall --dry-run
 python tools/install_skills.py --pack ultimate-qa --agent codex --project "D:\My App" --skills ultimate-qa-api --uninstall
 ```
 
-Every completed changing operation writes `<scope-root>/.agent-skills/history/<operation-id>/operation.md`. Records include UTC time, pack, agent, scope, source manifest hash, exact destinations, before/after content hashes, previous installation records and backup location. Records survive uninstall.
+Every completed changing Python operation writes `<scope-root>/.agent-skills/history/<operation-id>/operation.md`. Records include UTC time, pack, agent, scope, source manifest hash, exact destinations, before/after content hashes, previous installation records and backup location. Records survive uninstall. External npx installs keep their own lock/lifecycle state and do not write these Markdown records.
 
 Previews, cancellations, validation failures, rolled-back operations and unchanged reruns create no success records. An interrupted transaction blocks further changes until explicit recovery. Uninstall requires recorded ownership and unchanged installed content; it preserves other packs, other agents, application files and QA reports. Removed content remains in `.skills-install-backups/` until you explicitly remove those backups. See [UNINSTALL.md](UNINSTALL.md) and [record format](docs/INSTALLATION_RECORDS.md).
 

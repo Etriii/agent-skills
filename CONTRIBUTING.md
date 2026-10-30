@@ -51,6 +51,20 @@ When changing an interface or documenting previously unclear behavior, update th
 
 Review documentation with realistic requests: the first run, a scoped run, a supported continuous run, a pause/resume, a verification-only request, and a missing prerequisite as applicable. Execute helper and installation checks where useful; label manual source review separately from a model-adherence or application trial. Avoid tests that only enforce prose, heading names, or keyword presence.
 
+## Document installation without hidden setup
+
+Use direct `npx skills@1.7.4 add` as the recommended first installation path. Keep the recorded Python route, clearly labelled optional. A reader installing an ordinary skill should not need to discover an unstated clone step. Follow [AGENTS.md](AGENTS.md) for the repository's installation documentation policy and [INSTALL.md](INSTALL.md) for complete reader-facing steps.
+
+- Start with prerequisites, supported shell, starting folder, and paths to replace. Show the direct repository URL, exact skill selection, explicit agents, and project scope first. Explain `-g` separately for an intended global installation.
+- Explain that Node.js 22.20+ provides npm/npx, remote sources need network access, and Git supports repository fallback. State any additional skill runtime requirements separately. Show one executable command per line; never concatenate dry-run and install commands.
+- Document the expected selection/destination summary, how to check installed files, agent-session refresh, and the chat request that starts the skill. Listing or installing files does not run the skill.
+- Use `--agent codex claude-code` with npx for both agents and `--agent both` only with Python. Interactive prompts can differ by host; never promise a preview flag that the external CLI does not support or use `--all` as a single-agent/pack shortcut.
+- For optional Python examples, first link or show ZIP download/extraction or Git clone, identify the collection root by its `tools/` and `packs/` folders, then change to that root. Clearly separate it from the destination application. Explain that dry-run changes nothing and the subsequent command performs the installation after its existing confirmation.
+- Explain the QA core/client kit exception and its durable matching support files. Use the documented curl ZIP/npx setup or an existing local kit; do not rely on an external CLI's temporary download remaining available. A curl-to-shell bootstrap does not exist and must not be fabricated.
+- Explain published-versus-local sources, missing-skill troubleshooting, and update/removal ownership. Existing Python users retain records/backups; a documentation preference does not authorize replacing those managed copies.
+
+Keep the detailed primary instructions in each installable README and the shared installation guides. Preserve historical evidence, update current pack/workflow links and manifests, and validate both-agent copies and support-file access with disposable targets. Do not install into a real profile to prove documentation.
+
 ## Categorize a skill
 
 The root [skill catalog](SKILL_CATALOG.md) owns category assignments. Categories describe a skill's primary outcome; packs describe its installation source. Categorizing a skill does not move its files or change its installation commands.

@@ -31,6 +31,8 @@ Each skill README documents its purpose, installation, invocation and prerequisi
 
 Follow the [command documentation contract](../CONTRIBUTING.md#document-skill-commands-and-automation): give copyable chat requests, defaults, scope, expected effects and outputs, stopping conditions, and supported automation/continuation. Natural-language skills do not need invented subcommands. List the new skill in the [command guide](SKILL_COMMANDS.md), with its actual implementation or review boundary.
 
+Lead every skill and pack installation section with direct npx instructions and explicit prerequisites, target folder, agent selection and expected result. The Python route remains an optional recorded/offline alternative, with download/clone and collection-root steps before local script commands. Explain persistent runtime assets when needed. Follow [the installation documentation rules](../CONTRIBUTING.md#document-installation-without-hidden-setup) rather than assuming the user already has a checkout.
+
 Give each shipping skill exactly one primary category in the root [catalog](../SKILL_CATALOG.md), including its README link and installation pack ID. Categories can span packs; a new pack does not require a new category. Follow the [categorization rules](../CONTRIBUTING.md#categorize-a-skill) and link any new category from the main README.
 
 Developer Skills retains validated schema-1 `metadata.toml` sidecars. A sidecar is optional for other packs; if present, it must satisfy the same current contract. Do not invent license grants or compatibility proof.

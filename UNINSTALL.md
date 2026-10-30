@@ -1,6 +1,19 @@
 # Uninstall and reinstall
 
-This guide applies to copies managed by the collection's Python installer. For copies installed with `npx skills`, use the [external CLI removal instructions](docs/NPX_INSTALLATION.md#updates-and-removal). Its lock files are separate from this collection's ownership history.
+Use the installer that created the copy. Recommended npx installs use the [external CLI removal workflow](docs/NPX_INSTALLATION.md#updates-and-removal); its lock files are separate from Python ownership history.
+
+PowerShell, starting in the application where the project copy was installed; replace the path and name. This removes only the named skill from all agents in that project:
+
+```powershell
+Set-Location 'D:\My App'
+npx skills@1.7.4 remove --skill system-settings
+```
+
+For an intended global removal, add `-g` only if that was the original scope. Save local edits first and check the actual destination after removal; the npx guide describes shared-agent directory behavior.
+
+## Optional Python-managed removal
+
+The remaining guide applies to copies managed by the collection's Python installer. Obtain or locate the complete local collection using [these steps](INSTALL.md#optional-local-copy-for-python-and-offline-use), then open PowerShell in its inner root containing `tools/` and `packs/`. The script below is a local file; it is not available merely because a skill was installed. Do not use it to force-remove an npx-owned copy.
 
 Use the same pack, agent and scope as installation. Run from the collection root. Preview first:
 
