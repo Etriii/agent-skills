@@ -47,7 +47,7 @@ class PublicContractTests(unittest.TestCase):
 
     def test_repository_discovery_exposes_only_shipping_skills(self):
         expected = set(ROOT.glob("packs/*/skills/*/SKILL.md"))
-        self.assertEqual(len(expected), 32)
+        self.assertEqual(len(expected), 33)
         skipped = {"node_modules", ".git", "dist", "build", "__pycache__"}
         discovered = {path for path in ROOT.rglob("SKILL.md")
                       if not skipped.intersection(path.relative_to(ROOT).parts)}

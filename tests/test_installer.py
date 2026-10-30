@@ -6,6 +6,7 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -29,6 +30,7 @@ NAMES = {
     "frontend-review", "backend-review", "database-review", "security-privacy-review",
     "business-rules-review", "delivery-readiness", "critical-review", "deep-critique", "prompt-intake",
     "investigate-first", "lean-build", "surgical-patch", "safe-refactor", "migration", "verify-and-stop",
+    "report-creator",
 }
 
 
@@ -41,10 +43,16 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                self.assertEqual(metadata["compatible_agents"], ["codex", "claude"])
+                expected_agents = [] if name == "report-creator" else ["codex", "claude"]
+                self.assertEqual(metadata["compatible_agents"], expected_agents)
                 expected_files = {"SKILL.md", "README.md", "metadata.toml"}
                 if name == "deep-critique":
                     expected_files |= {"scripts/report_store.py", "scripts/storage_io.py", "references/report-storage.md"}
+                elif name == "report-creator":
+                    expected_files |= {
+                        "references/discovery-and-metrics.md", "references/documents.md",
+                        "references/access-and-retention.md", "references/verification.md",
+                    }
                 self.assertEqual(set(catalog.files_in(path)), expected_files)
                 self.assertEqual(skill.content_sha256, catalog.digest(path))
 
@@ -76,6 +84,27 @@ class InstallerTests(unittest.TestCase):
         shutil.copytree(ROOT / "skills", source / "skills")
         shutil.copy2(ROOT / "SHA256SUMS", source / "SHA256SUMS")
         return source
+
+    def test_selected_report_creator_keeps_references_for_both_agents(self):
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            result = install_skills.main([
+                "--agent", "both", "--project", str(self.project),
+                "--skills", "report-creator", "--yes",
+            ])
+        self.assertEqual(result, 0)
+        source = ROOT / "skills/report-creator"
+        for agent in (".agents", ".claude"):
+            target = self.target("report-creator", agent)
+            self.assertEqual({path.name for path in target.parent.iterdir()}, {"report-creator"})
+            self.assertEqual(catalog.files_in(target), catalog.files_in(source))
+            body = (target / "SKILL.md").read_text(encoding="utf-8")
+            references = re.findall(r"\]\((references/[^)]+)\)", body)
+            self.assertTrue(references)
+            for reference in references:
+                with self.subTest(agent=agent, reference=reference):
+                    installed_reference = (target / reference).resolve()
+                    self.assertTrue(installed_reference.is_relative_to(target.resolve()))
+                    self.assertTrue(installed_reference.is_file())
 
     def test_one_codex_skill_only_and_idempotent_repeat(self):
         self.assertEqual(self.run_install("--yes"), 0)

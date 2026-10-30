@@ -23,6 +23,7 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 | [prompt-intake](skills/prompt-intake/README.md) | Prompt analysis with recommended choices, versioned question files, continuation and next-action hints | Intake before execution |
 | [investigate-first](skills/investigate-first/README.md) | Evidence-led diagnosis before code changes | Task helper |
 | [lean-build](skills/lean-build/README.md) | Bounded feature implementation through existing owners | Task helper |
+| [report-creator](skills/report-creator/README.md) | Reporting discovery, styled exports, scoped access and retained files | Read-only scan |
 | [surgical-patch](skills/surgical-patch/README.md) | Root-cause correction and focused regression proof | Task helper |
 | [safe-refactor](skills/safe-refactor/README.md) | Structural change with behavior-preservation proof | Task helper |
 | [migration](skills/migration/README.md) | Compatibility-sensitive transition and recovery | Task helper |

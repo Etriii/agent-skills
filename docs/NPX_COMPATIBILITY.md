@@ -1,5 +1,15 @@
 # External CLI compatibility evidence
 
+## Report Creator, 2026-10-31
+
+The cached `skills@1.7.4` CLI checked the local report-creator source in disposable projects with an isolated profile, telemetry disabled, and project copies only.
+
+- Collection discovery listed all 33 shipping skills and excluded sample-review.
+- Selected installation copied exactly report-creator for Codex and Claude Code. Every payload hash matched source and all four instruction references were accessible in each installed copy.
+- Full Developer Skills installation copied exactly 24 skills per agent with matching payload hashes, including the complete report-creator payload.
+
+No remote source, global installation, model prompt, or native agent discovery was exercised. The new skill's compatible_agents metadata remains empty. These checks prove external CLI packaging and local copy integrity, not runtime/model behavior. Earlier counts below describe earlier snapshots.
+
 ## Optional implementation helpers, 2026-10-28
 
 Using the cached `skills@1.7.4` executable through Node.js against local source, with telemetry and Node compile-cache writes disabled:

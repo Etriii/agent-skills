@@ -1,6 +1,6 @@
 # Developer Skills pack
 
-Twenty-three independent skills for prompt intake, planning, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
+Twenty-four independent skills for prompt intake, planning, report creation, implementation, generic critique, development reviews, delivery checks and handoff. Each README and metadata file is included in the payload manifest. No private runner, Docker or API key is required. The Python installer works offline once the source is downloaded.
 
 This pack belongs to [Agent Skills](../../README.md). Each skill has its own README with installation, usage and prerequisites.
 
@@ -8,7 +8,7 @@ Browse by purpose in the [categorized collection catalog](../../SKILL_CATALOG.md
 
 ## Install with npx
 
-Requires Node.js 22.20+ and npm. Install one skill or all 23 globally for Codex:
+Requires Node.js 22.20+ and npm. Install one skill or all 24 globally for Codex:
 
 ```powershell
 npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill blocker-check --agent codex -g --copy
@@ -27,7 +27,7 @@ python tools/install_skills.py --pack developer-skills --agent both --project "D
 python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --bundle essential
 ```
 
-Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 23. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
+Essential contains plan-review, blocker-check, phase-handoff and completion-check. Use `--skills blocker-check` for one or `--bundle all` explicitly for all 24. Installation executes no skill. The pack-local `tools/install_skills.py` is an entry point to the same collection tool.
 
 The [installation guide](../../INSTALL.md) covers user scope, integrity, matching-copy adoption, backup replacement and recovery. The [removal guide](../../UNINSTALL.md) gives tracked uninstall/reinstall commands. Completed changing operations create scoped Markdown history; removal preserves records and content backups.
 
@@ -55,6 +55,7 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [phase-runner](skills/phase-runner/README.md) | Execute one authorized ready phase with checkpoints, verification and a bounded handoff. |
 | [plan-review](skills/plan-review/README.md) | Review complete-plan coverage, dependencies and existing implementation before development. |
 | [prompt-intake](skills/prompt-intake/README.md) | Clarify a task with recommended choices, custom answers, versioned question files and next-action hints. |
+| [report-creator](skills/report-creator/README.md) | Discover reporting needs and build scoped report pages with styled PDF and Excel exports and retained generated files. |
 | [safe-refactor](skills/safe-refactor/README.md) | Restructure code while preserving defined behavior and contracts. |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |

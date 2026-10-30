@@ -1,5 +1,25 @@
 # Collection verification
 
+## Report Creator, 2026-10-31
+
+Added one portable report-creator skill with scan, plan, build, verify, and help commands. Bare invocation scans; mid and detailed select report content without weakening discovery, access, document, or lifecycle requirements.
+
+Four self-contained references cover discovery/metric semantics, PDF/Excel design, access/generated-file retention, and verification. They specify feature necessity classifications, full-population categorical counts, status/type palettes, effective filter disclosure, separate PDF front matter, usable workbook sheets, role/tenant/field restrictions, permitted cross-user downloads, a dedicated Generated Reports page, and configurable 24-hour availability from successful completion. Direct builds load the metric reference without requiring a prior planning command. Essential selections remain unchanged.
+
+Executed on Windows with Python 3.14.7 in an isolated C: worktree, avoiding the pre-existing cross-drive fixture limitation:
+
+- Baseline and updated public-contract checks passed all 5 tests.
+- Final collection suite passed all 79 tests: `python -B -m unittest discover -s tests -v`.
+- QA-pack suite passed all 10 tests: `python -B -m unittest discover -s packs/ultimate-qa/tests -v`.
+- The added selected-install regression copies report-creator alone to both agents, compares every file hash, and resolves the installed instruction references within each copied skill.
+- Cached external CLI discovery found all 33 shipping skills. Selected and full 24-skill developer-pack copies matched source hashes for both agents, with all references accessible. See [external CLI evidence](NPX_COMPATIBILITY.md#report-creator-2026-10-31).
+- All 11 local Markdown links in the new skill's 6 Markdown files resolved. Portable metadata and all seven payload files passed manifest/catalog checks. Whitespace checks passed.
+
+The optional skill-creator quick validator could not import host PyYAML; no dependency was installed. Repository portable validation, manifests, installer tests, and public-contract checks provide structural proof. The new compatible_agents list remains empty because native agent discovery was not run.
+
+These results establish packaging and local installation integrity. No model adherence trial, target-application change, rendered PDF/workbook, browser journey, worker/scheduler run, global installation, remote publication, or production behavior was verified. Application behavior remains instructions to be tested in each target project.
+
+
 ## Optional implementation and change-safety helpers, 2026-10-28
 
 The Developer Skills pack now contains 23 skills, with 32 across both packs. Six optional helpers are categorized under Implementation and Change Safety: investigate-first, lean-build, surgical-patch, safe-refactor, migration and verify-and-stop. Each has self-contained instructions, a usage and installation README, task-specific metadata and payload hashes. The Essential selection is unchanged.
