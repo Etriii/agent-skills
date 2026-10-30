@@ -30,7 +30,7 @@ NAMES = {
     "frontend-review", "backend-review", "database-review", "security-privacy-review",
     "business-rules-review", "delivery-readiness", "critical-review", "deep-critique", "prompt-intake",
     "investigate-first", "lean-build", "surgical-patch", "safe-refactor", "migration", "verify-and-stop",
-    "report-creator",
+    "report-builder",
     "table-ux-review",
     "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile",
 }
@@ -45,12 +45,12 @@ class CatalogTests(unittest.TestCase):
                 path = skill.path
                 metadata = catalog.validate_skill(path)
                 self.assertEqual(metadata["skill_id"], name)
-                expected_agents = [] if name in {"report-creator", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"} else ["codex", "claude"]
+                expected_agents = [] if name in {"report-builder", "table-ux-review", "ultimate-ui-ux", "ultimate-ui", "ultimate-ux", "ultimate-mobile"} else ["codex", "claude"]
                 self.assertEqual(metadata["compatible_agents"], expected_agents)
                 expected_files = {"SKILL.md", "README.md", "metadata.toml"}
                 if name == "deep-critique":
                     expected_files |= {"scripts/report_store.py", "scripts/storage_io.py", "references/report-storage.md"}
-                elif name == "report-creator":
+                elif name == "report-builder":
                     expected_files |= {
                         "references/discovery-and-metrics.md", "references/documents.md",
                         "references/access-and-retention.md", "references/verification.md",
@@ -97,17 +97,17 @@ class InstallerTests(unittest.TestCase):
         shutil.copy2(ROOT / "SHA256SUMS", source / "SHA256SUMS")
         return source
 
-    def test_selected_report_creator_keeps_references_for_both_agents(self):
+    def test_selected_report_builder_keeps_references_for_both_agents(self):
         with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
             result = install_skills.main([
                 "--agent", "both", "--project", str(self.project),
-                "--skills", "report-creator", "--yes",
+                "--skills", "report-builder", "--yes",
             ])
         self.assertEqual(result, 0)
-        source = ROOT / "skills/report-creator"
+        source = ROOT / "skills/report-builder"
         for agent in (".agents", ".claude"):
-            target = self.target("report-creator", agent)
-            self.assertEqual({path.name for path in target.parent.iterdir()}, {"report-creator"})
+            target = self.target("report-builder", agent)
+            self.assertEqual({path.name for path in target.parent.iterdir()}, {"report-builder"})
             self.assertEqual(catalog.files_in(target), catalog.files_in(source))
             body = (target / "SKILL.md").read_text(encoding="utf-8")
             references = re.findall(r"\]\((references/[^)]+)\)", body)

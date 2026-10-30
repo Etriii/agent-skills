@@ -1,5 +1,11 @@
 # External CLI compatibility evidence
 
+## Report Builder rename, 2026-10-31
+
+Cached skills@1.7.4 local discovery listed all 38 shipping skills with report-builder present and report-creator/sample-review absent. Selected report-builder and the complete 29-skill Developer Skills pack installed into separate disposable projects for Codex and Claude Code. Every copied payload hash matched source; all four instruction references resolved in each installed report-builder copy.
+
+The check used an isolated profile, disabled telemetry, and local project copies only. No real-profile migration, global installation, remote source, native agent discovery, or model prompt was exercised. Earlier report-creator entries below retain their original names and snapshot evidence.
+
 ## Mobile review, 2026-10-31
 
 Using cached `skills@1.7.4` directly through Node.js with telemetry disabled and local sources:

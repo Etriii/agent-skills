@@ -1,5 +1,17 @@
 # Collection verification
 
+## Report Builder rename, 2026-10-31
+
+Renamed the shipping report-creator directory, frontmatter, stable metadata identity, chat/install examples, catalogs, and installer coverage to report-builder. The four instruction references are byte-identical to the previous commit; the entrypoint changes only the name. No alias, profile migration, runtime behavior change, or skill-count change was introduced. The README explains removal/update boundaries for existing installed copies. Earlier evidence retains the old name to describe the snapshots actually tested.
+
+Verification with Python 3.14.7 used a temporary C: working directory with absolute source-test paths to avoid the existing cross-drive fixture limitation:
+
+- All 85 collection tests passed, including renamed selection for both agents, complete catalogs, payload manifests, lifecycle handling, and repeatable archive checks.
+- All 13 local Markdown links in the renamed skill resolved.
+- Cached external CLI discovery listed all 38 shipping skills with the new name and without the old name or sample fixture. Selected and complete 29-skill Developer Skills copies matched all source hashes for both agents, with all four references accessible. See [external CLI evidence](NPX_COMPATIBILITY.md#report-builder-rename-2026-10-31).
+
+Native agent discovery, model adherence, target-application behavior, and real-profile installation/migration remain unverified. This rename does not establish application or worker execution proof.
+
 ## Durable report generation guidance, 2026-10-31
 
 Report Creator now requires durable backend generation for PDF and Excel, prompt acknowledgement of a persisted request, server-owned status/progress on Generated Reports, reload/navigation/tab-close recovery, measured stages/counts, and an indeterminate display for unknown totals. Guidance covers reliable dispatch after commit, idempotent submission and worker retries, stale-job detection, complete-file publication, permission-scoped updates, and retention starting at successful completion.

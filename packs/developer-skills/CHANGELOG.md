@@ -2,12 +2,13 @@
 
 ## Unreleased
 
-- Strengthen report-creator with durable worker execution, persisted progress, reload/navigation recovery, reliable dispatch, and idempotent file publication.
+- Rename report-creator to report-builder with updated chat/install examples and guidance for existing installed copies.
+- Strengthen report-builder with durable worker execution, persisted progress, reload/navigation recovery, reliable dispatch, and idempotent file publication.
 - Add ultimate-mobile and strengthen default mobile, control-alignment, header-context and dialog/button-hierarchy guidance across the UI/UX suite.
 
 - Add independent combined/UI-only/UX-only interface review skills with gated or automatic execution, saved comparisons, scoped implementation and licensed offline design references.
 
-- Add report-creator for evidence-based reporting discovery, specifications, implementation and verification with styled exports, role/data isolation and retained generated files.
+- Add report-builder for evidence-based reporting discovery, specifications, implementation and verification with styled exports, role/data isolation and retained generated files.
 - Add table-ux-review with per-table navigation decisions, action-placement recommendations, workflow preservation and explicit evidence limits.
 - Add prompt-intake with context inspection, native question tools when available, chat fallback, versioned question files, separate answer and work states, unfinished-item carry-forward, simple continuation and next-action hints.
 - Add deep-critique for generic detailed assessments with default full mode, evidence-based ratings and optional focused commands.

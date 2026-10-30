@@ -55,7 +55,7 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [phase-runner](skills/phase-runner/README.md) | Execute one authorized ready phase with checkpoints, verification and a bounded handoff. |
 | [plan-review](skills/plan-review/README.md) | Review complete-plan coverage, dependencies and existing implementation before development. |
 | [prompt-intake](skills/prompt-intake/README.md) | Clarify a task with recommended choices, custom answers, versioned question files and next-action hints. |
-| [report-creator](skills/report-creator/README.md) | Discover reporting needs and build scoped report pages with styled PDF and Excel exports and retained generated files. |
+| [report-builder](skills/report-builder/README.md) | Discover reporting needs and build scoped report pages with styled PDF and Excel exports and retained generated files. |
 | [safe-refactor](skills/safe-refactor/README.md) | Restructure code while preserving defined behavior and contracts. |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trace trust boundaries, permissions and data handling for a scoped change. |
 | [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |

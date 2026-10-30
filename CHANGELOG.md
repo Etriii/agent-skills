@@ -2,12 +2,13 @@
 
 ## Unreleased collection 0.1.0
 
+- Rename report-creator to report-builder across skill identity, invocation, selection, documentation and integrity manifests; preserve all reporting behavior.
 - Require durable report-generation jobs with recoverable status/progress on Generated Reports, measured progress, reliable dispatch, and safe worker retries.
 - Add ultimate-mobile as an independent mobile web UI/UX shortcut; keep mobile checks enabled in normal reviews and specify control alignment, header priorities, account-menu access, filter reflow and semantic dialog/action hierarchy.
 
 - Add ultimate-ui-ux, ultimate-ui and ultimate-ux for all-pages or selected-page interface audits, staged approvals, autonomous improvements, saved before/after wireframes and evidence-based verification. Bundle selected Taste, UI UX Pro Max and frontend-design material with pinned provenance and original licenses.
 
-- Add report-creator with feature/role discovery, mid and detailed reports, styled PDF and Excel exports, effective filters, scoped shared downloads, generated-report history and configurable 24-hour retention.
+- Add report-builder with feature/role discovery, mid and detailed reports, styled PDF and Excel exports, effective filters, scoped shared downloads, generated-report history and configurable 24-hour retention.
 - Add table-ux-review for complete scoped table inventories, accessible detail navigation, role-aware action placement and bounded cleanup using existing application patterns.
 - Add six optional implementation and change-safety helpers with portable instructions, task-specific metadata and explicit PhasePilot usage guidance while preserving the four Essential defaults.
 - Document standalone skill order and PhasePilot integration; verify native discovery and enable Codex/Claude compatibility metadata for prompt-intake and deep-critique.

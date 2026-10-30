@@ -60,7 +60,7 @@ Choose a helper for the authorized type of work. These skills work independently
 | [investigate-first](packs/developer-skills/skills/investigate-first/README.md) | Diagnose unclear failures using reproduction and competing evidence before proposing edits. | `developer-skills` |
 | [lean-build](packs/developer-skills/skills/lean-build/README.md) | Implement a bounded feature through existing owners with focused verification. | `developer-skills` |
 | [migration](packs/developer-skills/skills/migration/README.md) | Make compatibility-sensitive transitions with preservation and recovery evidence. | `developer-skills` |
-| [report-creator](packs/developer-skills/skills/report-creator/README.md) | Discover reporting needs and implement scoped reports with styled PDF and Excel exports and retained generated files. | `developer-skills` |
+| [report-builder](packs/developer-skills/skills/report-builder/README.md) | Discover reporting needs and implement scoped reports with styled PDF and Excel exports and retained generated files. | `developer-skills` |
 | [safe-refactor](packs/developer-skills/skills/safe-refactor/README.md) | Change structure while preserving defined behavior and public contracts. | `developer-skills` |
 | [surgical-patch](packs/developer-skills/skills/surgical-patch/README.md) | Correct a specific defect at its responsible owner with regression proof. | `developer-skills` |
 | [verify-and-stop](packs/developer-skills/skills/verify-and-stop/README.md) | Verify existing work against acceptance without adding implementation scope. | `developer-skills` |

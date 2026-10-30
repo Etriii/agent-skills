@@ -1,4 +1,4 @@
-# Report Creator
+# Report Builder
 
 Discover reporting needs across an application, specify useful business reports, and implement role-aware report pages with styled PDF and Excel exports.
 
@@ -7,16 +7,16 @@ Discover reporting needs across an application, specify useful business reports,
 Run these in agent chat from the target application, or include its path:
 
 ```text
-$report-creator scan
-$report-creator scan inventory and sales
-$report-creator plan sales --detail mid
-$report-creator plan sales --detail detailed
-$report-creator build sales --detail detailed
-$report-creator verify sales
-$report-creator help
+$report-builder scan
+$report-builder scan inventory and sales
+$report-builder plan sales --detail mid
+$report-builder plan sales --detail detailed
+$report-builder build sales --detail detailed
+$report-builder verify sales
+$report-builder help
 ```
 
-Claude Code uses `/report-creator` with the same arguments. These are instructions to the agent, not terminal commands. Bare invocation scans; the default report detail is `mid`. Scan and plan are read-only unless a saved artifact is requested. Build implements only the selected scope and does not require repeating existing authorization.
+Claude Code uses `/report-builder` with the same arguments. These are instructions to the agent, not terminal commands. Bare invocation scans; the default report detail is `mid`. Scan and plan are read-only unless a saved artifact is requested. Build implements only the selected scope and does not require repeating existing authorization.
 
 Mid reports contain core figures, meaningful status/type counts, essential records, and metric notes. Detailed reports add supported analysis, exceptions, reconciliation, drilldowns, and fuller explanations. Both levels require effective-filter disclosure, role and data isolation, clean PDF and actual `.xlsx` exports, and retained generated files.
 
@@ -34,11 +34,13 @@ Reloading, navigating away, or closing the tab does not stop generation. Returni
 
 ## Install
 
+This skill was previously named `report-creator`. Existing installed copies retain that name until replaced; no automatic alias or profile migration is performed. Use the same installer and scope that created the old copy, preserving any local edits. Python-managed copies remain removable by their recorded old name using the [removal guide](../../../../UNINSTALL.md); external CLI copies use its [removal workflow](../../../../docs/NPX_INSTALLATION.md#updates-and-removal). Install `report-builder` below and refresh the agent session.
+
 PowerShell, starting in the local collection root; Python 3.11+:
 
 ```powershell
-python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills report-creator --dry-run
-python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills report-creator
+python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills report-builder --dry-run
+python tools/install_skills.py --pack developer-skills --agent both --project "D:\My App" --skills report-builder
 ```
 
 Preview should select only this skill for both agents. The changing command uses the installer's existing confirmation and records. Choose `--agent codex` or `--agent claude` for one agent. Refresh the agent session after installation.
@@ -46,7 +48,7 @@ Preview should select only this skill for both agents. The changing command uses
 For a published copy, the external CLI can install it with Node.js 22.20+ and npm:
 
 ```powershell
-npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill report-creator --agent codex --copy
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill report-builder --agent codex --copy
 ```
 
 Run from the target application for project scope. The remote command requires the change to have been published; a local merge does not publish it. See the [pack guide](../../README.md), [installation options](../../../../INSTALL.md), [npx guide](../../../../docs/NPX_INSTALLATION.md), and [removal guide](../../../../UNINSTALL.md).
