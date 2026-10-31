@@ -18,16 +18,28 @@ $report-builder build all clearly justified missing reports across this project 
 
 This includes discovery, evidence-based selection, specification, implementation and checks in one session. `--detail mid` selects essential report content without weakening access, export, progress or retention requirements. Covered reports are reused; Unknown and Unnecessary candidates are not built. No preceding scan/plan is required.
 
-**Review and improve selected UI/UX without skill approval pauses:**
+**Improve selected UI/UX or explicitly all pages:**
 
 ```text
-$ultimate-ui-ux run --page /orders --auto
-$ultimate-ui run --page /orders --auto
-$ultimate-ux run --page /checkout --auto
-$ultimate-mobile run --page /orders --auto
+$ultimate-ui-ux Improve /orders and verify the changes.
+$ultimate-ui-ux Improve all UI and UX in "D:\My App".
+$ultimate-ui-ux Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-ui-ux Improve https://localhost:3000/orders using the source in "D:\My App".
 ```
 
-Each line is an independent example, not a sequence to run all four. Without `--auto`, the workflow stops for proposal approval, then design approval. The main skill supports `--focus ui` or `--focus ux`; shortcuts fix their focus and reject conflicts. Repeat `--page` to select more pages. Unresolved selectors never expand to all pages.
+Each line is independent. Replace example application/page paths, routes and URLs. All four UI/UX entrypoints inspect, select justified improvements, implement and verify by default, without routine skill approval pauses or formal review/previews. An absolute application directory identifies the project; the task supplies page scope or explicitly all pages. Absolute page files select affected pages; relative paths resolve against the identified application. URL-only access can support inspection but needs matching editable source before source changes. Unclear targets/scope and unresolved selectors never become all-pages redesigns. Improve-all covers discovered pages of the identified app, with compact changed/kept/deferred coverage and gaps, not sibling projects or external sites.
+
+**Request review-only or optional preview approval:**
+
+```text
+$ultimate-ui-ux Review /orders only. Do not edit.
+$ultimate-ui-ux Improve /orders. Include before/after previews.
+$ultimate-ui-ux Improve /orders. Show previews and wait for my approval before editing.
+```
+
+Review-only stops at recommendations without edits or automatic previews. Requested previews precede implementation; approval pauses are added only when requested. Preview-only never authorizes edits. Platform permissions and material unresolved decisions still apply. Correct pages stay unchanged. Bare invocation/`run` uses established scope or asks for missing input; it no longer silently selects all pages or adds proposal/design gates. Existing gated runs preserve their recorded checkpoints.
+
+Default runs save concise status/proof under `.ui-ux/runs/`; formal reports and feature-based previews are optional. Explicit chat-only requests create no run artifacts. Existing `--page`, `--focus`, `--auto`, `--skip-review`, continuation and verification remain supported; see combinations below. Other skills retain their own defaults and approval contracts.
 
 **Inspect and implement a known settings objective:**
 
@@ -47,6 +59,29 @@ $ultimate-qa run --client
 Choose one line. The first initializes/resumes, audits and plans. The second additionally requests client preparation when its dependencies exist. Both stop before implementing or sending recommendations; `--client` does not approve proposed work. Intake can require answers. Use the original invocation again after supplying a missing prerequisite.
 
 These are current-session workflows. They do not install a recurring scanner, scheduler, or unattended agent. Report-generation workers inside an application are separate from the agent's own execution. Do not copy `--auto` onto skills that do not define it.
+
+## Supported command stacks
+
+A stack combines supported options or modes in one agent-chat request. It does not chain arbitrary subcommands or automatically invoke another skill. Each line below is independent. Replace routes, file paths, subjects and report scopes with actual inputs; Claude Code uses `/skill-name` in place of `$skill-name`.
+
+| Skill | Copyable combination | Effect |
+|---|---|---|
+| UI/UX default | `$ultimate-ui-ux run --focus ux --page /orders --page /checkout` | Inspect, improve and verify selected journeys without formal review/previews. |
+| UI/UX compatibility full review | `$ultimate-ui-ux run --focus ux --page /orders --page /checkout --auto` | Review selected journeys, preview, implement and verify without skill approval pauses. |
+| UI/UX direct fix | `$ultimate-ui-ux run --focus ui --page /orders --skip-review Fix mobile filter wrapping.` | Inspect affected owners, implement that visual fix and verify; no full review or previews. |
+| UI-only | `$ultimate-ui run --page /orders --page /settings` | Inspect, improve and verify only visual presentation on those pages, without formal review/previews. |
+| UX-only | `$ultimate-ux run --page /checkout --skip-review Preserve entered values after validation errors.` | Apply that usability fix while preserving visual identity. |
+| Mobile | `$ultimate-mobile run --page /orders --skip-review Keep filter controls within the phone viewport.` | Apply that responsive fix and check desktop regressions. |
+| Deep Critique | `$deep-critique roast rate docs/design.md` | One sharp assessment with detailed scoring; mode order/duplicates do not multiply reports. |
+| Deep Critique alternatives | `$deep-critique review compare Proposal A vs Proposal B` | Review the supplied alternatives under common criteria; replace both example subjects. |
+| Report Builder | `$report-builder build sales reports --detail detailed` | Discover/implement the named reporting scope with detailed content and verification. |
+| Ultimate QA | `$ultimate-qa run --client` | Intake, audit, plan and client preparation when prerequisites exist; no implementation or sending. |
+
+Natural-language UI/UX requests are recommended first. Compatibility `--auto` still includes a formal review and previews; it is not required for default improvements. The concrete-fix `--skip-review` combines with repeated `--page` and the main skill's `--focus`. Adding `--auto` is accepted but redundant; it does not restore audit or wireframes. Shortcut skills reject conflicting focus options. Explicit review-only/preview-only constraints never authorize implementation.
+
+Do not stack `scan plan build` on Report Builder or System Settings; choose the operation with its own scope/options. Their `build` operation already includes inspection. Natural-language review skills take a scoped sentence rather than invented `run`, `--auto` or `--skip-review` flags. Deep Critique explicitly supports multiple modes; `help` takes precedence and creates no assessment. Approval and continuation operations remain separate where the skill requires them.
+
+New UI/UX previews use one run-local `previews/index.html` linking feature folders such as `orders/` and `checkout/`, with preserved comparison revisions/assets. Existing run links remain valid. Default improvements and direct fixes omit previews unless requested. See the [preview layout](../packs/developer-skills/skills/ultimate-ui-ux/references/preview-and-verify.md#feature-based-preview-folder).
 
 ## Developer Skills requests
 
@@ -78,10 +113,10 @@ Natural-language reviewers/helpers need the selected subject, files, acceptance 
 | [surgical-patch](../packs/developer-skills/skills/surgical-patch/README.md) | `$surgical-patch Fix the stale response overwrite and verify that the latest request remains authoritative.` | Expect a root-cause fix, focused regression evidence and preserved surrounding behavior. The scoped fix request includes tracing, correction and checks; unrelated cleanup and failures remain separate. |
 | [system-settings](../packs/developer-skills/skills/system-settings/README.md) | `$system-settings scan` | Bare invocation scans. Build inspects and implements only the named settings scope with audit/consumer integration; discovery can recommend no new settings. |
 | [table-ux-review](../packs/developer-skills/skills/table-ux-review/README.md) | `$table-ux-review Audit all tables in this application. Inventory detail navigation and row actions by role, recommend action placement, and identify unverified coverage. Report before editing.` | Reviews by default. An explicit audit-and-fix request authorizes the selected cleanup; it preserves routes, roles and existing row workflows. |
-| [ultimate-mobile](../packs/developer-skills/skills/ultimate-mobile/README.md) | `$ultimate-mobile run` | Bare/run reviews mobile web UI and UX with proposal/design gates. --auto includes responsive fixes and desktop regression checks. |
-| [ultimate-ui](../packs/developer-skills/skills/ultimate-ui/README.md) | `$ultimate-ui run` | Bare/run reviews UI only with proposal/design gates. --auto authorizes the bounded visual workflow without skill pauses. |
-| [ultimate-ui-ux](../packs/developer-skills/skills/ultimate-ui-ux/README.md) | `$ultimate-ui-ux run` | Bare/run reviews both disciplines and stops at proposal approval. Run with --auto includes sketches, implementation and checks for the selected pages. |
-| [ultimate-ux](../packs/developer-skills/skills/ultimate-ux/README.md) | `$ultimate-ux run` | Bare/run reviews UX only with proposal/design gates. --auto authorizes the bounded usability workflow without skill pauses. |
+| [ultimate-mobile](../packs/developer-skills/skills/ultimate-mobile/README.md) | `$ultimate-mobile Improve all mobile web UI and UX in "D:\My App".` | Inspect, improve and verify mobile pages, with desktop regression checks. Formal review/previews are optional; replace the absolute application path. |
+| [ultimate-ui](../packs/developer-skills/skills/ultimate-ui/README.md) | `$ultimate-ui Improve /orders and verify the changes.` | Inspect, improve and verify UI-only presentation in the established app. Formal review/previews are optional. |
+| [ultimate-ui-ux](../packs/developer-skills/skills/ultimate-ui-ux/README.md) | `$ultimate-ui-ux Improve all UI and UX in "D:\My App".` | Inspect all discovered app pages, implement justified improvements and verify; keep correct pages and record coverage/gaps. Replace the absolute application path. |
+| [ultimate-ux](../packs/developer-skills/skills/ultimate-ux/README.md) | `$ultimate-ux Review /checkout only. Do not edit.` | Optional UX-only review with findings and no edits. An improvement request instead implements and verifies by default. |
 | [verify-and-stop](../packs/developer-skills/skills/verify-and-stop/README.md) | `$verify-and-stop Verify the completed export behavior against its acceptance criteria and report remaining proof gaps.` | Expect acceptance results with exact checks/outcomes and remaining proof gaps. Failed checks produce a responsible issue and next action; the verification request does not authorize fixes or polish. |
 | [version-manager](../packs/developer-skills/skills/version-manager/README.md) | `$version-manager Compare the current plan with the proposed next version. Preview the mapping and decisions requiring revalidation before writing.` | Expect an old-to-new plan mapping, REUSE/REVALIDATE decisions and affected-file preview before transition consent. After consent, prior plans/evidence stay intact and the new version receives its own record. It does not execute the new plan. |
 
@@ -107,7 +142,7 @@ Core/client workflows need the complete durable QA kit and valid kit location. S
 |---|---|---|
 | Report Builder | `scan [scope]`, `plan <scope> --detail mid`, `build <scope> --detail detailed`, `verify <scope>`, `help`. Bare defaults to scan; omitted detail defaults to mid. | Scan/plan are read-only unless a saved artifact is requested. Build includes discovery for its authorized scope. Verify reports gaps without automatically fixing them. |
 | System Settings | `scan [scope]`, `plan [scope]`, `build <scope>`, `verify [scope]`, `help`. Bare defaults to scan. | The result can be create, extend, no new settings needed, or insufficient evidence. Scan/plan do not start implementation. |
-| UI/UX suite, all four entrypoints | `run`, repeated `--page <selector>`, `--auto`, `continue <run-folder>`, `verify <run-folder>`, `help`. Main entrypoint also supports `--focus ui` or `--focus ux`; default is both. | Run/bare saves the proposal and stops. Proposal approval permits sketches; design approval permits edits. Continue uses the actual saved run and valid approvals; generic continuation is not approval. Outputs normally live under `.ui-ux/runs/`. Verify adds no fixes. |
+| UI/UX suite, all four entrypoints | Natural-language improve/review/preview requests; `run`, repeated `--page <selector>`, compatibility `--auto`, `run --skip-review <task>`, `continue <run-folder>`, `verify <run-folder>`, `help`. Main also supports `--focus ui` or `--focus ux`; default both. | Default improves/verifies established scope without formal report/previews. Improve-all explicitly covers the identified app. Review-only/preview-only stop without edits; requested preview approval pauses before implementation. Continue preserves recorded scope/gates, including older runs. Verify adds no fixes. Outputs normally live under `.ui-ux/runs/`. |
 | Deep Critique | `full`, `review`, `roast`, `question`, `rate`, `compare`, `help`. Bare means full on the established subject. Modes can combine; order/duplicates are normalized. | Help has precedence and creates no report. Question mode interviews before assessment. Reports normally live under `.deep-critique/`; a chat-only request suppresses persistence. Continue the same unfinished question session in context; a fresh invocation creates a new run. |
 | Prompt Intake | Supply the task after the name; ask for questions only when implementation is not wanted. Bare uses the clearly pending task or asks for one. | Saves `.prompt-intake/questions-vNNN.md`. Answer the active file/menu, then reply `continue`, `answered` or `done`. These reread the active file and do not choose defaults. A new intake creates a new version; required answers precede dependent work. |
 | Table UX Review | A natural-language audit request reviews; explicitly request audit and fix to authorize selected changes. | Returns table inventory, decisions and evidence. It does not invent missing detail routes or turn an audit into implementation automatically. |

@@ -71,7 +71,7 @@ Read [SKILL_CATALOG.md](SKILL_CATALOG.md) for selection and [docs/SKILL_STANDARD
 | [surgical-patch](skills/surgical-patch/README.md) | Fix a specific defect with focused regression evidence. |
 | [system-settings](skills/system-settings/README.md) | Assess runtime settings needs and implement scoped settings with category loading and audit reuse. |
 | [table-ux-review](skills/table-ux-review/README.md) | Audit table detail navigation and row actions with role-aware recommendations and accessibility checks. |
-| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Coordinate UI/UX audits, before/after wireframes and gated or autonomous scoped improvements. |
+| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Improve selected or explicitly all application pages with verification, optional formal review and feature-based previews. |
 | [ultimate-ui](skills/ultimate-ui/README.md) | Review and improve visual presentation while preserving task flows. |
 | [ultimate-ux](skills/ultimate-ux/README.md) | Review and improve navigation and task flows while preserving visual identity. |
 | [ultimate-mobile](skills/ultimate-mobile/README.md) | Review and improve mobile web headers, filters, dialogs and journeys with desktop regression checks. |
@@ -84,7 +84,9 @@ Use `$prompt-intake <task>` to inspect a prompt before starting dependent work. 
 
 For a generic assessment of the current idea, plan, design, implementation, document or decision, type only `$deep-critique`. Full review and ratings run by default; `$deep-critique help` lists optional modes and combinations such as `roast rate`. Python 3.11+ enables categorized reports in the target's ignored `.deep-critique/` folder; each run preserves earlier results. Use `critical-review` for a short planning-specific challenge instead.
 
-Use `$ultimate-ui-ux run` for a combined all-pages interface review, or add `--page /route` and `--auto` for selected-page autonomous work. Mobile checks run by default; `$ultimate-mobile run` is a mobile-focused shortcut. The default shows findings before sketches and sketches before application edits, with approval between stages. Each of the four UI/UX entrypoints works alone and bundles licensed reference material; see [the suite guide](skills/ultimate-ui-ux/README.md).
+Use `$ultimate-ui-ux Improve /orders and verify the changes.` for scoped work, or `$ultimate-ui-ux Improve all UI and UX in "D:\My App".` for every discovered page of an identified application. Replace the example route/path with actual inputs. All four entrypoints inspect, choose justified improvements, implement and verify by default, without routine approval pauses or formal reports/wireframes. Correct pages stay unchanged. Unclear scope requires clarification; a bare invocation does not silently select all pages. Absolute application/page paths, relative paths and URLs are supported; URL-only access needs matching editable source for implementation. Mobile checks run by default; `ultimate-mobile` adds mobile focus with desktop regression checks.
+
+Request `$ultimate-ui-ux Review /orders only. Do not edit.` for an optional report, or `$ultimate-ui-ux Improve /orders. Show previews and wait for my approval before editing.` for a design checkpoint. Requested previews share one run-local entry page with feature folders and preserved revisions. Existing `--auto` retains the full review/comparison/implementation workflow for compatibility; `--skip-review <task>` retains the concrete-fix shortcut. Neither flag is needed for default improvements. Saved runs retain existing approval gates. See [the suite guide](skills/ultimate-ui-ux/README.md) and [command combinations](../../docs/SKILL_COMMANDS.md#supported-command-stacks).
 
 ## Contribute
 

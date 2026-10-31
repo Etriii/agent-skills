@@ -1,24 +1,40 @@
 ---
 name: ultimate-mobile
-description: Audit and improve mobile web layouts navigation headers filters dialogs and touch usability across all pages or selected routes with before and after previews. Use for phone viewport reviews with approval checkpoints or explicitly autonomous responsive fixes while preserving desktop behavior.
+description: Inspect and improve existing application mobile web UI and UX, implement justified scoped fixes and verify them. Use for selected pages or explicitly all pages, with optional review-only reports and feature-based previews.
 ---
 
 # Ultimate Mobile
 
-Input: Target web application, optional page selectors, mobile constraints, relevant users and runtime access.
+Input: Target application and selected pages or explicit all-pages scope; absolute application/page paths, relative paths and authorized URLs are supported.
 
-Output: A mobile page/state inventory, evidence-linked UI/UX recommendations, authorized before/after previews, and authorized responsive changes with verification and desktop preservation checks.
+Output: Scoped mobile web UI and UX improvements with verification by default; formal review reports or previews only when requested. Keep source, prototype and observed runtime evidence distinct.
 
-This is the standalone mobile web entrypoint of the Ultimate UI/UX suite. Required resources are local; no sibling installation is needed. Codex uses `$ultimate-mobile`; Claude Code uses `/ultimate-mobile`. These are agent-chat instructions, not terminal commands.
+This independently installable entrypoint uses local resources; no sibling skill is required. Codex uses `$ultimate-mobile`; Claude Code uses `/ultimate-mobile`. These are agent-chat requests, not terminal commands.
 
-- Bare invocation or `run` reviews all discovered pages for mobile UI and UX, then shows the proposal and stops for approval.
-- Add `--page <URL|route|file|name>` to limit pages; repeat it for several pages. Unresolved selectors never broaden scope.
-- Add `--auto` to review, decide, preview, implement and verify mobile improvements without skill approval pauses. Explicit task-specific no-approval requests also select auto mode.
-- Use `continue <run-folder>` to resume the recorded scope/checkpoint, `verify <run-folder>` for checks without fixes, or `help` for usage only.
-- Focus is mobile web UI and UX, with desktop checked for regressions. Reject conflicting focus options; use the discipline-specific entrypoints for UI-only/UX-only work. Honor user-specified viewports and narrower natural-language scope.
+## Use
 
-Read [workflow](references/workflow.md) for each run; this entrypoint sets its defaults to both disciplines with mobile web as the target. Read [mobile review](references/mobile-review.md) plus [UI review](references/ui-review.md) and [UX review](references/ux-review.md) for affected decisions. Read [previews and verification](references/preview-and-verify.md) before sketches, implementation or verification. Consult [source guidance](references/source-guidance.md) only when relevant.
+- Natural-language requests, bare invocation and `run` inspect the established scope, choose justified improvements, implement and verify without routine skill approval pauses. Ask for target/scope if unclear; never silently select all pages.
+- `Improve all` explicitly selects every discovered page of the identified application within this entrypoint's discipline. Keep correct pages unchanged and record coverage/gaps.
+- `Review ... only. Do not edit.` requests findings without implementation or automatic previews. `Show previews and wait for my approval before editing` adds a design checkpoint. Previews are otherwise optional; a preview-only request never authorizes edits.
+- An absolute application directory identifies the project, not all pages. An absolute page/component file selects affected pages. Resolve relative paths against the target application; a URL selects its page. URL-only access needs matching editable source for implementation; otherwise report that limitation.
+- Existing `run --page <URL|route|absolute-or-relative-file|name>` supports repeated selectors. `--auto` keeps the full review/preview/implementation workflow without skill pauses; it is not needed for default improvements. `run --skip-review <task>` keeps the concrete-fix shortcut; task text or established context must identify the fix. Adding `--auto` to it is redundant. Unresolved selectors and vague concrete-fix requests require clarification without widening scope.
+- `continue <run-folder>` resumes the recorded scope and checkpoints, including older gated runs. `verify <run-folder>` checks recorded acceptance/design without fixes. `help` shows defaults and copyable natural-language/option combinations without creating a run. Reject `--skip-review` on these operations.
+- Focus is fixed to `both` (mobile web UI and UX); reject conflicting focus options. Explicit narrower user constraints take precedence over implementation modes.
 
-Gated mode requires proposal approval before sketches and design approval before application edits. Auto mode executes those stages without pausing while retaining artifacts and rationale. Keep names/actions reachable when simplifying headers, preserve filter/form state, distinguish cancel/primary/destructive actions and retain role/tenant boundaries. Do not force one responsive pattern on every page or redesign desktop under mobile-only scope.
+Independent agent-chat examples; replace paths, routes and task text with actual inputs:
 
-Limits: Main UI/UX skills already include mobile checks; this shortcut does not enable them. Source inspection and browser emulation do not establish real-device or screen-reader acceptance. No native app, fixed framework, hosted service, external package, other skill or network access is required. Platform permissions and the selected scope still apply; publication, dependency installation and Git operations require separate authorization.
+```text
+$ultimate-mobile Improve /orders and verify the changes.
+$ultimate-mobile Improve all in "D:\My App".
+$ultimate-mobile Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-mobile Improve https://localhost:3000/orders using the source in "D:\My App".
+$ultimate-mobile Review /orders only. Do not edit.
+$ultimate-mobile Improve /orders. Show previews and wait for my approval before editing.
+$ultimate-mobile run --page /orders --skip-review Keep filter controls within the phone viewport.
+```
+
+Read [workflow](references/workflow.md) for scope, authorization, storage and continuation. It uses this entrypoint's fixed focus. Consult [mobile web UI and UX guidance](references/mobile-review.md) and [mobile guidance](references/mobile-review.md) only for affected decisions. Read [implementation and verification](references/preview-and-verify.md) for changes/checks; preview sections apply only when previews are requested or required by an existing run. Consult [source guidance](references/source-guidance.md) only when relevant.
+
+Preserve desktop behavior and check it for regressions. Keep account/tenant context, filters and dialog actions reachable. Native app redesign is outside this entrypoint. Inspect affected owners and shared callers, preserve accessibility and role/data boundaries, and verify the changed behavior. New previews share one run-local feature index; existing links and revisions stay valid.
+
+Limits: Source inspection is not rendered proof; browser emulation is not real-device or screen-reader acceptance. No fixed framework, hosted service, external package, other skill or network access is required. Platform permissions and selected scope still apply. Publication, dependency installation and Git operations require separate task authorization.

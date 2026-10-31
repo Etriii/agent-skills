@@ -1,6 +1,6 @@
 # Ultimate UI
 
-Review visual hierarchy, layout, spacing, typography, consistency, responsive composition and visual accessibility. This independent UI-only entrypoint preserves routes, information architecture and task order. Structural UX opportunities are reported separately.
+Inspect and improve visual hierarchy, layout, spacing, typography, consistency, responsive composition and visual accessibility, then verify. Formal review and previews are optional. This independent UI-only entrypoint preserves routes, information architecture and task order. Structural UX opportunities are reported separately.
 
 Mobile is included by default. Inspect label/control alignment, crowded headers, touch presentation and primary/secondary/destructive button distinctions. Use `ultimate-mobile` when the selected task needs mobile UI and UX together.
 
@@ -64,22 +64,51 @@ The first installer command previews and writes nothing. The second requests the
 
 Use the installer that owns an existing copy for updates/removal; npx and Python maintain different records and protections. Preserve local edits before replacement. See the [pack guide](../../README.md), [npx lifecycle](../../../../docs/NPX_INSTALLATION.md#updates-and-removal), and [recorded removal guide](../../../../UNINSTALL.md).
 
-## Use
+## Use in agent chat
 
-Enter these in agent chat with the target application open; they are not terminal commands. Claude Code uses `/ultimate-ui`.
+Open the target application or name its source path. These are agent-chat requests, not terminal commands. Codex uses `$ultimate-ui`; Claude Code uses `/ultimate-ui`. Replace example paths, routes and URLs with actual inputs.
 
 ```text
-$ultimate-ui run
-$ultimate-ui run --page /stores/:slug
-$ultimate-ui run --page /orders --page /settings --auto
-$ultimate-ui continue <run-folder> I approve the selected findings for sketches.
+$ultimate-ui Improve /orders and verify the changes.
+$ultimate-ui Improve all in "D:\My App".
+$ultimate-ui Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-ui Improve https://localhost:3000/orders using the source in "D:\My App".
+```
+
+The default inspects the established scope, chooses justified UI-only visual improvements, implements and verifies without routine skill approval pauses. No flag is required. Correct pages stay unchanged. Formal reviews and wireframes are optional. Bare invocation/`run` uses scope already established in context; unclear target/scope requires clarification, never an implicit all-pages redesign. **Improve all** explicitly covers every discovered page of the identified application within this entrypoint's discipline, with compact changed/kept/deferred coverage and gaps. It does not include sibling projects or external sites.
+
+An absolute application directory identifies the project, not every page; name the feature or say improve all. An absolute page/component file selects affected pages. Relative paths resolve against the identified application. A URL identifies a runtime page and needs matching editable source for implementation; URL-only inspection cannot claim source changes. Invalid or unresolved targets never broaden scope. Quote paths containing spaces. Platform permissions and material unresolved policy choices still apply; publication, dependency installation, Git operations and unrelated features need separate authorization.
+
+## Optional review and previews
+
+Each agent-chat example is independent:
+
+```text
+$ultimate-ui Review /orders only. Do not edit.
+$ultimate-ui Improve /orders. Include before/after previews.
+$ultimate-ui Improve /orders. Show previews and wait for my approval before editing.
+$ultimate-ui Create previews for /orders only. Do not edit application code.
+```
+
+Review-only stops at findings without edits or automatic previews. Requested previews precede implementation, with an approval pause only when requested; preview-only never authorizes edits. New previews share one run-local `previews/index.html`, linking feature indexes such as `previews/orders/index.html` and preserved comparison revisions/assets. Existing paths remain valid. See the installed [feature layout](references/preview-and-verify.md#feature-based-preview-folder).
+
+## Existing commands and continuation
+
+Natural-language requests above are recommended. Existing command combinations remain supported:
+
+```text
+$ultimate-ui run --page /orders --page /settings
+$ultimate-ui run --page "D:\My App\src\pages\Orders.vue"
+$ultimate-ui run --page /orders --auto
+$ultimate-ui run --page /orders --skip-review Fix mobile filter wrapping.
+$ultimate-ui continue <run-folder>
 $ultimate-ui verify <run-folder>
 $ultimate-ui help
 ```
 
-Bare/run defaults to all discovered pages and approval checkpoints. Replace `<run-folder>` with the exact path supplied by the agent. The default workflow shows findings, waits for proposal approval, shows low-fidelity comparisons, waits for design approval, then implements and verifies. Generic continuation does not grant new approval. Relevant drift invalidates affected approvals.
+Repeated `--page` accepts URLs, routes, absolute/relative files or page names. Focus stays fixed to this entrypoint; reject conflicts. Scoped `run` now improves and verifies without formal review/previews. For compatibility, `--auto` retains the full review/comparison/implementation workflow without skill approval pauses; it is not needed for the default. `--skip-review <task>` retains the concrete-fix shortcut; missing/vague tasks require clarification. Adding `--auto` to it is redundant. Reject `--skip-review` on `continue`, `verify` and `help`. Explicit review-only/preview-only instructions never authorize edits.
 
-`--auto`, or explicit task-specific no-approval authorization, completes those stages for UI-only scope without skill pauses. It retains decisions, previews and proof. Platform permissions and material unresolved policy choices still apply. It does not authorize a broader UX redesign, dependency installation, publication or Git operations.
+Default runs save concise status/proof under the application's `.ui-ux/runs/`, with compact coverage for improve-all. Formal review/previews are added only when requested or required by a compatibility/saved run; no empty placeholders. Chat-only creates no run artifacts. Replace `<run-folder>` with the actual saved path. Continue checks drift and preserves recorded scope/authorization, including older proposal/design gates; the new default does not approve old designs. Verify checks recorded acceptance/design without fixes or missing-artifact demands. See the [workflow](references/workflow.md) for compatibility and resume details.
 
 ## Outputs and prerequisites
 

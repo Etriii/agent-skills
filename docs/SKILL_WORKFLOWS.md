@@ -33,23 +33,26 @@ $blocker-check Check unresolved decisions for the selected feature in docs/plan.
 
 A review does not authorize implementation. Each invocation must retain the requested scope; completing one stage does not automatically start the next.
 
-## UI and UX reviews with previews
+## UI and UX improvements with optional review/previews
 
-Use `ultimate-ui-ux` to inventory all application pages or selected routes, review visual and task-flow problems, choose fitting patterns, and save findings before creating proposed layouts. The main skill contains both disciplines and includes mobile checks by default; `ultimate-ui` and `ultimate-ux` are independently installable focused entrypoints. `ultimate-mobile` is an independent shortcut for mobile web UI/UX work with desktop regression checks.
+Use `ultimate-ui-ux` to inspect the established page scope, choose evidence-based improvements, implement and verify. Formal review reports and wireframes are optional; no flag is needed for default implementation. The main skill includes UI, UX and mobile checks. `ultimate-ui`, `ultimate-ux` and `ultimate-mobile` independently select visual, usability or mobile-web focus; mobile-only changes include desktop regression checks.
 
-These are agent-chat requests in the target application:
+Independent agent-chat requests, with example paths/routes/URLs to replace:
 
 ```text
-$ultimate-ui-ux run
-$ultimate-ui-ux run --page /stores/:slug
-$ultimate-ui run --page /orders
-$ultimate-ux run --page /checkout --auto
-$ultimate-mobile run --page /orders --auto
+$ultimate-ui-ux Improve /orders and verify the changes.
+$ultimate-ui-ux Improve all UI and UX in "D:\My App".
+$ultimate-ui Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-mobile Improve https://localhost:3000/orders using the source in "D:\My App".
+$ultimate-ux Review /checkout only. Do not edit.
+$ultimate-ui-ux Improve /orders. Show previews and wait for my approval before editing.
 ```
 
-Default execution stops after the proposal, then after low-fidelity before/after comparisons. Proposal approval authorizes previews; design approval authorizes implementation. Explicit `--auto` or a task-specific no-approval request authorizes review, sketches, changes and verification inside the selected scope without skill approval pauses. Platform permissions and material unresolved policy choices still apply. Generic continuation is not new approval.
+Absolute application directories identify the project; requests supply selected features/pages or explicitly all pages. Absolute page/component files select affected pages; relative paths resolve against the target app. URLs identify runtime pages and need matching editable source for implementation. Missing target/scope requires clarification, never an implicit all-pages redesign. Improve-all authorizes justified fixes across discovered pages of the identified app, with compact changed/kept/deferred coverage and gaps; correct pages remain unchanged. Sibling projects and external hosts stay outside scope.
 
-The agent saves coverage, recommendations, revisions, decisions and proof under the target's `.ui-ux/runs/` directory, preserving previous runs. It does not assume every long page needs tabs, alter unselected shared callers, fabricate rendered evidence or change business/data policy to finish a redesign. Refer to [the suite guide](../packs/developer-skills/skills/ultimate-ui-ux/README.md) for commands, continuation and source licenses.
+Default work continues through verification without routine approval pauses. Review-only/preview-only never authorize edits. Requested previews precede implementation; a pause occurs only when preview approval is requested. Unresolved material policy choices and platform permissions still apply. Existing options remain supported: scoped `run` follows the new default, `--auto` retains full review/comparison/implementation for compatibility, and `--skip-review <task>` retains the concrete-fix shortcut. Other skills keep their own defaults and approval contracts.
+
+Runs save concise status/proof under `.ui-ux/runs/`; improve-all adds compact coverage. Requested formal reviews add recommendations; requested/compatibility previews share one `previews/index.html` linking feature folders and preserved revisions. Existing gated runs keep their recorded checkpoints and paths. Continue checks drift and resumes recorded authorization; generic continuation is not approval. Verify adds no fixes. The skill does not fabricate rendered evidence, redesign unselected shared callers or invent business/data policy. See [the suite guide](../packs/developer-skills/skills/ultimate-ui-ux/README.md) and [command combinations](SKILL_COMMANDS.md#supported-command-stacks).
 
 ## Implementation and change safety
 

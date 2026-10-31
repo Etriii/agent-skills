@@ -2,6 +2,8 @@
 
 ## Unreleased collection 0.1.0
 
+- Make scoped UI/UX inspection, justified improvements and verification the default, with optional formal review and feature-based previews. Document explicit improve-all, absolute application/page paths, relative paths and URLs; preserve existing command options and saved approval checkpoints.
+- Add `run --skip-review <task>` across the UI/UX suite for concrete fixes without full audit, proposal or wireframes; retain affected-owner inspection and verification. Group new previews by feature under one run-local index, preserve revision history, and document supported command stacks across skills.
 - Document scoped npx updates, single-skill selection, explicit-agent/copy reinstallation, installer ownership and matching Ultimate QA kit refresh.
 - Make direct npx installation the recommended documented route across all skills; retain explicit Python acquisition/recorded-install steps, add curl ZIP setup for the QA kit, and ship repository instructions enforcing complete installation guidance.
 - Document commands, defaults, continuous execution, expected outputs and stopping points across the skill collection; add a command guide and contributor requirements for usable command documentation.

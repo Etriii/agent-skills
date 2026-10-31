@@ -12,6 +12,8 @@ Each skill also includes a human-facing `README.md` with installation, invocatio
 
 The [usage documentation contract](../../../CONTRIBUTING.md#document-skill-commands-and-automation) also requires clear defaults, supported commands/options, expected outputs and writes, approval/continuation behavior, prerequisites, and stopping conditions. Document continuous execution only when supported. Use the [command guide](../../../docs/SKILL_COMMANDS.md) for discovery; each installed README must still explain its own usable request and effects without depending on the collection checkout.
 
+For skills supporting combined options or modes, include copyable command-stack examples with their effects and conflicting/redundant inputs in the README and relevant usage/help instructions. Keep examples within that skill's actual interface; natural-language skills need scoped requests rather than invented flags or subcommands.
+
 Installation examples follow the [direct-install documentation rules](../../../CONTRIBUTING.md#document-installation-without-hidden-setup): npx first, no manual checkout prerequisite for ordinary skills, explicit shell/folder/agent/scope/result instructions, and optional Python examples only after explaining local checkout acquisition and its root. Do not invent curl bootstrap scripts or hide required runtime assets.
 
 The validator intentionally supports this constrained portable frontmatter rather than general YAML. Tests exercise actual installation outcomes and integrity failures using only Python's standard library. Native discovery checks are optional environment proof, recorded separately. Never infer a publishing license or trusted source identity from a filename, prefix, checksum or synthetic fixture.

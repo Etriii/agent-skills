@@ -2,7 +2,7 @@
 
 ## Build a reviewable comparison
 
-Follow the current run's authorization in [workflow](workflow.md). A proposal approval authorizes previews. In auto mode create them before application changes without pausing. Use the existing design/prototyping environment if it fits; otherwise generate local HTML/CSS with minimal JavaScript for the proposed interactions. No hosted service, image model, paid API, package installation or application rewrite is required for a low-fidelity preview.
+Follow the current run's authorization in [workflow](workflow.md). Default improvements and direct fixes omit previews unless requested; use the implementation and verification sections below for those paths. Requested previews precede authorized edits, with a design-approval pause only when the user requests one. Preview-only never authorizes edits. Compatibility `--auto` and existing gated runs retain their recorded preview requirements; proposal approval authorizes previews in those gated runs. Use the existing design/prototyping environment if it fits; otherwise generate local HTML/CSS with minimal JavaScript for proposed interactions. No hosted service, image model, paid API, package installation or application rewrite is required for a low-fidelity preview.
 
 Create an easy-to-open comparison with:
 
@@ -17,6 +17,37 @@ Use [the comparison starter](../assets/comparison.html) as an illustrative store
 Keep assets local and references portable inside the run. Respect image and font rights. Do not embed private screenshots in publicly hosted artifacts. If opening a browser requires platform permission, use the normal permission mechanism. If no browser renderer is available, provide the HTML/sketch and clearly state that it has not been visually inspected; do not claim a successful render.
 
 Review the prototype at the requested widths. Check content completeness, focus, switching states, text wrapping and overflow. Show the current preview/index links in chat before requesting design approval. Revisions preserve earlier files and approval bindings. The approved artifact is the implementation specification, not proof the application behaves that way.
+
+## Feature-based preview folder
+
+For new previews, keep one `previews/` root inside the existing run. Its `index.html` is the entry page, linking feature folders named after the application's actual features. Even a single-feature run uses this entry page. For example:
+
+```text
+.ui-ux/runs/<run-id>/
+  review.md                 Review runs only
+  status.md
+  verification.md           When checks run
+  previews/                 Only when previews are required/requested
+    index.html
+    orders/
+      index.html
+      revisions/
+        v001/
+          index.html        Before/after comparison
+          assets/
+    checkout/
+      index.html
+      revisions/
+        v001/
+          index.html
+          assets/
+```
+
+`<run-id>` is the existing UTC timestamp plus unique suffix. Use filesystem-safe lowercase feature slugs, such as `orders` or `account-settings`; disambiguate duplicate feature names by their real module. Never use raw URLs, route parameters or user-supplied path segments as output paths. Validate all destinations within the run root using the workflow's path rules.
+
+Each feature index links its current comparison and preserved earlier revisions. Comparison pages identify the feature, concrete routes, roles, states, viewports and related finding IDs or direct task. One feature may contain several page comparisons; keep them clearly labeled. Add revision directories only when producing previews, and asset folders only when assets exist. Preserve published comparison files and their assets; create `v002` and update indexes for a revision rather than replacing an approved comparison. Record exact comparison paths/hashes in status so a changing index never grants approval to another revision.
+
+Use relative links and keep generated preview assets within this root. Reuse common assets under `previews/assets/` when useful instead of duplicating them. Do not create separate top-level preview directories per feature. Existing saved runs, links and approval paths remain valid; do not move historical previews into this layout automatically.
 
 ## Implement the approved or autonomous selection
 
@@ -35,4 +66,4 @@ Choose the smallest sufficient target-project proof based on what changed:
 
 Capture actual post-change application screens in comparable conditions and link them separately from proposed sketches. A passing build, screenshot file, prototype or source search does not establish a complete user journey, screen-reader acceptance or production behavior. Report the command, result, scope and evidence type; mark skipped or blocked checks honestly.
 
-Map implemented/kept/deferred findings to changed files and proof in `verification.md`. Update `status.md` with the final stage and remaining actions. Show a concise final report with artifact links, coverage counts, changes, verification and material limitations. Stop after the selected scope; never start another feature or publish automatically.
+Map implemented/kept/deferred findings or direct-task acceptance checks to changed files and proof in `verification.md` when persistence is permitted. Update `status.md` with the final stage and remaining actions. Show a concise final report with artifact links, review coverage or direct-fix scope, changes, verification and material limitations. Stop after the selected scope; never start another feature or publish automatically.

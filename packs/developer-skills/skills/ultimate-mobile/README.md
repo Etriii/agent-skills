@@ -1,6 +1,6 @@
 # Ultimate Mobile
 
-Review mobile web UI and UX across all pages or selected routes. Check crowded headers, account menus, filter alignment/reflow, dialogs, button hierarchy, touch access and state preservation. Keep a desktop baseline to detect regressions without redesigning desktop.
+Inspect and improve mobile web UI and UX across selected routes or explicitly all pages, then verify. Formal review and previews are optional. Check crowded headers, account menus, filter alignment/reflow, dialogs, button hierarchy, touch access and state preservation. Keep a desktop baseline to detect regressions without redesigning desktop.
 
 Mobile checks also run in the main `ultimate-ui-ux`, `ultimate-ui` and `ultimate-ux` reviews. This independent shortcut selects mobile web work directly; it does not enable an otherwise missing check.
 
@@ -66,22 +66,49 @@ Use the installer that owns an existing copy for updates/removal; npx and Python
 
 ## Use in agent chat
 
-These are chat requests with the target application open, not terminal commands. Claude Code uses `/ultimate-mobile`.
+Open the target application or name its source path. These are agent-chat requests, not terminal commands. Codex uses `$ultimate-mobile`; Claude Code uses `/ultimate-mobile`. Replace example paths, routes and URLs with actual inputs.
 
 ```text
-$ultimate-mobile run
-$ultimate-mobile run --page /orders
-$ultimate-mobile run --page /orders --page /settings --auto
-$ultimate-mobile continue <run-folder> I approve the selected findings for sketches.
+$ultimate-mobile Improve /orders and verify the changes.
+$ultimate-mobile Improve all in "D:\My App".
+$ultimate-mobile Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-mobile Improve https://localhost:3000/orders using the source in "D:\My App".
+```
+
+The default inspects the established scope, chooses justified mobile web UI/UX improvements, implements and verifies without routine skill approval pauses. No flag is required. Correct pages stay unchanged. Formal reviews and wireframes are optional. Bare invocation/`run` uses scope already established in context; unclear target/scope requires clarification, never an implicit all-pages redesign. **Improve all** explicitly covers every discovered page of the identified application within this entrypoint's discipline, with compact changed/kept/deferred coverage and gaps. It does not include sibling projects or external sites.
+
+An absolute application directory identifies the project, not every page; name the feature or say improve all. An absolute page/component file selects affected pages. Relative paths resolve against the identified application. A URL identifies a runtime page and needs matching editable source for implementation; URL-only inspection cannot claim source changes. Invalid or unresolved targets never broaden scope. Quote paths containing spaces. Platform permissions and material unresolved policy choices still apply; publication, dependency installation, Git operations and unrelated features need separate authorization.
+
+## Optional review and previews
+
+Each agent-chat example is independent:
+
+```text
+$ultimate-mobile Review /orders only. Do not edit.
+$ultimate-mobile Improve /orders. Include before/after previews.
+$ultimate-mobile Improve /orders. Show previews and wait for my approval before editing.
+$ultimate-mobile Create previews for /orders only. Do not edit application code.
+```
+
+Review-only stops at findings without edits or automatic previews. Requested previews precede implementation, with an approval pause only when requested; preview-only never authorizes edits. New previews share one run-local `previews/index.html`, linking feature indexes such as `previews/orders/index.html` and preserved comparison revisions/assets. Existing paths remain valid. See the installed [feature layout](references/preview-and-verify.md#feature-based-preview-folder).
+
+## Existing commands and continuation
+
+Natural-language requests above are recommended. Existing command combinations remain supported:
+
+```text
+$ultimate-mobile run --page /orders --page /settings
+$ultimate-mobile run --page "D:\My App\src\pages\Orders.vue"
+$ultimate-mobile run --page /orders --auto
+$ultimate-mobile run --page /orders --skip-review Keep filter controls within the phone viewport.
+$ultimate-mobile continue <run-folder>
 $ultimate-mobile verify <run-folder>
 $ultimate-mobile help
 ```
 
-Bare/run reviews all discovered pages for mobile UI and UX, shows a saved proposal and stops. Approval authorizes low-fidelity comparisons; subsequent design approval authorizes application edits. Replace `<run-folder>` with the exact path provided by the agent. Generic continuation is not new approval.
+Repeated `--page` accepts URLs, routes, absolute/relative files or page names. Focus stays fixed to this entrypoint; reject conflicts. Scoped `run` now improves and verifies without formal review/previews. For compatibility, `--auto` retains the full review/comparison/implementation workflow without skill approval pauses; it is not needed for the default. `--skip-review <task>` retains the concrete-fix shortcut; missing/vague tasks require clarification. Adding `--auto` to it is redundant. Reject `--skip-review` on `continue`, `verify` and `help`. Explicit review-only/preview-only instructions never authorize edits.
 
-`--auto`, or explicit task-specific no-approval authorization, completes review, previews, implementation and verification without skill approval pauses. It retains evidence and decisions. Platform permissions, selected page scope and unresolved material policy choices still apply. Default outputs live under the application's `.ui-ux/runs/`, preserving earlier runs and design revisions.
-
-The skill chooses patterns based on actual tasks. A profile name may move into an accessible account dropdown, while current store/tenant context remains identifiable. Search/date controls align intentionally and wrap or stack on small screens. Dialog actions distinguish Cancel from the consequential action through labels, emphasis and semantic styling; Sign out is not automatically treated as deletion.
+Default runs save concise status/proof under the application's `.ui-ux/runs/`, with compact coverage for improve-all. Formal review/previews are added only when requested or required by a compatibility/saved run; no empty placeholders. Chat-only creates no run artifacts. Replace `<run-folder>` with the actual saved path. Continue checks drift and preserves recorded scope/authorization, including older proposal/design gates; the new default does not approve old designs. Verify checks recorded acceptance/design without fixes or missing-artifact demands. See the [workflow](references/workflow.md) for compatibility and resume details.
 
 ## Prerequisites and evidence limits
 

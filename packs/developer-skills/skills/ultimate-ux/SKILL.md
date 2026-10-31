@@ -1,26 +1,40 @@
 ---
 name: ultimate-ux
-description: Review and improve existing application navigation content grouping task flows and interaction states across all pages or selected routes. Use for UX-only audits and wireframes with approval checkpoints or explicitly autonomous usability fixes while preserving the visual identity.
+description: Inspect and improve existing application UX-only navigation and task flows, implement justified scoped fixes and verify them. Use for selected pages or explicitly all pages, with optional review-only reports and feature-based previews.
 ---
 
 # Ultimate UX
 
-Input: Target application, optional page selectors, user journeys and runtime access.
+Input: Target application and selected pages or explicit all-pages scope; absolute application/page paths, relative paths and authorized URLs are supported.
 
-Output: A journey/page inventory, evidence-linked usability recommendations, authorized before/after previews, and authorized UX changes with verification.
+Output: Scoped UX-only navigation and task flows improvements with verification by default; formal review reports or previews only when requested. Keep source, prototype and observed runtime evidence distinct.
 
-This is the independently installable UX-only entrypoint of the Ultimate UI/UX suite. Use its local resources; no sibling skill is required. In Codex use `$ultimate-ux`; in Claude Code use `/ultimate-ux`. These are agent-chat instructions, not terminal commands.
+This independently installable entrypoint uses local resources; no sibling skill is required. Codex uses `$ultimate-ux`; Claude Code uses `/ultimate-ux`. These are agent-chat requests, not terminal commands.
 
-- Bare invocation or `run` reviews all discovered pages for UX only and stops after showing the proposal.
-- Add `--page <URL|route|file|name>` to limit pages; repeat it for several pages. Unresolved selectors never broaden scope.
-- Add `--auto` to review, decide, preview, implement and verify usability changes without skill approval pauses. Explicit task-specific no-approval requests also select auto mode.
-- Use `continue <run-folder>` to resume the exact recorded scope and checkpoint, `verify <run-folder>` for verification without fixes, or `help` for usage only.
-- Focus is fixed to `ux`; reject conflicting focus options. Use `ultimate-ui-ux` for both disciplines or `ultimate-ui` for UI-only work.
+## Use
 
-Read [workflow](references/workflow.md) for every run. This entrypoint overrides that reference's coordinator default focus with `ux`. Read [UX review](references/ux-review.md), then [wireframes and verification](references/preview-and-verify.md) for previews/implementation/checks. Consult [source guidance](references/source-guidance.md) only when relevant.
+- Natural-language requests, bare invocation and `run` inspect the established scope, choose justified improvements, implement and verify without routine skill approval pauses. Ask for target/scope if unclear; never silently select all pages.
+- `Improve all` explicitly selects every discovered page of the identified application within this entrypoint's discipline. Keep correct pages unchanged and record coverage/gaps.
+- `Review ... only. Do not edit.` requests findings without implementation or automatic previews. `Show previews and wait for my approval before editing` adds a design checkpoint. Previews are otherwise optional; a preview-only request never authorizes edits.
+- An absolute application directory identifies the project, not all pages. An absolute page/component file selects affected pages. Resolve relative paths against the target application; a URL selects its page. URL-only access needs matching editable source for implementation; otherwise report that limitation.
+- Existing `run --page <URL|route|absolute-or-relative-file|name>` supports repeated selectors. `--auto` keeps the full review/preview/implementation workflow without skill pauses; it is not needed for default improvements. `run --skip-review <task>` keeps the concrete-fix shortcut; task text or established context must identify the fix. Adding `--auto` to it is redundant. Unresolved selectors and vague concrete-fix requests require clarification without widening scope.
+- `continue <run-folder>` resumes the recorded scope and checkpoints, including older gated runs. `verify <run-folder>` checks recorded acceptance/design without fixes. `help` shows defaults and copyable natural-language/option combinations without creating a run. Reject `--skip-review` on these operations.
+- Focus is fixed to `ux` (UX-only navigation and task flows); reject conflicting focus options. Explicit narrower user constraints take precedence over implementation modes.
 
-For responsive web work, also read [mobile review](references/mobile-review.md); apply its journey/navigation checks within UX-only scope. Mobile account-menu access, filter discoverability and dialog recovery are part of the default review, not an optional extra.
+Independent agent-chat examples; replace paths, routes and task text with actual inputs:
 
-Gated mode shows the review before any proposed layout; proposal approval authorizes sketches, and design approval authorizes application edits. Auto mode executes those stages without pausing while retaining artifacts and rationale. Preserve current visual identity except where the interaction requires an accessible presentation change. Keep roles, data access, validation and business policy intact. Choose tabs, sections, disclosure or routes per journey; never apply tabs to every long page.
+```text
+$ultimate-ux Improve /orders and verify the changes.
+$ultimate-ux Improve all in "D:\My App".
+$ultimate-ux Improve "D:\My App\src\pages\Orders.vue".
+$ultimate-ux Improve https://localhost:3000/orders using the source in "D:\My App".
+$ultimate-ux Review /orders only. Do not edit.
+$ultimate-ux Improve /orders. Show previews and wait for my approval before editing.
+$ultimate-ux run --page /orders --skip-review Preserve entered values after validation errors.
+```
 
-Limits: Source evidence is not observed user behavior. Auto mode does not bypass platform permissions or expand scope. No fixed framework, external runtime, hosted service, other installed skill or network access is required. Publication, dependency installation and Git changes need separate task authorization.
+Read [workflow](references/workflow.md) for scope, authorization, storage and continuation. It uses this entrypoint's fixed focus. Consult [UX-only navigation and task flows guidance](references/ux-review.md) and [mobile guidance](references/mobile-review.md) only for affected decisions. Read [implementation and verification](references/preview-and-verify.md) for changes/checks; preview sections apply only when previews are requested or required by an existing run. Consult [source guidance](references/source-guidance.md) only when relevant.
+
+Preserve visual identity, permissions, data boundaries and working routes. Do not add a brand overhaul under UX-only scope. Inspect affected owners and shared callers, preserve accessibility and role/data boundaries, and verify the changed behavior. New previews share one run-local feature index; existing links and revisions stay valid.
+
+Limits: Source inspection is not rendered proof; browser emulation is not real-device or screen-reader acceptance. No fixed framework, hosted service, external package, other skill or network access is required. Platform permissions and selected scope still apply. Publication, dependency installation and Git operations require separate task authorization.

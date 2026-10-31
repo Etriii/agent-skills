@@ -19,7 +19,7 @@ These are agent-chat commands, not executable shell commands. In Codex use `$rep
 | `plan <report-or-scope> --detail mid\|detailed` | Specify the selected reports, document design, permissions, generated-files page, retention, acceptance, and unresolved decisions without application edits. |
 | `build <report-or-scope> --detail mid\|detailed` | Implement the selected reporting scope through existing owners and verify it. This command supplies implementation authorization; do not ask for approval again for settled in-scope decisions. |
 | `verify <report-or-scope>` | Verify existing reporting against its agreed specification. Report gaps without expanding into implementation. |
-| `help` | Explain commands, detail levels, required input, and evidence limits without edits. |
+| `help` | Explain commands, detail levels, required input, and evidence limits with copyable command/option combinations, without edits. |
 
 Bare invocation defaults to `scan`. If no target can be inferred, ask for the application path or scope. Default report content to `mid` when omitted and state that choice. Reject unsupported detail levels or ambiguous command combinations without silently building. Natural-language implementation requests already authorize their stated scope; commands are not an extra approval gate.
 
