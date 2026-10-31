@@ -35,6 +35,12 @@ Remote commands use the published source; local unpushed changes are not availab
 
 **Ultimate QA core/client exception:** their templates/helpers must stay available after installation. Follow the [curl ZIP and npx setup](docs/NPX_INSTALLATION.md#ultimate-qa-support-files) to keep the kit and installed skills on the same source snapshot. This does not require a manual Git clone. Standalone QA specialists have their own runtime requirements.
 
+## Update installed skills
+
+Use the installer that owns each copy and save custom edits first. For npx-managed copies, follow the [project/global update commands](docs/NPX_INSTALLATION.md#update-npx-managed-skills), including single-skill selection, explicit-agent/copy reinstallation and matching QA kit refresh. Remote updates use the published recorded source/ref, not local unpushed edits. Updating files does not run the skill; refresh the coding-agent session before a separate chat invocation.
+
+For Python-managed copies, obtain an updated complete collection using the acquisition steps below, then run the [replacement preview and apply commands](#existing-copies-and-replacement) from its root. Replacement retains old trees and Markdown history. Do not use npx to take ownership of Python-managed copies.
+
 ## Optional local copy for Python and offline use
 
 Keep the Python workflow when you want manifest checks, retained backups, recovery and Markdown operation history, or local/offline installation. It requires Python 3.11+ and the complete collection on disk. `python tools/install_skills.py` means run that **local file**; it is not a globally installed command and does not download its own source.

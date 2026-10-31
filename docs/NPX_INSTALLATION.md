@@ -120,7 +120,57 @@ This repository does not publish a curl-to-shell installation script. curl examp
 
 ## Updates and removal
 
-Rerun the selected `add` command with the same source, agent and scope after reviewing changes. Keep the QA kit and installed skills on the same revision. External installs do not produce `.agent-skills/history/` records, validate this collection's `SHA256SUMS`, or use its guarded uninstall and retained backups.
+Use the installer that owns each copy. The commands below apply to npx-managed copies; Python-managed copies use [recorded replacement](../INSTALL.md#existing-copies-and-replacement). Save custom edits before updating: external installs do not produce `.agent-skills/history/` records, validate this collection's `SHA256SUMS`, or use its guarded uninstall and retained backups.
+
+### Update npx-managed skills
+
+Prerequisites: Node.js 22.20+ with npm/npx, network access to npm and the recorded remote source, and Git for repository fallback. Review upstream changes before running an update; CLI 1.7.4 can apply replacements without a separate confirmation. Remote updates follow the recorded source/ref, so an unpushed edit or a newer revision outside a pinned ref is not selected automatically.
+
+PowerShell, starting in the original application folder. Replace `D:\My App` with that existing folder:
+
+```powershell
+Set-Location 'D:\My App'
+```
+
+Update all tracked skills in that project:
+
+```powershell
+npx skills@1.7.4 update --project
+```
+
+This includes tracked skills from other sources, not only this collection. To update only one installed skill, choose this alternative; replace `system-settings` with its exact installed name:
+
+```powershell
+npx skills@1.7.4 update system-settings --project
+```
+
+Multiple names are positional, for example `update system-settings blocker-check --project`; `update` does not use `add`'s `--skill` flag. Always state scope: a named update without a scope flag checks both project and global copies.
+
+For existing global installations, choose this alternative. PowerShell, from any folder:
+
+```powershell
+npx skills@1.7.4 update --global
+```
+
+That command updates all tracked global skills, including other sources. To select only one global skill:
+
+```powershell
+npx skills@1.7.4 update system-settings --global
+```
+
+CLI 1.7.4's updater derives agent destinations and does not forward `--agent` or `--copy` to its internal installation. If you need explicit agent selection or Windows copies instead of links, rerun the original selected `add` command with the same source, agents and scope. For example, PowerShell from the original application folder, refresh only system-settings for Codex and Claude Code:
+
+```powershell
+npx skills@1.7.4 add https://github.com/Etriii/agent-skills --skill system-settings --agent codex claude-code --copy
+```
+
+Replace the skill name and source with the original selection; use only `--agent codex` or `--agent claude-code` if that was the intended agent. Add `-g` only when refreshing an existing global copy. This fallback also applies to skipped local-path installs or older lock entries without enough tracking information. Refresh the local source first when reinstalling from a local folder. Do not switch a local or pinned source to the repository's default branch implicitly.
+
+For Ultimate QA core/client, obtain a new complete snapshot in a separate durable folder using the [kit setup](#ultimate-qa-support-files). Set `ULTIMATE_QA_KIT` to its actual `packs/ultimate-qa` directory and rerun the selected `add` command from that same snapshot, preserving agents and scope. Keep the previous kit available until the refreshed copies and helper access are verified. Updating skill files alone does not update the retained templates/helpers.
+
+Read the summary for updated, already-current, skipped or failed skills. An empty or skipped selection is not proof of an update; use the explicit `add` fallback after resolving the reported cause. Verify the intended `SKILL.md` files at the reported destinations, using the [project checks](#individual-skills) or the absolute global paths in the summary. Refresh/reopen the coding-agent session, then invoke the skill separately in agent chat, for example `$system-settings scan` in Codex or `/system-settings scan` in Claude Code. Updating installed files does not execute the skill or prove native discovery.
+
+### Remove npx-managed skills
 
 Remove a skill installed by the external CLI with that CLI:
 

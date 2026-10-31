@@ -54,6 +54,8 @@ For Ultimate QA, follow the [pack setup](packs/ultimate-qa/README.md#install-wit
 
 The external CLI owns its prompts, security assessments and lock files. Its installs do not write this collection's Markdown operation history or use our backup/recovery engine. Choose the Python installer below when those records and protections are required. Use the same installer for updates and removal of a given copy.
 
+For existing npx-managed copies, see [update commands](docs/NPX_INSTALLATION.md#update-npx-managed-skills) for project/global scope, one-skill selection, explicit-agent/copy reinstallation and matching QA kits. Save custom edits first. Python-managed copies use [recorded replacement](INSTALL.md#existing-copies-and-replacement).
+
 ## Optional local download or checkout
 
 You only need to obtain the collection yourself for the optional recorded/offline Python route, a local unpublished source, contribution, or a persistent QA kit. Ordinary remote npx installation obtains its source for you. Follow the [complete ZIP/curl or clone steps](INSTALL.md#optional-local-copy-for-python-and-offline-use). You can also use [GitHub](https://github.com/Etriii/agent-skills) **Code > Download ZIP**, extract it completely, and open PowerShell in the inner root containing `tools/` and `packs/`. Optional Git alternative:
