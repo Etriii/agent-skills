@@ -44,6 +44,10 @@ Inspect audit models, recorders/events, request actor binding, transaction bound
 
 Identify whether the current API truly filters queries or returns all values before client-side grouping. Check initial network calls, category counts, key metadata for history controls, and public/offline projections. Do not assume an administrator-only setting is safe for an anonymous or cashier endpoint.
 
+For in-scope web settings pages, trace the authoritative category metadata, localized displayed names/descriptions, ordering, scroll container, sticky header/search geometry, responsive navigation, and category component/cache lifetimes before proposing changes. Assess existing search, populated-letter sections, alphabet navigation, accessibility, and state behavior against the [interface contract](implementation.md#category-discovery-and-navigation). Identify reusable owners and specific gaps; do not create a second category-membership registry.
+
+Inspect whether filtering, letter jumps, expansion/collapse, tab switches, resizing, and account or authorization changes trigger requests or discard state. Separate source/test evidence from observed browser/network behavior using the [verification guidance](implementation.md#smallest-sufficient-proof). Record unavailable runtime evidence explicitly. Headless targets need no UI assessment; discovery remains read-only and authorizes no application changes.
+
 ## Return a decision
 
 Use a candidate/exclusion table with key or policy, classification and scope, current owner/source, actual consumer, operator need, proposed category/default/validation, and recommendation. Combine columns when that makes a small result clearer. Excluded candidates should explain why their current owner is appropriate.
