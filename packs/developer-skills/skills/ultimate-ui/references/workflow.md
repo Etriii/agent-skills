@@ -53,8 +53,9 @@ Show actionable findings in chat with artifact links, high-impact issues and gro
 
 ## Saved artifacts and resumable approvals
 
-Save runs under `<application-root>/.ui-ux/runs/<UTC-time>-<unique-suffix>/`, using an exclusively created directory. Follow the target's existing report location if it already owns equivalent artifacts. For URL-only access use an available writable output directory and record the target URL and chosen output root. Do not write to the installed skill, overwrite another run, change `.gitignore` or commit generated evidence automatically.
+Save runs under `<application-root>/.ui-ux/runs/YYYYMMDDTHHMMSSZ-<unique-id>/`, using UTC and an exclusively created directory. Follow the target's existing report location if it already owns equivalent artifacts, preserving established state and resume paths. For URL-only access use an available writable output directory and record the target URL and chosen output root. Do not write to the installed skill, overwrite another run, or commit generated evidence automatically.
 
+Before saving in Git, resolve the intended repository root, preserve its `.gitignore`, and append `/.ui-ux/` only if exclusion is not already effective; create the ignore file if absent. Use the actual scoped output path for a custom report root. Verify exclusion with `git check-ignore`, preserve existing bytes and line endings, and refuse tracked output without untracking it automatically. Outside Git, disclose that exclusion is unverified. If safe storage or required exclusion fails, stop persistence and report the exact limitation; continue the permitted review in chat without claiming saved checkpoints or resumability.
 
 Use the target filesystem's safe path handling. Reject symlink/junction escapes, verify output resolves inside the chosen artifact root, and preserve unrelated files. Screenshots/reports must not expose credentials, private user data or tenant-restricted content. Redact or use permitted fixtures before sharing.
 

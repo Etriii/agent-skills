@@ -29,6 +29,8 @@ Keep descriptions on one line and avoid YAML punctuation `:#{}[]`. Define the sk
 
 Each skill README documents its purpose, installation, invocation and prerequisites. Keep agent instructions in `SKILL.md`. The pack README links to every skill README and shows selected-skill and full-pack installation. Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for review and integrity updates. Name non-shipping examples `SKILL.md.example` so repository discovery cannot offer them for installation.
 
+Every shipping `SKILL.md` includes a nonempty `## Generated artifacts` section with self-contained instructions from the [artifact storage contract](../CONTRIBUTING.md#store-generated-artifacts-safely): stable output root, UTC timestamped run directories, preserved history, safe paths, and verified Git exclusion before saving. Preserve existing state/resume contracts; timestamp new run evidence without renaming historical state. Keep the skill README's output and failure behavior aligned. Chat-only skills create no folder unless saving is requested.
+
 Follow the [command documentation contract](../CONTRIBUTING.md#document-skill-commands-and-automation): give copyable chat requests, defaults, scope, expected effects and outputs, stopping conditions, and supported automation/continuation. Natural-language skills do not need invented subcommands. List the new skill in the [command guide](SKILL_COMMANDS.md), with its actual implementation or review boundary.
 
 Lead every skill and pack installation section with direct npx instructions and explicit prerequisites, target folder, agent selection and expected result. The Python route remains an optional recorded/offline alternative, with download/clone and collection-root steps before local script commands. Explain persistent runtime assets when needed. Follow [the installation documentation rules](../CONTRIBUTING.md#document-installation-without-hidden-setup) rather than assuming the user already has a checkout.
@@ -44,3 +46,11 @@ The shared CLI discovers the requested pack directory without a registry or new 
 Also verify [external CLI discovery](NPX_INSTALLATION.md#verify-a-local-change), using the pack-specific source and `--skill '*' --agent codex --copy` for a complete pack. The external CLI does not use collection manifests, history or generated pointers. Document any persistent support-file location explicitly; never rely on its temporary source clone. Do not use `--all` as a Codex-only example because that flag selects all agents too.
 
 Run collection checks and build/extract a ZIP before distribution. Confirm the pack's license and support files are included. Only claim native agent discovery or actual skill behavior when separately exercised.
+
+With Python 3.11+, from the complete collection root containing `tools/` and `packs/`, run this read-only terminal command in PowerShell or a POSIX shell:
+
+```powershell
+python -B tools/check_skills.py --all
+```
+
+See [checker coverage and evidence limits](../CONTRIBUTING.md#check-skill-rules). Static `PASS` does not certify runtime behavior or publication rights; `NOT VERIFIED` requires separate evidence when making those claims.

@@ -82,12 +82,14 @@ You can also enter a specific custom answer.
 
 The actual recommendation depends on the task and source evidence. With an available, permitted native question tool, the host displays choices and a custom-answer control. Hosts that support preselection highlight the first recommendation. A highlighted option is not an answer until submitted. If question tools are unavailable or restricted by the current mode, questions appear in chat. This skill cannot enable a missing CLI menu.
 
-Each new intake creates the next numbered file in one project folder:
+Each new intake creates the next numbered file in its own UTC timestamped run directory:
 
 ```text
 .prompt-intake/
-  questions-v001.md
-  questions-v002.md
+  20261101T083015Z-a1b2c3d4e5f/
+    questions-v001.md
+  20261101T084500Z-f6e5d4c3b2a1/
+    questions-v002.md
 ```
 
 The file records the task, scope, acceptance conditions, status, questions, recommendations and blank `Answer:` fields. Each meaningful multiple-choice question puts the justified recommendation first; native hosts that support defaults highlight it. Every question also accepts a specific custom answer. A highlighted default is not submitted automatically. Answer through the native menu when available, or edit the file with choices or custom text. Menu and chat answers are recorded in the active file too. Required unanswered decisions block dependent work.
@@ -103,10 +105,10 @@ continue
 Each paused response names the file and gives a hint such as:
 
 ```text
-Next: Fill the Answer fields in .prompt-intake/questions-v001.md. Then reply continue.
+Next: Fill the Answer fields in .prompt-intake/20261101T083015Z-a1b2c3d4e5f/questions-v001.md. Then reply continue.
 ```
 
-A new `$prompt-intake` run creates a new version; replying `continue` resumes the pending version. Earlier versions remain intact. Material task changes create a new version referencing the earlier intake. A custom destination directory or filename base is supported with the same version numbering. Existing files are never replaced when allocating a version.
+Use the actual timestamped path reported by the agent; the paths above are examples. Version discovery includes existing flat files, which remain readable and resumable in place. A new `$prompt-intake` run creates a new version and run directory; replying `continue` resumes the pending version. Earlier versions remain intact. Material task changes create a new version referencing the earlier intake. A custom destination directory or filename base is supported with the same version numbering. Existing files are never replaced when allocating a version.
 
 Each question tracks its answer separately from implementation:
 
@@ -135,8 +137,12 @@ A bare `$prompt-intake` uses the clearly pending task or asks you to supply one.
 
 No runtime scripts, API keys, background service or third-party Python packages are required by the skill. The target task can have its own prerequisites. This is a workflow skill, not a hook that intercepts every prompt. Matching requests can select it automatically; explicit `$prompt-intake` invocation makes the intended workflow clear. Neither installation nor metadata validation proves native discovery or model adherence. See [official Codex skills documentation](https://developers.openai.com/codex/skills/).
 
-The default workflow resumes the original authorized task after required answers arrive. Questions-only requests stop after intake. The skill never treats silence as approval or authorizes extra commits, installation or deployment. Saving each intake needs a writable destination; write failures are reported instead of silently skipping the file. The skill does not change Git ignore rules. Add `.prompt-intake/` to your project's ignore rules yourself if these records should stay local.
+The default workflow resumes the original authorized task after required answers arrive. Questions-only requests stop after intake. The skill never treats silence as approval or authorizes extra commits, installation or deployment. Saving each intake needs a writable destination; write failures are reported instead of silently skipping the file. Before saving in Git, the skill preserves or creates the root `.gitignore`, adds `/.prompt-intake/` only when needed, and verifies exclusion. Tracked output is refused without automatic untracking. Custom destinations use their actual scoped output path. Outside Git, exclusion is reported as unverified. A storage or exclusion failure stops persistence with the exact limitation.
 
 Use [blocker-check](../blocker-check/README.md) for a source-backed feature blocker review and [plan-review](../plan-review/README.md) for whole-plan coverage. Prompt Intake owns the conversation before execution; it does not require either skill.
 
 Read the [agent instructions](SKILL.md), [Developer Skills pack guide](../../README.md), [installation guide](../../../../INSTALL.md) and [removal guide](../../../../UNINSTALL.md). Use the installer that owns the copy for updates and removal.
+
+## Generated artifact storage
+
+When this workflow saves reports or run evidence, use its target-workspace output owner and a new UTC `YYYYMMDDTHHMMSSZ-<unique-id>/` run directory; preserve earlier runs. Before saving in Git, the skill preserves or creates the root `.gitignore`, adds only the required scoped output rule, and verifies exclusion. Tracked output is refused without automatic untracking. Non-Git exclusion remains unverified, and workflows requiring Git retain that prerequisite. Unsafe storage or failed exclusion is reported before persistence. Existing state/resume paths and deliberately tracked project documents remain compatible. See the installed [artifact instructions](SKILL.md#generated-artifacts); chat-only requests create no extra output.

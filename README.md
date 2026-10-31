@@ -137,9 +137,24 @@ agent-skills/
   docs/              architecture, records, migration and publication
 ```
 
+With Python 3.11+, from this complete collection root containing `tools/` and `packs/`, run in PowerShell or a POSIX shell:
+
+```powershell
+python -B tools/check_skills.py --all
+```
+
+This read-only checker reports structure, metadata, integrity, local file links, and artifact declarations as `PASS` or `FAIL`. Runtime behavior, agent adherence, and publication approval remain `NOT VERIFIED` without separate evidence. See [coverage, single-skill checks and exit codes](CONTRIBUTING.md#check-skill-rules). Generated reports and run evidence must follow the [timestamped storage and Git exclusion requirements](CONTRIBUTING.md#store-generated-artifacts-safely).
+
+Git is also required for storage regression tests:
+
 ```powershell
 python -B -m unittest discover -s tests -v
+```
+
+```powershell
 python -B -m unittest discover -s packs/ultimate-qa/tests -v
 ```
+
+GitHub Actions runs these checks and tests on Windows and Linux. Local verification and CI do not resolve the collection's license status.
 
 Read [creating a pack](docs/creating-a-pack.md) before adding another collection. [Migration notes](docs/MIGRATION.md) identify preserved sources and CLI changes. [LICENSE.md](LICENSE.md) records the existing license boundaries; no open-source license has been selected for the collection.

@@ -1,0 +1,31 @@
+name: Check skills
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check shipping skills
+        run: python -B tools/check_skills.py --all
+      - name: Check shared UI/UX resources
+        run: python -B tools/sync_ui_ux.py --check
+      - name: Test collection and storage behavior
+        run: python -B -m unittest discover -s tests -v
+      - name: Test QA state behavior
+        run: python -B -m unittest discover -s packs/ultimate-qa/tests -v
+      - name: Check whitespace
+        run: git diff --check

@@ -1,6 +1,6 @@
 """Exercise offline copies, integrity, scope boundaries and interruption recovery."""
 
-from contextlib import redirect_stderr, redirect_stdout
+from contextlib import chdir, redirect_stderr, redirect_stdout
 from hashlib import sha256
 import io
 import json
@@ -208,8 +208,9 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(before, self.snapshot())
 
     def test_relative_sibling_scope_is_normalized_before_overlap_check(self):
-        relative = os.path.relpath(self.project, Path.cwd())
-        self.assertEqual(self.run_install("--yes", root=Path(relative)), 0)
+        with chdir(self.base):
+            relative = os.path.relpath(self.project, Path.cwd())
+            self.assertEqual(self.run_install("--yes", root=Path(relative)), 0)
         self.assertTrue(self.target().is_dir())
 
     def test_source_tampering_and_manifest_pin_mismatch_preserve_destination(self):

@@ -144,3 +144,7 @@ Provide source access and the reporting scope. Runtime verification additionally
 Missing policy, source fields, historical data, rendering tools, roles, or runtime services remain explicit gaps. Static inspection, installation, and passing tests do not prove visual quality, model adherence, scheduled cleanup, or production behavior. Compatibility metadata records only verified native agent discovery.
 
 License status remains [UNDECIDED](../../../../LICENSE.md). Follow the [contribution guide](../../../../CONTRIBUTING.md).
+
+## Generated artifact storage
+
+When this workflow saves reports or run evidence, use its target-workspace output owner and a new UTC `YYYYMMDDTHHMMSSZ-<unique-id>/` run directory; preserve earlier runs. Before saving in Git, the skill preserves or creates the root `.gitignore`, adds only the required scoped output rule, and verifies exclusion. Tracked output is refused without automatic untracking. Non-Git exclusion remains unverified, and workflows requiring Git retain that prerequisite. Unsafe storage or failed exclusion is reported before persistence. Existing state/resume paths and deliberately tracked project documents remain compatible. See the installed [artifact instructions](SKILL.md#generated-artifacts); chat-only requests create no extra output.

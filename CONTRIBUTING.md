@@ -53,6 +53,38 @@ When changing an interface or documenting previously unclear behavior, update th
 
 Review documentation with realistic requests: the first run, a scoped run, a supported continuous run, a pause/resume, a verification-only request, and a missing prerequisite as applicable. Execute helper and installation checks where useful; label manual source review separately from a model-adherence or application trial. Avoid tests that only enforce prose, heading names, or keyword presence.
 
+## Store generated artifacts safely
+
+Every shipping `SKILL.md` must contain a nonempty `## Generated artifacts` section with the applicable storage instructions. Keep those instructions in the installed payload; a link to collection-only guidance is insufficient. Describe the actual output location and resume behavior in the skill README too. Skills that return only chat or edit application source do not need to create an artifact folder.
+
+- Save generated reports, logs, previews, and run evidence beneath a stable, skill-owned root in the target workspace, not the installed skill directory. Each new run uses an exclusively created `YYYYMMDDTHHMMSSZ-<unique-id>/` directory. For example, `20261101T083015Z-a1b2c3d4e5f/` is UTC, filesystem-safe, and sorts by timestamp. A unique suffix prevents same-second collisions; it does not establish an order between simultaneous runs.
+- Preserve prior runs and user changes. Resume an identified active run rather than opening a new empty one. Never overwrite an existing run or silently delete history. Reject linked paths, traversal, and unrelated same-name folders before writing.
+- Before saving inside Git, resolve the intended repository root and inspect its `.gitignore` and existing exclusion rules. Append a root-anchored rule for only the generated output root when needed; create `.gitignore` if absent. Preserve existing bytes, comments and line endings, avoid duplicate rules, and verify exclusion with `git check-ignore`. Refuse already tracked output without untracking it automatically. Do not hide application source or documentation explicitly intended for version control.
+- Outside Git, use the same safe timestamped storage and report that Git exclusion could not be verified. A workflow that requires Git, such as QA state management, retains that prerequisite. If safe storage or required exclusion fails, report the exact limitation before saving; use chat only when the skill permits that fallback.
+- Existing state schemas, numbered versions, explicit project document locations, and resume paths remain compatible. Do not rename historical files or migrate state implicitly. Put new run evidence beneath its existing owner in timestamped subdirectories. A schema/path migration requires its own compatibility and recovery proof.
+
+Deep Critique's bundled `report_store.py` and `storage_io.py` demonstrate these invariants. Reuse the responsible helper where it fits; do not introduce a dependency on another installed skill just to save files. Storage helpers need behavioral tests in disposable workspaces covering missing/existing ignore files, reruns, collisions, tracked output, and unsafe paths. Test outcomes separately from Markdown declarations and model adherence.
+
+## Check skill rules
+
+Prerequisites: Python 3.11+ and a complete local checkout or extracted collection ZIP. Acquire it using the [download instructions](README.md#optional-local-download-or-checkout); identify its root by `tools/` and `packs/`. These are local development checks, not installation commands, and need no third-party Python packages. Git is additionally required for the storage regression tests.
+
+PowerShell or POSIX shell, starting in that collection root, check all shipping skills:
+
+```powershell
+python -B tools/check_skills.py --all
+```
+
+Check only one shipping skill; replace `deep-critique` with its exact catalog name:
+
+```powershell
+python -B tools/check_skills.py --skill deep-critique
+```
+
+The checker reads files without installing skills, executing payloads, changing ignore files, or contacting remote services. It reuses the existing catalog validator for structure, metadata and manifest integrity, checks authored Markdown local file links, and requires a nonempty artifact declaration. Vendored upstream Markdown retains its original link context and is excluded from link checking. Remote links and heading anchors are not checked. Exit code `0` means static checks passed; `1` means a failed check; `2` means invalid command arguments.
+
+Results use `PASS`, `FAIL`, and `NOT VERIFIED`. A declaration's presence does not prove its semantics, runtime storage safety, or agent adherence. Unverified behavior and publication rights never become certified merely because static checks pass. Run the relevant helper regression tests and record separate native-agent trials when behavior or compatibility claims change. The GitHub Actions workflow runs the checker and existing collection/QA tests on Windows and Linux; it does not install skills into real profiles, publish artifacts, or grant redistribution rights.
+
 ## Document installation without hidden setup
 
 Use direct `npx skills@1.7.4 add` as the recommended first installation path. Keep the recorded Python route, clearly labelled optional. A reader installing an ordinary skill should not need to discover an unstated clone step. Follow [AGENTS.md](AGENTS.md) for the repository's installation documentation policy and [INSTALL.md](INSTALL.md) for complete reader-facing steps.
@@ -99,6 +131,10 @@ Replace `developer-skills` with `ultimate-qa` for that pack. Remove deliberately
 ## Verify
 
 Use Python 3.11+ from the collection root:
+
+```powershell
+python -B tools/check_skills.py --all
+```
 
 ```powershell
 python -B -m unittest discover -s tests -v

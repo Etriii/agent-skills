@@ -47,7 +47,7 @@ The version keyword is the important one. `qa v2` means: *read everything in `qa
 │   │   ├── md/    QA reports and plan ← markdown sources
 │   │   ├── docs/  matching Word files
 │   │   ├── evidence/
-│   │   └── archive/<date>/           ← previous drafts within this version
+│   │   └── archive/YYYYMMDDTHHMMSSZ-<unique-id>/           ← previous drafts within this version
 │   └── client/                       ← only when `$ultimate-qa-client prepare` runs
 │       ├── md/    client report and approval checklist
 │       ├── docs/  matching Word files

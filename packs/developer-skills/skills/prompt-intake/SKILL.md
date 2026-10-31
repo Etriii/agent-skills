@@ -18,17 +18,19 @@ Output: A versioned Markdown intake for each new task intake, material questions
 
 ## Save a version for each intake
 
-Once a task is identifiable, create its intake file before asking questions or starting dependent work. Use one flat `.prompt-intake/` folder in the target project root:
+Once a task is identifiable, create its intake file before asking questions or starting dependent work. Use `.prompt-intake/` in the target project root, with an exclusively created UTC timestamped directory for each new intake:
 
 ```text
 .prompt-intake/
-  questions-v001.md
-  questions-v002.md
+  20261101T083015Z-a1b2c3d4e5f/
+    questions-v001.md
+  20261101T084500Z-f6e5d4c3b2a1/
+    questions-v002.md
 ```
 
-Inspect existing filenames and choose one greater than the highest existing version, starting at `v001`; keep at least three digits and never reuse gaps. Each new invocation for a new intake creates the next version, including repeated analysis of the same task. Continuing a pending intake reuses its active file rather than creating an empty new version. A material change to the task creates a new version that references the earlier file and carries forward only still-applicable decisions. Do not add task or category subfolders, an index or a separate decision store.
+Inspect existing intake filenames, including legacy flat files and timestamped directories, and choose one greater than the highest existing version, starting at `v001`; keep at least three digits and never reuse gaps. The full timestamped path identifies the intake even if concurrent writers choose the same version label. Each new invocation for a new intake creates a new directory and version, including repeated analysis of the same task. Continuing a pending intake reuses its active file, including an existing flat path, rather than creating an empty new version. Do not move or rename legacy files. A material change to the task creates a new version that references the earlier file and carries forward only still-applicable decisions. Do not add task or category subfolders, an index or a separate decision store.
 
-Honor a custom destination directory or filename base while retaining version numbering. Inspect ancestors and the destination; avoid linked paths and use exclusive creation so an existing file cannot be replaced. If another writer takes the chosen filename, retry with the next version. Preserve previous files and user edits. Do not change Git ignore rules automatically. If the file cannot be saved, report the exact problem and required action; do not claim that a version was created or silently skip the requested record.
+Honor a custom destination directory or filename base while retaining version numbering and safe timestamped run directories. Inspect ancestors and the destination; avoid linked paths and use exclusive creation so an existing file cannot be replaced. If another writer takes the chosen directory, retry with a fresh unique suffix. Preserve previous files and user edits. Before saving in Git, preserve the root `.gitignore`, append `/.prompt-intake/` only when needed, and verify exclusion with `git check-ignore`; use the actual scoped path for a custom destination. Refuse tracked output without untracking it automatically. Outside Git, disclose that exclusion is unverified. If safe storage or required exclusion fails, report the exact problem and required action; do not claim that a version was created or silently skip the requested record.
 
 Include the task summary, scope and acceptance conditions, creation time in UTC, status and any previous-version reference. List stable question IDs such as Q1, whether each answer is required, the decision and its consequence, available choices, the justified recommendation and a blank `Answer:` field. Each answer accepts an option or specific custom text. Do not prefill answers or include secrets and unnecessary private source content. If no material questions exist, record `No questions needed` and status `Ready`; do not manufacture questions or require a reply before authorized work.
 
@@ -75,12 +77,12 @@ Read the current file, validate that each required answer is present and consist
 
 After creating a version, every paused intake response and the final response must name the actual file and give the applicable next action. Keep the same guidance at the end of the active file, replacing example paths with the actual path:
 
-- Waiting for answers: `Next: Choose answers in the menu, or fill the Answer fields in .prompt-intake/questions-v001.md. Then reply continue.` If no native menu is available, omit the menu option.
+- Waiting for answers: `Next: Choose answers in the menu, or fill the Answer fields in .prompt-intake/20261101T083015Z-a1b2c3d4e5f/questions-v001.md. Then reply continue.` If no native menu is available, omit the menu option.
 - Required answers still missing: name the unresolved question IDs, then repeat the file-and-continue instruction. Do not claim readiness.
 - Unfinished work: name the carried IDs and states, identify blockers or scope limits and give the concrete next action. Never use the no-reply-required completion hint while required in-scope work remains unfinished.
-- Clear task with authorized execution: `Next: No answers needed. Continuing with the task recorded in .prompt-intake/questions-v001.md.`
-- Intake-only request resolved: `Next: Review .prompt-intake/questions-v001.md. Give an execution instruction if you want the task performed.`
-- Original task completed: `Next: No reply required. Start another intake with $prompt-intake <task>. Decisions are in .prompt-intake/questions-v001.md.`
+- Clear task with authorized execution: `Next: No answers needed. Continuing with the task recorded in .prompt-intake/20261101T083015Z-a1b2c3d4e5f/questions-v001.md.`
+- Intake-only request resolved: `Next: Review .prompt-intake/20261101T083015Z-a1b2c3d4e5f/questions-v001.md. Give an execution instruction if you want the task performed.`
+- Original task completed: `Next: No reply required. Start another intake with $prompt-intake <task>. Decisions are in .prompt-intake/20261101T083015Z-a1b2c3d4e5f/questions-v001.md.`
 - Unavailable prerequisite or file-write failure: state the concrete action needed and whether replying `continue` will retry it; do not imply that answering a question fixes the environment.
 
 ## Resume within the original scope
@@ -91,3 +93,11 @@ After creating a version, every paused intake response and the final response mu
 - If a prerequisite remains unavailable, name it and the smallest next action. Do not pretend that choosing an option makes the prerequisite available.
 
 Limits: This is an invoked workflow, not a prompt interception hook. Automatic selection depends on matching skill metadata; `$prompt-intake` explicitly selects the workflow. It does not guarantee discovery, menu rendering, model adherence or detection of every possible blocker. It adds no authority to commit, install, deploy or broaden the task.
+
+## Generated artifacts
+
+Apply this section only when the workflow saves generated reports, logs, previews, or run evidence. Use a stable skill-owned root in the target workspace, never the installed skill directory. Allocate each new run with an exclusively created `YYYYMMDDTHHMMSSZ-<unique-id>/` directory (UTC); preserve earlier runs and resume the identified active run. Reject linked paths, traversal, and unrelated same-name folders.
+
+Before saving inside Git, resolve the intended repository root, refuse already tracked output, and inspect its `.gitignore`. Preserve existing bytes and line endings; append a root-anchored rule for only the generated output root when needed, creating `.gitignore` if absent. Verify exclusion with `git check-ignore`; never untrack files automatically. Outside Git, disclose that exclusion is unverified; workflows requiring Git retain that prerequisite. If safe storage or required exclusion fails, report the exact limitation before saving and use chat only when this workflow permits it.
+
+Preserve existing state schemas, version identifiers, historical files, and resume paths; timestamp new run evidence beneath its existing owner without an implicit migration. Application source and project documents explicitly intended for version control retain their own contracts. This section does not authorize extra output for a chat-only request or expand the workflow's scope.

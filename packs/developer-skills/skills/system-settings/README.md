@@ -102,3 +102,7 @@ Provide application source access and the requested scope. Runtime verification 
 Installation and structural checks do not prove native discovery, model adherence, browser behavior, database concurrency, or production safety. Compatibility metadata records only separately verified native discovery adapters. Application builds, migrations, deployment, and profile installation remain subject to task authorization.
 
 Primary category: Implementation and change safety. Essential defaults remain unchanged. License status remains [UNDECIDED](../../../../LICENSE.md). Follow the [contribution guide](../../../../CONTRIBUTING.md).
+
+## Generated artifact storage
+
+When this workflow saves reports or run evidence, use its target-workspace output owner and a new UTC `YYYYMMDDTHHMMSSZ-<unique-id>/` run directory; preserve earlier runs. Before saving in Git, the skill preserves or creates the root `.gitignore`, adds only the required scoped output rule, and verifies exclusion. Tracked output is refused without automatic untracking. Non-Git exclusion remains unverified, and workflows requiring Git retain that prerequisite. Unsafe storage or failed exclusion is reported before persistence. Existing state/resume paths and deliberately tracked project documents remain compatible. See the installed [artifact instructions](SKILL.md#generated-artifacts); chat-only requests create no extra output.
