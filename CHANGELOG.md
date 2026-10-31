@@ -2,6 +2,7 @@
 
 ## Unreleased collection 0.1.0
 
+- Make all four UI/UX entrypoints artifact-free by default: improve, verify and report briefly in chat without run files, saved captures, logs or ignore-file edits. Keep saved reports, previews and resumable evidence opt-in; preserve compatibility and existing saved-run gates.
 - Make scoped UI/UX inspection, justified improvements and verification the default, with optional formal review and feature-based previews. Document explicit improve-all, absolute application/page paths, relative paths and URLs; preserve existing command options and saved approval checkpoints.
 - Document scoped npx updates, single-skill selection, explicit-agent/copy reinstallation, installer ownership and matching Ultimate QA kit refresh.
 - Add `run --skip-review <task>` across the UI/UX suite for concrete fixes without full audit, proposal or wireframes; retain affected-owner inspection and verification. Group new previews by feature under one run-local index, preserve revision history, and document supported command stacks across skills.

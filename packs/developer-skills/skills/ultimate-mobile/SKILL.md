@@ -41,6 +41,8 @@ Limits: Source inspection is not rendered proof; browser emulation is not real-d
 
 ## Generated artifacts
 
+Default improvements create no generated artifacts: do not create or update `.ui-ux/`, `.uiux/`, logs, saved screenshots, reports, run metadata or related `.gitignore` rules. Keep necessary checks and concise results in chat; do not relocate bookkeeping elsewhere. Saving requires an explicit request, requested file-based previews, compatibility full-review mode or an explicitly resumed saved run. A no-files/chat-only constraint suppresses persistence. Read the workflow before any opted-in output.
+
 Apply this section only when the workflow saves generated reports, logs, previews, or run evidence. Use a stable skill-owned root in the target workspace, never the installed skill directory. Allocate each new run with an exclusively created `YYYYMMDDTHHMMSSZ-<unique-id>/` directory (UTC); preserve earlier runs and resume the identified active run. Reject linked paths, traversal, and unrelated same-name folders.
 
 Before saving inside Git, resolve the intended repository root, refuse already tracked output, and inspect its `.gitignore`. Preserve existing bytes and line endings; append a root-anchored rule for only the generated output root when needed, creating `.gitignore` if absent. Verify exclusion with `git check-ignore`; never untrack files automatically. Outside Git, disclose that exclusion is unverified; workflows requiring Git retain that prerequisite. If safe storage or required exclusion fails, report the exact limitation before saving and use chat only when this workflow permits it.

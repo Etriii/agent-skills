@@ -7,7 +7,7 @@ description: Inspect and improve existing application UI and UX, implement justi
 
 Input: A target application, selected pages or explicit all-pages scope, optional user journeys and design references. Accept absolute application/page paths, relative paths and authorized URLs.
 
-Output: Scoped improvements with concise verification by default; a formal review or previews only when requested. Distinguish source inspection, prototypes and observed application behavior.
+Output: Scoped improvements with concise verification in chat and no generated run files by default; a formal review or previews only when requested. Distinguish source inspection, prototypes and observed application behavior.
 
 ## Invocation
 
@@ -55,6 +55,8 @@ The independently installable `ultimate-ui` and `ultimate-ux` entrypoints select
 Limits: No fixed framework, aesthetic, browser service, other installed skill or network access is required. Runtime and visual claims require suitable application/browser access. Auto mode removes this skill's approval pauses; platform permissions, data boundaries and the user's scope still apply. Do not deploy, publish, commit, merge, install dependencies or change public/business policy unless the task separately authorizes it.
 
 ## Generated artifacts
+
+Default improvements create no generated artifacts: do not create or update `.ui-ux/`, `.uiux/`, logs, saved screenshots, reports, run metadata or related `.gitignore` rules. Keep necessary checks and concise results in chat; do not relocate bookkeeping elsewhere. Saving requires an explicit request, requested file-based previews, compatibility full-review mode or an explicitly resumed saved run. A no-files/chat-only constraint suppresses persistence. Read the workflow before any opted-in output.
 
 Apply this section only when the workflow saves generated reports, logs, previews, or run evidence. Use a stable skill-owned root in the target workspace, never the installed skill directory. Allocate each new run with an exclusively created `YYYYMMDDTHHMMSSZ-<unique-id>/` directory (UTC); preserve earlier runs and resume the identified active run. Reject linked paths, traversal, and unrelated same-name folders.
 

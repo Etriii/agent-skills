@@ -22,13 +22,15 @@ For all-pages requests and formal reviews, inspect every discovered page in scop
 
 Inspect the selected scope, choose changes supported by actual evidence and existing design patterns, implement and verify. Prefer fixes to blocked tasks, accessibility, responsive overflow and broken interactions before subjective polish. Preserve working routes, business behavior, information and role/data boundaries. Do not manufacture changes for good pages or replace a design system to satisfy an improvement request.
 
-Keep `status.md` concise: target/scope, focus, implementation authorization, affected owners, acceptance conditions, decisions and blockers. For `Improve all`, include compact feature/page coverage with changed/kept/deferred outcomes and evidence gaps; no full alternatives report or per-finding essay is required. Save actual proof in `verification.md`. Do not create `review.md`, wireframes or empty preview folders unless requested. Apply the storage rules below; chat-only requests create no run artifacts.
+Default to no generated run artifacts. Do not create or update `.ui-ux/`, `.uiux/`, run folders, logs, screenshots, reports, status/verification files or preview placeholders, and do not change `.gitignore` for them. Do not move this bookkeeping to another directory. Keep scope, acceptance checks, decisions and proof in working context; return changes, executed checks and material gaps briefly in chat. For `Improve all`, track compact changed/kept/deferred coverage in context and summarize it in chat. No full alternatives report or per-finding essay is required.
+
+Treat tokens and tool output as scarce. Read only affected owners and relevant guidance, bound command output, and run the smallest sufficient checks. Do not run routine capture passes, save command transcripts or repeat successful checks without a new reason. Inspect renders when needed to verify changed visual behavior; transient inspection is not a request to save screenshots. Necessary source tracing, accessibility and correctness checks still apply. Finish the improvements and stop without creating follow-up work for optional documentation or evidence.
 
 Infer routine visual choices from the current design system and task. Finish feasible in-scope work without routine approval pauses. Resolve material business, privacy, public-API, data-retention or billing choices before dependent edits; continue independent work. Platform permissions still apply. Stop at the selected scope without publication, dependency installation or Git operations unless separately authorized.
 
 ## Optional review and previews
 
-- `Review ... only. Do not edit.` requests the formal evidence/recommendation report below and stops before application edits. Do not generate wireframes automatically. A review request by itself does not authorize implementation.
+- `Review ... only. Do not edit.` requests findings/recommendations in chat and stops before application edits. Save a formal report only when explicitly requested. Do not generate wireframes automatically. A review request by itself does not authorize implementation.
 - `Show previews` requests feature-based before/after comparisons before any authorized implementation. It does not add an approval pause unless the user also requests one. A preview-only request stops without edits.
 - `Improve ... Show previews and wait for my approval before editing.` authorizes inspection and previews, then sets `awaiting-design-approval`. Show exact comparison links and wait before edits; do not add an unnecessary proposal-approval stage.
 - A user requesting the full proposal-then-design approval process uses the gated sequence below. Existing saved gated runs keep their checkpoints; the new default does not approve old proposals or designs.
@@ -36,22 +38,26 @@ Infer routine visual choices from the current design system and task. Finish fea
 
 ## Evidence and decisions
 
-This section describes requested formal reviews and compatibility full-review runs. Default improvements retain concise evidence and acceptance checks without requiring this full report.
+This section describes requested formal reviews and compatibility full-review runs. Reviews stay in chat unless saving is requested. Default improvements retain concise evidence and acceptance checks in context without requiring this full report.
 
 Use one inventory row per page or page family:
 
 | Page and purpose | Route and owner | Role and state | Source reviewed | Runtime observed and viewport | Findings or keep decision | Gaps |
 |---|---|---|---|---|---|---|
 
-Capture the current interface before changes when browser access is available, at narrow and wide viewports appropriate to the app. Record URL, viewport, role, data/state and source revision. Inspect loading, empty, error, restricted and populated states relevant to the journey. Mark missing runtime/data/role access explicitly. Avoid real purchases, messages, account changes or other external side effects to get evidence; use authorized fixtures/local or staging data.
+Inspect the current interface when browser access is available, at narrow and wide viewports appropriate to the app. Save baseline captures only for requested screenshots/previews or compatibility full-review runs. Keep URL, viewport, role, data/state and source revision in context unless persistence is authorized. Inspect loading, empty, error, restricted and populated states relevant to the journey. Mark missing runtime/data/role access explicitly. Avoid real purchases, messages, account changes or other external side effects to get evidence; use authorized fixtures/local or staging data.
 
 Record findings with stable IDs, page/owner, UI/UX classification, evidence, user impact, priority, recommendation, alternative, tradeoff, confidence and acceptance checks. Separate confirmed defects, design proposals and unknowns. Prioritize blocked tasks, inaccessible controls and data/workflow loss before visual polish. Do not invent numerical UX scores, usage frequency, analytics, conversion benefits or observed users.
 
 For each crowded page, identify its primary job, secondary jobs and content that must remain visible together. Choose among keeping sections, reducing duplication, using local tabs, an accordion, separate routes or another existing pattern. Explain the choice and why a plausible alternative loses useful context or adds friction. Page length alone is not a defect. Leave good pages unchanged and record why.
 
-Show actionable findings in chat with artifact links, high-impact issues and grouped recommendations. On a large audit, keep full per-page detail in the linked report. Give access to shared-component effects and intentionally unchanged pages. Request approval only at a checkpoint the user requested or the saved run already owns; review-only ends at its report.
+Show actionable findings in chat with high-impact issues and grouped recommendations; link artifacts only when saved. On a large audit, group per-page detail by feature in chat or the explicitly requested saved report. Include shared-component effects and intentionally unchanged pages. Request approval only at a checkpoint the user requested or the saved run already owns; review-only ends at its findings.
 
 ## Saved artifacts and resumable approvals
+
+Persistence is opt-in: an explicit request to save a report, logs, screenshots or a resumable run authorizes only those outputs and their necessary run metadata. Requested file-based previews, compatibility `run --auto` and explicit `continue <run-folder>` or `verify <run-folder>` retain their existing artifact contracts. Review-only, improve-all, `run`, `--skip-review` and generic improvement requests do not opt in. A no-files or chat-only constraint suppresses persistence even with another mode; explain any unavailable file-based preview/resume result without creating it. Preserve existing runs without touching them during ordinary improvements.
+
+Apply the following storage and ignore-file rules only after persistence is authorized. Never create a run just to record that no artifacts were requested.
 
 Save runs under `<application-root>/.ui-ux/runs/YYYYMMDDTHHMMSSZ-<unique-id>/`, using UTC and an exclusively created directory. Follow the target's existing report location if it already owns equivalent artifacts, preserving established state and resume paths. For URL-only access use an available writable output directory and record the target URL and chosen output root. Do not write to the installed skill, overwrite another run, or commit generated evidence automatically.
 
@@ -61,10 +67,10 @@ Use the target filesystem's safe path handling. Reject symlink/junction escapes,
 
 Create these artifacts as their stages become authorized; never fill later-stage files with invented results:
 
-- `review.md`: requested formal reviews or compatibility full-review runs only; target, scope, focus, mode, page inventory, evidence, findings, alternatives, keep decisions and proposed implementation order.
-- `status.md`: current stage, execution path, target/revision and relevant file hashes, artifact paths/hashes, selected findings or scoped task/acceptance checks, compact all-pages coverage when applicable, authorization evidence, assumptions, blockers and next action. This is an agent-maintained record, not an authorization engine.
+- `review.md`: explicitly requested saved reviews or compatibility full-review runs only; target, scope, focus, mode, page inventory, evidence, findings, alternatives, keep decisions and proposed implementation order.
+- `status.md`: opted-in saved runs only; current stage, execution path, target/revision and relevant file hashes, artifact paths/hashes, selected findings or scoped task/acceptance checks, compact all-pages coverage when applicable, authorization evidence, assumptions, blockers and next action. This is an agent-maintained record, not an authorization engine.
 - `previews/`: only when requested or required by a compatibility/saved run; one `index.html` links feature folders and revisioned comparisons/assets. See [preview layout](preview-and-verify.md#feature-based-preview-folder). Default improvements and direct fixes omit it otherwise.
-- `verification.md`: changes mapped to findings or the direct task, executed commands/results, actual after captures when available and remaining gaps, when implementation or verification is reached.
+- `verification.md`: opted-in saved implementation/verification runs only; changes mapped to findings or the direct task, executed commands/results, requested after captures and remaining gaps. A request for only a screenshot or report does not require this extra file.
 
 Write only observed facts. Preserve earlier proposal/preview revisions after user feedback; record what superseded them. Where hashing is available, record hashes of the reviewed proposal, approved preview and affected source files. Otherwise record exact immutable revisions and disclose that integrity is not machine-verified. Show the current artifact links and the exact next action at every user checkpoint.
 
@@ -95,9 +101,9 @@ Infer routine visual choices from the current design system and task. Prefer rev
 `run --skip-review <task>` authorizes implementation of a concrete fix, not selection of a redesign. Infer the target and task from explicit text or established context; `--page` is optional when affected pages can be resolved unambiguously. Missing tasks, vague requests such as "improve everything", unresolved selectors or conflicting constraints require clarification before edits. Never silently run a full audit or broaden scope. Combine with repeated `--page` and the main entrypoint's `--focus`; shortcuts retain their fixed focus. `--auto` is accepted with `--skip-review` but adds no work or authorization.
 
 1. Inspect the affected owners and shared callers, current edits, relevant role/state/mobile behavior and the requested outcome. Reuse the existing implementation if it already satisfies the request.
-2. Record the concrete task, acceptance checks and implementation authorization in a concise `status.md`. Skip the full page inventory, findings catalogue, alternatives report, proposal and wireframes. Do not create empty `review.md` or `previews/` placeholders. A chat-only request creates no run artifacts.
+2. Keep the concrete task, acceptance checks and implementation authorization in working context. Skip the full page inventory, findings catalogue, alternatives report, proposal and wireframes. Create no run artifacts by default; write a concise `status.md` only for an explicitly requested saved run.
 3. Implement only that fix and run the smallest sufficient proof from [implementation and verification](preview-and-verify.md#implement-the-approved-or-autonomous-selection). No skill approval pauses are required for the already specified fix. Platform permissions and unresolved material policy decisions still apply. If previews are separately requested, create them before edits using the feature layout; pause only when the user also requests preview approval.
-4. Save actual changes, proof and remaining gaps in `verification.md`, update status and report briefly. If safe persistence is unavailable, continue permitted work with chat evidence and disclose that resume records were not saved.
+4. Report actual changes, executed proof and material gaps briefly in chat, then stop. Write `verification.md` and update status only for an explicitly requested saved run. If requested safe persistence is unavailable, continue permitted work with chat evidence and disclose that resume records were not saved.
 
 Skipping review never skips source inspection, authorization, accessibility, preserved routes/data/permissions or task-relevant verification. Report wider opportunities without implementing them. This path makes no full-review or unobserved runtime claims.
 

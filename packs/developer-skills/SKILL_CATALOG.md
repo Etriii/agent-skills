@@ -14,10 +14,10 @@ Version 0.1.0; each stable skill ID equals its generic directory/frontmatter nam
 | [architecture-review](skills/architecture-review/README.md) | Boundaries, ownership and tradeoffs | Planning advisor |
 | [frontend-review](skills/frontend-review/README.md) | UI states, accessibility and visual evidence | Planning advisor |
 | [table-ux-review](skills/table-ux-review/README.md) | Table inventory, detail navigation and role-aware row-action placement | Review |
-| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Combined interface audit, before/after previews and scoped improvements | Gated review; explicit auto mode |
-| [ultimate-ui](skills/ultimate-ui/README.md) | Visual hierarchy, layout, typography and responsive review | UI-only gated review |
-| [ultimate-ux](skills/ultimate-ux/README.md) | Navigation, content grouping, task flows and interaction review | UX-only gated review |
-| [ultimate-mobile](skills/ultimate-mobile/README.md) | Mobile web layout, headers, filters, dialogs and journeys | Mobile UI/UX gated review |
+| [ultimate-ui-ux](skills/ultimate-ui-ux/README.md) | Combined interface audit, before/after previews and scoped improvements | Improve and verify; no run files |
+| [ultimate-ui](skills/ultimate-ui/README.md) | Visual hierarchy, layout, typography and responsive review | Improve UI and verify; no run files |
+| [ultimate-ux](skills/ultimate-ux/README.md) | Navigation, content grouping, task flows and interaction review | Improve UX and verify; no run files |
+| [ultimate-mobile](skills/ultimate-mobile/README.md) | Mobile web layout, headers, filters, dialogs and journeys | Improve mobile and verify; no run files |
 | [backend-review](skills/backend-review/README.md) | API contracts, authorization and side effects | Planning advisor |
 | [database-review](skills/database-review/README.md) | Integrity, migration and recovery | Planning advisor |
 | [security-privacy-review](skills/security-privacy-review/README.md) | Trust boundaries and data policy | Planning advisor |
